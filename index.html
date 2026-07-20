@@ -29,7 +29,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  img{max-width:100%;display:block}
+  img,video{max-width:100%;display:block}
   a{color:inherit}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
   section{padding:96px 0}
@@ -82,9 +82,9 @@
   .dot{width:12px;height:12px;border-radius:50%}
   .dot.v{background:var(--verde)} .dot.a{background:var(--ambar)} .dot.r{background:var(--roja)}
   .hero-visual{position:relative}
-  .hero-visual img{border-radius:28px;box-shadow:var(--sombra)}
+  .hero-visual img,.hero-visual video{border-radius:28px;box-shadow:var(--sombra);width:100%}
   .hero-visual .badge-float{
-    position:absolute;bottom:-18px;left:-18px;background:rgba(20,40,32,.65);backdrop-filter:blur(6px);
+    position:absolute;top:-18px;left:-18px;background:rgba(20,40,32,.65);backdrop-filter:blur(6px);
     border-radius:16px;padding:14px 18px;box-shadow:var(--sombra);
     display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:700;color:var(--texto);
     border:1px solid rgba(54,203,139,.25);
@@ -171,7 +171,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img src="assets/hero-laboratorio.png" alt="Las tres bolsas REP DATA 360 (verde, ámbar y roja) representando los niveles de reciclaje">
+      <video src="assets/video-pitch.mp4" poster="assets/hero-laboratorio.png" controls playsinline preload="metadata" aria-label="Video: presentación de REP DATA 360"></video>
       <div class="badge-float"><span class="n">60%</span> del material hoy termina en el relleno sanitario</div>
     </div>
   </div>
