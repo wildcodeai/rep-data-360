@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REP DATA 360 · Trazabilidad 360° del reciclaje</title>
+<meta name="description" content="Bolsa con indicador químico y chip RFID que clasifica el reciclaje domiciliario en verde, ámbar o rojo, y registra hora y lugar. Proyecto de Innovación · Ley REP N°20.920 · Chile.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232FB179'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --verde:#2FB179;
+    --verde-claro:#36CB8B;
+    --verde-oscuro:#1F8A5C;
+    --tinta:#1E3A2E;
+    --tinta-suave:#1F4D3A;
+    --texto:#E7F3EC;
+    --texto-suave:#AFC9BD;
+    --ambar:#FFBA45;
+    --roja:#F2765C;
+    --radio:20px;
+    --sombra:0 20px 45px -20px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+    color:var(--texto);
+    background:linear-gradient(180deg, var(--tinta) 0%, var(--tinta-suave) 55%, var(--verde-oscuro) 100%);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+  h1,h2,h3{line-height:1.15;font-weight:800}
+  h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:12px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--verde-claro);background:rgba(54,203,139,.16);
+    padding:7px 16px;border-radius:999px;margin-bottom:16px;
+  }
+  .lede{color:var(--texto-suave);font-size:1.05rem;max-width:640px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 28px;border-radius:999px;font-weight:700;font-size:.95rem;
+    border:2px solid transparent;cursor:pointer;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--verde);color:var(--tinta);box-shadow:0 10px 24px -8px rgba(47,177,121,.4)}
+  .btn-primary:hover{background:var(--verde-claro)}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(30,58,46,.55);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(54,203,139,.15);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+  .logo-dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--verde) 0%,var(--verde-oscuro) 100%);display:flex;align-items:center;justify-content:center;color:var(--tinta);font-size:1rem}
+  .nav-cta{display:flex;align-items:center;gap:16px}
+
+  /* HERO */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:76px 0 40px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);letter-spacing:-.03em}
+  .hero h1 .accent{color:var(--verde-claro)}
+  .hero .lede{margin:18px 0 30px;font-size:1.12rem}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+  .semaforo{display:flex;gap:14px;flex-wrap:wrap}
+  .chip{
+    display:flex;align-items:center;gap:8px;background:rgba(20,40,32,.4);
+    border:1px solid rgba(54,203,139,.2);border-radius:999px;padding:8px 14px 8px 10px;
+    font-size:.82rem;font-weight:700;color:var(--texto);box-shadow:var(--sombra);
+  }
+  .dot{width:12px;height:12px;border-radius:50%}
+  .dot.v{background:var(--verde)} .dot.a{background:var(--ambar)} .dot.r{background:var(--roja)}
+  .hero-visual{position:relative}
+  .hero-visual img{border-radius:28px;box-shadow:var(--sombra)}
+  .hero-visual .badge-float{
+    position:absolute;bottom:-18px;left:-18px;background:rgba(20,40,32,.65);backdrop-filter:blur(6px);
+    border-radius:16px;padding:14px 18px;box-shadow:var(--sombra);
+    display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:700;color:var(--texto);
+    border:1px solid rgba(54,203,139,.25);
+  }
+  .badge-float .n{color:var(--verde-claro);font-size:1.3rem}
+
+  /* FORM (pre-registro) */
+  .registro{
+    position:relative;overflow:hidden;
+  }
+  .registro::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 15% 20%, rgba(54,203,139,.10) 0, transparent 40%),
+                      radial-gradient(circle at 85% 80%, rgba(54,203,139,.10) 0, transparent 40%);
+  }
+  .registro-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .registro h2{color:var(--texto)}
+  .registro .lede{color:var(--texto-suave)}
+  .registro .highlight{color:var(--verde-claro);font-weight:800}
+  .beneficios-mini{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:10px}
+  .beneficios-mini li{color:var(--texto-suave);font-size:.92rem;display:flex;gap:10px;align-items:flex-start}
+  .beneficios-mini li::before{content:"✓";color:var(--verde-claro);font-weight:800}
+  form.card-form{
+    position:relative;background:rgba(15,31,25,.45);backdrop-filter:blur(14px);
+    border:1px solid rgba(54,203,139,.2);
+    border-radius:24px;padding:34px;box-shadow:0 25px 50px -18px rgba(0,0,0,.55);
+  }
+  form.card-form h3{font-size:1.15rem;margin-bottom:4px;color:var(--texto)}
+  form.card-form .sub{color:var(--texto-suave);font-size:.85rem;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.8rem;font-weight:700;color:var(--verde-claro);margin-bottom:6px}
+  .field input{
+    width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid rgba(54,203,139,.25);
+    background:rgba(0,0,0,.18);
+    font-size:.95rem;font-family:inherit;color:var(--texto);outline:none;transition:border-color .15s ease;
+  }
+  .field input::placeholder{color:rgba(175,201,189,.5)}
+  .field input:focus{border-color:var(--verde-claro)}
+  form.card-form .btn{width:100%;margin-top:6px}
+  .form-msg{margin-top:14px;font-size:.85rem;font-weight:700;text-align:center;display:none}
+  .form-msg.ok{color:var(--verde-claro)}
+  .privacidad{font-size:.72rem;color:var(--texto-suave);margin-top:14px;text-align:center}
+
+  /* FOOTER */
+  footer{background:var(--verde-oscuro);color:var(--texto-suave);padding:48px 0 28px;font-size:.85rem}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .logo{color:var(--texto)}
+  .footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid rgba(20,40,32,.3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:rgba(231,243,236,.6);font-size:.78rem}
+
+  @media (max-width:920px){
+    .hero-grid, .registro-inner{grid-template-columns:1fr}
+    .hero-visual{order:-1}
+  }
+  @media (max-width:600px){
+    section{padding:64px 0}
+    .footer-inner{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo"><span class="logo-dot">360</span> REP DATA 360</div>
+    <div class="nav-cta">
+      <a href="#registro" class="btn btn-primary">Pre-regístrate</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Proyecto de Innovación · Ley REP N°20.920 · Chile</span>
+      <h1>Trazabilidad <span class="accent">360°</span> del reciclaje, desde el hogar.</h1>
+      <p class="lede">Una bolsa con indicador químico y chip RFID que muestra qué se recicla, en qué nivel de limpieza, cuándo y dónde &mdash; antes de que el camión llegue a la planta.</p>
+      <div class="hero-ctas">
+        <a href="#registro" class="btn btn-primary">Recibe tu bolsa gratis →</a>
+      </div>
+      <div class="semaforo">
+        <span class="chip"><span class="dot v"></span>Verde · limpia</span>
+        <span class="chip"><span class="dot a"></span>Ámbar · intermedia</span>
+        <span class="chip"><span class="dot r"></span>Roja · contaminada</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="assets/hero-laboratorio.png" alt="Las tres bolsas REP DATA 360 (verde, ámbar y roja) representando los niveles de reciclaje">
+      <div class="badge-float"><span class="n">60%</span> del material hoy termina en el relleno sanitario</div>
+    </div>
+  </div>
+</section>
+
+<section class="registro" id="registro">
+  <div class="wrap registro-inner">
+    <div>
+      <span class="eyebrow">Pre-registro</span>
+      <h2>Pre-registra tu domicilio y <span class="highlight">recibe gratis tu bolsa</span></h2>
+      <p class="lede">Sé de los primeros hogares en probar REP DATA 360. Te avisamos cuando el sistema llegue a tu comuna.</p>
+      <ul class="beneficios-mini">
+        <li>Bolsa REP DATA 360 sin costo para tu hogar.</li>
+        <li>Feedback semanal para reciclar mejor.</li>
+        <li>Prioridad en la etapa piloto de tu comuna.</li>
+      </ul>
+    </div>
+    <form class="card-form" id="preRegistro">
+      <h3>Regístrate en 30 segundos</h3>
+      <p class="sub">Solo usamos tus datos para coordinar la entrega y el retiro.</p>
+      <div class="field">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="nombre@correo.com" required>
+      </div>
+      <div class="field">
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, comuna" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <p class="form-msg ok" id="formMsg">¡Listo! Te contactaremos por correo cuando el piloto llegue a tu zona. 🎉</p>
+      <p class="privacidad">Al enviar aceptas ser contactado sobre el piloto de REP DATA 360. Proyecto de Innovación · Ley REP N°20.920.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="logo"><span class="logo-dot">360</span> REP DATA 360</div>
+      <a href="#registro" style="color:var(--texto-suave);font-weight:600;font-size:.92rem">Pre-regístrate</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 REP DATA 360 · Proyecto de Innovación</span>
+      <span>Ley REP N°20.920 · Art. 2(k) Trazabilidad · Art. 37 Recicladores de Base · Chile</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('preRegistro').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('formMsg').style.display = 'block';
+    this.reset();
+  });
+</script>
+</body>
+</html>
