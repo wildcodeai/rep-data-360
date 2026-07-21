@@ -29,7 +29,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  img,video{max-width:100%;display:block}
+  img{max-width:100%;display:block}
   a{color:inherit}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
   section{padding:96px 0}
@@ -62,6 +62,10 @@
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
   .logo-dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--verde) 0%,var(--verde-oscuro) 100%);display:flex;align-items:center;justify-content:center;color:var(--tinta);font-size:1rem}
   .nav-cta{display:flex;align-items:center;gap:16px}
+  .nav-links{display:flex;gap:26px;font-size:.9rem;font-weight:600;color:var(--texto-suave)}
+  .nav-links a{text-decoration:none;transition:color .15s ease}
+  .nav-links a:hover{color:var(--verde-claro)}
+  @media (max-width:820px){.nav-links{display:none}}
 
   /* HERO */
   .hero{
@@ -82,14 +86,56 @@
   .dot{width:12px;height:12px;border-radius:50%}
   .dot.v{background:var(--verde)} .dot.a{background:var(--ambar)} .dot.r{background:var(--roja)}
   .hero-visual{position:relative}
-  .hero-visual img,.hero-visual video{border-radius:28px;box-shadow:var(--sombra);width:100%}
+  .hero-visual img{border-radius:28px;box-shadow:var(--sombra)}
   .hero-visual .badge-float{
-    position:absolute;top:-18px;left:-18px;background:rgba(20,40,32,.65);backdrop-filter:blur(6px);
+    position:absolute;bottom:-18px;left:-18px;background:rgba(20,40,32,.65);backdrop-filter:blur(6px);
     border-radius:16px;padding:14px 18px;box-shadow:var(--sombra);
     display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:700;color:var(--texto);
     border:1px solid rgba(54,203,139,.25);
   }
   .badge-float .n{color:var(--verde-claro);font-size:1.3rem}
+
+  /* CENTERED SECTION UTILITY */
+  .center{text-align:center}
+  .center .lede{margin-left:auto;margin-right:auto}
+
+  /* VIDEO */
+  .video-frame{
+    margin-top:40px;border-radius:24px;overflow:hidden;
+    border:1px solid rgba(54,203,139,.2);background:rgba(15,31,25,.45);
+    box-shadow:var(--sombra);
+  }
+  .video-frame video{width:100%;display:block;max-height:640px;background:#000}
+
+  /* PROYECTO (niveles + etiquetas) */
+  .niveles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+  .nivel-card{
+    background:rgba(15,31,25,.45);backdrop-filter:blur(14px);
+    border:1px solid rgba(54,203,139,.2);border-radius:24px;padding:30px 24px;text-align:center;
+    box-shadow:0 25px 50px -18px rgba(0,0,0,.4);
+  }
+  .nivel-card img.mascota{width:120px;margin:0 auto 18px}
+  .nivel-card h3{font-size:1.1rem;margin-bottom:8px}
+  .nivel-card p{color:var(--texto-suave);font-size:.9rem}
+  .nivel-card.v h3{color:var(--verde-claro)}
+  .nivel-card.a h3{color:var(--ambar)}
+  .nivel-card.r h3{color:var(--roja)}
+  .etiquetas-grid{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+  .etiqueta-card{max-width:260px}
+  .etiqueta-card img{border-radius:18px;box-shadow:var(--sombra)}
+  .etiqueta-card p{margin-top:14px;font-size:.85rem;color:var(--texto-suave)}
+
+  /* EQUIPO */
+  .equipo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+  .persona{text-align:center}
+  .avatar{
+    width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    margin:0 auto 14px;font-weight:800;font-size:1.4rem;color:var(--tinta);
+    background:linear-gradient(135deg,var(--verde) 0%,var(--verde-oscuro) 100%);
+    box-shadow:0 10px 24px -8px rgba(47,177,121,.4);
+  }
+  .persona h3{font-size:1rem;margin-bottom:2px}
+  .persona p{color:var(--texto-suave);font-size:.85rem}
 
   /* FORM (pre-registro) */
   .registro{
@@ -123,9 +169,27 @@
   }
   .field input::placeholder{color:rgba(175,201,189,.5)}
   .field input:focus{border-color:var(--verde-claro)}
+  .field input.valida{border-color:var(--verde-claro)}
+  .field input.invalida{border-color:var(--roja)}
+  .campo-direccion{position:relative}
+  .direccion-sugerencias{
+    display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;
+    background:#152922;border:1px solid rgba(54,203,139,.3);border-radius:12px;
+    max-height:220px;overflow-y:auto;box-shadow:var(--sombra);
+  }
+  .direccion-item{padding:10px 14px;font-size:.83rem;color:var(--texto);cursor:pointer;border-bottom:1px solid rgba(54,203,139,.08)}
+  .direccion-item:last-child{border-bottom:none}
+  .direccion-item:hover, .direccion-item.activa{background:rgba(54,203,139,.18)}
+  .direccion-status{margin-top:7px;font-size:.78rem;font-weight:600;min-height:1em}
+  .direccion-status.ok{color:var(--verde-claro)}
+  .direccion-status.error{color:var(--roja)}
+  .direccion-status.cargando{color:var(--texto-suave)}
   form.card-form .btn{width:100%;margin-top:6px}
   .form-msg{margin-top:14px;font-size:.85rem;font-weight:700;text-align:center;display:none}
   .form-msg.ok{color:var(--verde-claro)}
+  .form-msg.err{color:var(--roja)}
+  .btn[disabled]{opacity:.6;cursor:not-allowed}
+  .hp-field{position:absolute;left:-9999px;top:-9999px}
   .privacidad{font-size:.72rem;color:var(--texto-suave);margin-top:14px;text-align:center}
 
   /* FOOTER */
@@ -137,6 +201,8 @@
   @media (max-width:920px){
     .hero-grid, .registro-inner{grid-template-columns:1fr}
     .hero-visual{order:-1}
+    .niveles-grid{grid-template-columns:1fr}
+    .equipo-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:600px){
     section{padding:64px 0}
@@ -149,6 +215,11 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <div class="logo"><span class="logo-dot">360</span> REP DATA 360</div>
+    <nav class="nav-links">
+      <a href="#video">Video</a>
+      <a href="#proyecto">Proyecto</a>
+      <a href="#equipo">Equipo</a>
+    </nav>
     <div class="nav-cta">
       <a href="#registro" class="btn btn-primary">Pre-regístrate</a>
     </div>
@@ -171,8 +242,79 @@
       </div>
     </div>
     <div class="hero-visual">
-      <video src="assets/video-pitch.mp4" poster="assets/hero-laboratorio.png" controls playsinline preload="metadata" aria-label="Video: presentación de REP DATA 360"></video>
+      <img src="assets/hero-laboratorio.png" alt="Las tres bolsas REP DATA 360 (verde, ámbar y roja) representando los niveles de reciclaje">
       <div class="badge-float"><span class="n">60%</span> del material hoy termina en el relleno sanitario</div>
+    </div>
+  </div>
+</section>
+
+<section class="video-section" id="video">
+  <div class="wrap center">
+    <span class="eyebrow">Pitch · 3 minutos</span>
+    <h2>Mira cómo funciona REP DATA 360</h2>
+    <p class="lede">La bolsa que clasifica el reciclaje domiciliario en verde, ámbar o rojo, y registra hora y lugar antes de que llegue a la planta.</p>
+    <div class="video-frame">
+      <video controls preload="metadata" poster="assets/hero-laboratorio.png">
+        <source src="assets/video-pitch.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="proyecto" id="proyecto">
+  <div class="wrap center">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2>Un semáforo que cualquiera entiende</h2>
+    <p class="lede">El indicador químico reacciona con la contaminación orgánica de la bolsa y cambia de color; un chip RFID registra hora y lugar al pasar por el camión.</p>
+    <div class="niveles-grid">
+      <div class="nivel-card v">
+        <img class="mascota" src="assets/mascota-verde.png" alt="Mascota verde REP DATA 360">
+        <h3>Verde · limpia</h3>
+        <p>Material limpio. Va directo a reciclaje.</p>
+      </div>
+      <div class="nivel-card a">
+        <img class="mascota" src="assets/mascota-ambar.png" alt="Mascota ámbar REP DATA 360">
+        <h3>Ámbar · intermedia</h3>
+        <p>Contaminación parcial. Igual va a reciclaje.</p>
+      </div>
+      <div class="nivel-card r">
+        <img class="mascota" src="assets/mascota-roja.png" alt="Mascota roja REP DATA 360">
+        <h3>Roja · contaminada</h3>
+        <p>Alta contaminación. Recibe un sticker con instrucciones para mejorar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="etiquetas">
+  <div class="wrap center">
+    <span class="eyebrow">La etiqueta que educa</span>
+    <h2>El feedback, en acción</h2>
+    <p class="lede">Cuando la bolsa no queda verde, una etiqueta cierra el ciclo: agradece, explica y ofrece ayuda para mejorar.</p>
+    <div class="etiquetas-grid">
+      <div class="etiqueta-card">
+        <img src="assets/etiqueta-ambar.png" alt="Etiqueta de feedback para bolsa ámbar">
+        <p>Bolsa ámbar: pequeños ajustes para reciclar mejor.</p>
+      </div>
+      <div class="etiqueta-card">
+        <img src="assets/etiqueta-roja.png" alt="Etiqueta de feedback para bolsa roja">
+        <p>Bolsa roja: no se retiró esta semana; se invita a mejorar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="equipo" id="equipo">
+  <div class="wrap center">
+    <span class="eyebrow">Equipo de trabajo</span>
+    <h2>Quiénes están detrás de REP DATA 360</h2>
+    <p class="lede">Proyecto de Innovación · Ley REP N°20.920.</p>
+    <div class="equipo-grid">
+      <div class="persona"><span class="avatar">C</span><h3>César</h3><p>Guerrero Torres</p></div>
+      <div class="persona"><span class="avatar">J</span><h3>Jaritza</h3><p>Ramírez Valles</p></div>
+      <div class="persona"><span class="avatar">S</span><h3>Sandy</h3><p>Suárez Urriola</p></div>
+      <div class="persona"><span class="avatar">V</span><h3>Valentina</h3><p>Villalba Lleufo</p></div>
     </div>
   </div>
 </section>
@@ -196,12 +338,19 @@
         <label for="correo">Correo electrónico</label>
         <input type="email" id="correo" name="correo" placeholder="nombre@correo.com" required>
       </div>
-      <div class="field">
+      <div class="field campo-direccion">
         <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, comuna" required>
+        <input type="text" id="direccion" name="direccion" placeholder="Calle, número, comuna" autocomplete="off" required>
+        <div class="direccion-sugerencias" id="direccionSugerencias"></div>
+        <p class="direccion-status" id="direccionStatus"></p>
       </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <div class="field hp-field" aria-hidden="true">
+        <label for="empresa">Empresa</label>
+        <input type="text" id="empresa" name="empresa" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Enviar</button>
       <p class="form-msg ok" id="formMsg">¡Listo! Te contactaremos por correo cuando el piloto llegue a tu zona. 🎉</p>
+      <p class="form-msg err" id="formErr">No pudimos registrar tus datos. Intenta nuevamente en unos segundos.</p>
       <p class="privacidad">Al enviar aceptas ser contactado sobre el piloto de REP DATA 360. Proyecto de Innovación · Ley REP N°20.920.</p>
     </form>
   </div>
@@ -221,11 +370,197 @@
 </footer>
 
 <script>
-  document.getElementById('preRegistro').addEventListener('submit', function(e){
-    e.preventDefault();
-    document.getElementById('formMsg').style.display = 'block';
-    this.reset();
+(function(){
+  // Reemplaza esta URL por la de tu Google Apps Script Web App (ver instrucciones de despliegue).
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxksNX0TLAUDNDcpRszrzVqrjUSYXWQI-fdNlt7PtzuF_7DOGNr-7MPoX8ciN-wUs9m/exec';
+
+  const form = document.getElementById('preRegistro');
+  const direccionInput = document.getElementById('direccion');
+  const dropdown = document.getElementById('direccionSugerencias');
+  const status = document.getElementById('direccionStatus');
+  const formMsg = document.getElementById('formMsg');
+  const formErr = document.getElementById('formErr');
+  const submitBtn = document.getElementById('submitBtn');
+  const empresaInput = document.getElementById('empresa');
+
+  let debounceTimer = null;
+  let controller = null;
+  let activeIndex = -1;
+
+  function setStatus(msg, tipo){
+    status.textContent = msg;
+    status.className = 'direccion-status' + (tipo ? ' ' + tipo : '');
+  }
+
+  function marcarValidez(valida){
+    direccionInput.classList.remove('valida', 'invalida');
+    if(valida === true) direccionInput.classList.add('valida');
+    if(valida === false) direccionInput.classList.add('invalida');
+  }
+
+  function limpiarVerificacion(){
+    direccionInput.dataset.verified = '';
+    marcarValidez(null);
+    setStatus('');
+  }
+
+  function ocultarSugerencias(){
+    dropdown.innerHTML = '';
+    dropdown.style.display = 'none';
+    activeIndex = -1;
+  }
+
+  async function buscarDirecciones(query){
+    if(controller) controller.abort();
+    controller = new AbortController();
+    const url = 'https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&countrycodes=cl&limit=5&q=' + encodeURIComponent(query);
+    const res = await fetch(url, { headers: { 'Accept-Language': 'es' }, signal: controller.signal });
+    if(!res.ok) throw new Error('Error de red al consultar direcciones');
+    return res.json();
+  }
+
+  function renderSugerencias(resultados){
+    dropdown.innerHTML = '';
+    if(!resultados.length){ ocultarSugerencias(); return; }
+    resultados.forEach(function(r){
+      const item = document.createElement('div');
+      item.className = 'direccion-item';
+      item.textContent = r.display_name;
+      item.addEventListener('mousedown', function(e){
+        e.preventDefault();
+        seleccionarDireccion(r);
+      });
+      dropdown.appendChild(item);
+    });
+    dropdown.style.display = 'block';
+    activeIndex = -1;
+  }
+
+  function seleccionarDireccion(r){
+    direccionInput.value = r.display_name;
+    direccionInput.dataset.verified = 'true';
+    marcarValidez(true);
+    setStatus('✓ Dirección verificada', 'ok');
+    ocultarSugerencias();
+  }
+
+  direccionInput.addEventListener('input', function(){
+    limpiarVerificacion();
+    const query = direccionInput.value.trim();
+    clearTimeout(debounceTimer);
+    if(query.length < 5){ ocultarSugerencias(); return; }
+    setStatus('Buscando dirección…', 'cargando');
+    debounceTimer = setTimeout(async function(){
+      try{
+        const resultados = await buscarDirecciones(query);
+        if(direccionInput.value.trim() !== query) return;
+        setStatus('');
+        renderSugerencias(resultados);
+      }catch(err){
+        if(err.name !== 'AbortError'){ ocultarSugerencias(); setStatus(''); }
+      }
+    }, 500);
   });
+
+  direccionInput.addEventListener('keydown', function(e){
+    const items = dropdown.querySelectorAll('.direccion-item');
+    if(!items.length || dropdown.style.display === 'none') return;
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      activeIndex = Math.min(activeIndex + 1, items.length - 1);
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      activeIndex = Math.max(activeIndex - 1, 0);
+    } else if(e.key === 'Enter' && activeIndex >= 0){
+      e.preventDefault();
+      items[activeIndex].dispatchEvent(new Event('mousedown'));
+      return;
+    } else if(e.key === 'Escape'){
+      ocultarSugerencias();
+      return;
+    } else {
+      return;
+    }
+    items.forEach(function(it, i){ it.classList.toggle('activa', i === activeIndex); });
+  });
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.campo-direccion')) ocultarSugerencias();
+  });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    ocultarSugerencias();
+
+    if(direccionInput.dataset.verified === 'true'){
+      completarEnvio();
+      return;
+    }
+
+    const query = direccionInput.value.trim();
+    if(query.length < 5){
+      marcarValidez(false);
+      setStatus('Ingresa una dirección completa: calle, número y comuna.', 'error');
+      direccionInput.focus();
+      return;
+    }
+
+    setStatus('Verificando dirección…', 'cargando');
+    try{
+      const resultados = await buscarDirecciones(query);
+      if(resultados.length){
+        direccionInput.value = resultados[0].display_name;
+        direccionInput.dataset.verified = 'true';
+        marcarValidez(true);
+        setStatus('✓ Dirección verificada', 'ok');
+        completarEnvio();
+      } else {
+        direccionInput.dataset.verified = 'false';
+        marcarValidez(false);
+        setStatus('No encontramos esta dirección en Chile. Revisa calle, número y comuna, o elige una sugerencia de la lista.', 'error');
+        direccionInput.focus();
+      }
+    }catch(err){
+      // Si el servicio de verificación falla, no bloqueamos el pre-registro.
+      setStatus('');
+      completarEnvio();
+    }
+  });
+
+  function completarEnvio(){
+    formErr.style.display = 'none';
+
+    // Trampa anti-bots: si el campo oculto viene relleno, simulamos éxito sin enviar datos reales.
+    if(empresaInput && empresaInput.value){
+      formMsg.style.display = 'block';
+      form.reset();
+      limpiarVerificacion();
+      return;
+    }
+
+    const datos = new FormData();
+    datos.append('correo', document.getElementById('correo').value);
+    datos.append('direccion', direccionInput.value);
+    datos.append('fecha', new Date().toISOString());
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: datos })
+      .then(function(){
+        formMsg.style.display = 'block';
+        form.reset();
+        limpiarVerificacion();
+      })
+      .catch(function(){
+        formErr.style.display = 'block';
+      })
+      .finally(function(){
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+      });
+  }
+})();
 </script>
 </body>
 </html>
