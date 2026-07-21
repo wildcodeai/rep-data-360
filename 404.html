@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada · REP DATA 360</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232FB179'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --verde:#2FB179;
+    --verde-claro:#36CB8B;
+    --verde-oscuro:#1F8A5C;
+    --tinta:#1E3A2E;
+    --tinta-suave:#1F4D3A;
+    --texto:#E7F3EC;
+    --texto-suave:#AFC9BD;
+    --ambar:#FFBA45;
+    --roja:#F2765C;
+    --radio:20px;
+    --sombra:0 20px 45px -20px rgba(0,0,0,.5);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--verde-oscuro)}
+  body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+    color:var(--texto);
+    background:linear-gradient(180deg, var(--tinta) 0%, var(--verde-oscuro) 100%);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:24px;
+    text-align:center;
+  }
+  a{color:inherit}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;letter-spacing:-.02em;margin-bottom:56px;text-decoration:none}
+  .logo-dot{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--verde) 0%,var(--verde-oscuro) 100%);display:flex;align-items:center;justify-content:center;color:var(--tinta);font-size:1rem}
+  .card{
+    background:rgba(15,31,25,.45);backdrop-filter:blur(14px);
+    border:1px solid rgba(54,203,139,.2);border-radius:24px;
+    padding:48px 40px;box-shadow:0 25px 50px -18px rgba(0,0,0,.5);
+    max-width:520px;width:100%;
+  }
+  .codigo{font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--verde-claro);background:rgba(54,203,139,.16);display:inline-flex;padding:7px 16px;border-radius:999px;margin-bottom:20px}
+  h1{font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.15;font-weight:800;margin-bottom:14px}
+  p.lede{color:var(--texto-suave);font-size:1rem;margin-bottom:32px}
+  .acciones{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 28px;border-radius:999px;font-weight:700;font-size:.95rem;
+    border:2px solid transparent;cursor:pointer;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--verde);color:var(--tinta);box-shadow:0 10px 24px -8px rgba(47,177,121,.4)}
+  .btn-primary:hover{background:var(--verde-claro)}
+  .btn-ghost{background:transparent;color:var(--texto);border-color:rgba(54,203,139,.3)}
+  .btn-ghost:hover{border-color:var(--verde-claro);color:var(--verde-claro)}
+  .semaforo{display:flex;gap:10px;justify-content:center;margin-top:36px}
+  .dot{width:12px;height:12px;border-radius:50%}
+  .dot.v{background:var(--verde)} .dot.a{background:var(--ambar)} .dot.r{background:var(--roja)}
+</style>
+</head>
+<body>
+
+  <a href="/rep-data-360/" class="logo"><span class="logo-dot">360</span> REP DATA 360</a>
+
+  <div class="card">
+    <span class="codigo">Error 404</span>
+    <h1>Esta página no existe</h1>
+    <p class="lede">El enlace que seguiste no corresponde a ninguna sección de REP DATA 360. Puede que se haya movido o que esté mal escrito.</p>
+    <div class="acciones">
+      <a href="/rep-data-360/" class="btn btn-primary">Volver al inicio</a>
+      <a href="/rep-data-360/#registro" class="btn btn-ghost">Ir al pre-registro</a>
+    </div>
+  </div>
+
+  <div class="semaforo" aria-hidden="true">
+    <span class="dot v"></span>
+    <span class="dot a"></span>
+    <span class="dot r"></span>
+  </div>
+
+</body>
+</html>
