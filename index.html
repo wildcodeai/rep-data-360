@@ -171,6 +171,9 @@
     box-shadow:var(--sombra);
   }
   .video-frame video{width:100%;display:block;max-height:640px;background:#000}
+  /* El iframe de YouTube no trae proporción propia: sin aspect-ratio colapsa
+     a la altura por defecto de un iframe (150px). */
+  .video-frame iframe{width:100%;display:block;aspect-ratio:16/9;border:0;background:#000}
 
   /* PROYECTO (niveles + etiquetas) */
   .niveles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
@@ -281,15 +284,14 @@
 </head>
 <body>
 
-<a href="#contenido" class="skip-link">Saltar al contenido</a>
+<a href="#video" class="skip-link">Saltar al contenido</a>
 
 <header class="nav">
   <div class="wrap nav-inner">
     <div class="logo"><span class="logo-dot">360</span> REP DATA 360</div>
     <nav class="nav-links" id="navLinks">
       <a href="#video">Video</a>
-      <a href="#proyecto">Proyecto</a>
-      <a href="#equipo">Equipo</a>
+      <a href="#registro">Pre-registro</a>
     </nav>
     <div class="nav-cta">
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
@@ -302,95 +304,23 @@
   </div>
 </header>
 
-<section class="hero" id="contenido">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Proyecto de Innovación · Ley REP N°20.920 · Chile</span>
-      <h1>Trazabilidad <span class="accent">360°</span> del reciclaje, desde el hogar.</h1>
-      <p class="lede">Una bolsa con indicador químico y chip RFID que muestra qué se recicla, en qué nivel de limpieza, cuándo y dónde &mdash; antes de que el camión llegue a la planta.</p>
-      <div class="hero-ctas">
-        <a href="#registro" class="btn btn-primary">Recibe tu bolsa gratis →</a>
-      </div>
-      <div class="semaforo">
-        <span class="chip"><span class="dot v"></span>Verde · limpia</span>
-        <span class="chip"><span class="dot a"></span>Ámbar · intermedia</span>
-        <span class="chip"><span class="dot r"></span>Roja · contaminada</span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <img src="assets/hero-laboratorio.webp" alt="Las tres bolsas REP DATA 360 (verde, ámbar y roja) representando los niveles de reciclaje" width="848" height="478" fetchpriority="high">
-      <div class="badge-float"><span class="n">60%</span> del material hoy termina en el relleno sanitario</div>
-    </div>
-  </div>
-</section>
-
 <section class="video-section" id="video">
   <div class="wrap center">
     <span class="eyebrow">Pitch · 3 minutos</span>
     <h2>Mira cómo funciona REP DATA 360</h2>
     <p class="lede">La bolsa que clasifica el reciclaje domiciliario en verde, ámbar o rojo, y registra hora y lugar antes de que llegue a la planta.</p>
     <div class="video-frame">
-      <video controls preload="metadata" poster="assets/hero-laboratorio.webp">
-        <source src="assets/video-pitch.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
-      </video>
-    </div>
-  </div>
-</section>
-
-<section class="proyecto" id="proyecto">
-  <div class="wrap center">
-    <span class="eyebrow">Cómo funciona</span>
-    <h2>Un semáforo que cualquiera entiende</h2>
-    <p class="lede">El indicador químico reacciona con la contaminación orgánica de la bolsa y cambia de color; un chip RFID registra hora y lugar al pasar por el camión.</p>
-    <div class="niveles-grid">
-      <div class="nivel-card v">
-        <img class="mascota" src="assets/mascota-verde.webp" alt="Mascota verde REP DATA 360" width="240" height="267" loading="lazy" decoding="async">
-        <h3>Verde · limpia</h3>
-        <p>Material limpio. Va directo a reciclaje.</p>
-      </div>
-      <div class="nivel-card a">
-        <img class="mascota" src="assets/mascota-ambar.webp" alt="Mascota ámbar REP DATA 360" width="240" height="267" loading="lazy" decoding="async">
-        <h3>Ámbar · intermedia</h3>
-        <p>Contaminación parcial. Igual va a reciclaje.</p>
-      </div>
-      <div class="nivel-card r">
-        <img class="mascota" src="assets/mascota-roja.webp" alt="Mascota roja REP DATA 360" width="240" height="267" loading="lazy" decoding="async">
-        <h3>Roja · contaminada</h3>
-        <p>Alta contaminación. Recibe un sticker con instrucciones para mejorar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="etiquetas">
-  <div class="wrap center">
-    <span class="eyebrow">La etiqueta que educa</span>
-    <h2>El feedback, en acción</h2>
-    <p class="lede">Cuando la bolsa no queda verde, una etiqueta cierra el ciclo: agradece, explica y ofrece ayuda para mejorar.</p>
-    <div class="etiquetas-grid">
-      <div class="etiqueta-card">
-        <img src="assets/etiqueta-ambar.webp" alt="Etiqueta de feedback para bolsa ámbar" width="432" height="707" loading="lazy" decoding="async">
-        <p>Bolsa ámbar: pequeños ajustes para reciclar mejor.</p>
-      </div>
-      <div class="etiqueta-card">
-        <img src="assets/etiqueta-roja.webp" alt="Etiqueta de feedback para bolsa roja" width="816" height="1285" loading="lazy" decoding="async">
-        <p>Bolsa roja: no se retiró esta semana; se invita a mejorar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="equipo" id="equipo">
-  <div class="wrap center">
-    <span class="eyebrow">Equipo de trabajo</span>
-    <h2>Quiénes están detrás de REP DATA 360</h2>
-    <p class="lede">Proyecto de Innovación · Ley REP N°20.920.</p>
-    <div class="equipo-grid">
-      <div class="persona"><span class="avatar">C</span><h3>César</h3><p>Guerrero Torres</p></div>
-      <div class="persona"><span class="avatar">J</span><h3>Jaritza</h3><p>Ramírez Valles</p></div>
-      <div class="persona"><span class="avatar">S</span><h3>Sandy</h3><p>Suárez Urriola</p></div>
-      <div class="persona"><span class="avatar">V</span><h3>Valentina</h3><p>Villalba Lleufo</p></div>
+      <!-- mute=1 es obligatorio: los navegadores bloquean el autoplay con
+           sonido. Sin eso el video no arranca solo.
+           youtube-nocookie.com evita las cookies de seguimiento de YouTube
+           mientras nadie le da play. -->
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+        title="Video"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        loading="eager"
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
   </div>
 </section>
