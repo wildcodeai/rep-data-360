@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REP DATA 360 · Demanda por comuna</title>
+<meta name="description" content="Dónde se concentra la demanda de bolsas REP DATA 360, agregada por comuna.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{
+    --verde-oscuro:#1E3A2E; --verde:#2FB179; --verde-fuerte:#1F8A5C;
+    --menta:#F2FBF6; --borde:#BFD6CB; --tinta-suave:#55685E;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 20px 48px;background:var(--menta);
+    font-family:Calibri,"Segoe UI",system-ui,sans-serif;color:var(--verde-oscuro)}
+  .hoja{max-width:1020px;margin:0 auto}
+  h1{font-family:"Arial Black",Arial,sans-serif;font-weight:900;font-size:24px;margin:0 0 4px}
+  .sub{margin:0 0 24px;color:var(--tinta-suave);font-size:14px}
+  .kpis{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+  .kpi{background:#fff;border:1px solid var(--borde);border-radius:14px;
+    padding:16px 20px;min-width:190px;flex:1}
+  .kpi .et{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;
+    color:var(--tinta-suave);margin:0 0 6px}
+  .kpi .num{font-size:44px;line-height:1;font-weight:700;margin:0}
+  .kpi .txt{font-size:26px;line-height:1.15;font-weight:700;margin:0}
+  .panel{background:#fff;border:1px solid var(--borde);border-radius:14px;
+    padding:20px;margin-bottom:20px}
+  .panel h2{font-size:15px;margin:0 0 4px}
+  .panel .nota{font-size:12.5px;color:var(--tinta-suave);margin:0 0 16px}
+  #mapa{height:460px;border-radius:10px;border:1px solid var(--borde)}
+  .escala{display:flex;align-items:center;gap:10px;margin-top:12px;
+    font-size:12px;color:var(--tinta-suave)}
+  .tira{flex:1;max-width:260px;height:10px;border-radius:5px;
+    background:linear-gradient(90deg,#DFF5E9,#8BD4A8,#2FB179,#1F8A5C,#1E3A2E)}
+  .fila{display:grid;grid-template-columns:150px 1fr 44px;align-items:center;
+    gap:12px;margin-bottom:8px}
+  .nombre{font-size:13.5px;text-align:right;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .nombre.otras{color:var(--tinta-suave);font-style:italic}
+  .pista{background:#EFF5F1;border-radius:4px;height:22px;overflow:hidden}
+  .barra{height:100%;border-radius:0 4px 4px 0;min-width:3px}
+  .otras-barra{background:repeating-linear-gradient(45deg,#BFD6CB,#BFD6CB 4px,#D7E5DC 4px,#D7E5DC 8px)}
+  .valor{font-size:13.5px;font-weight:700}
+  .vacio{color:var(--tinta-suave);font-size:14px;margin:0}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:6px}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid #E6EFE9}
+  th{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--tinta-suave);font-weight:400}
+  td:nth-child(2),td:nth-child(3),th:nth-child(2),th:nth-child(3){text-align:right;width:90px}
+  details{margin-top:14px}
+  summary{cursor:pointer;font-size:13px;color:var(--tinta-suave)}
+  .umbral{font-size:12.5px;color:var(--tinta-suave);margin:16px 0 0;
+    padding-top:14px;border-top:1px solid #E6EFE9}
+  .pie{font-size:11.5px;color:var(--tinta-suave);text-align:center;
+    margin-top:22px;line-height:1.6}
+  a{color:var(--verde-fuerte)}
+</style>
+</head>
+<body>
+<div class="hoja">
+
+  <h1>Demanda de bolsas por comuna</h1>
+  <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
+
+  <div class="kpis">
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num">0</p></div>
+    <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">—</p></div>
+    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">0</p></div>
+  </div>
+
+  <div class="panel">
+    <h2>Dónde se concentra</h2>
+    <p class="nota">Un círculo por comuna, ubicado en su centro. Mientras más grande y
+       más oscuro, más pre-registros. Pasa el cursor por encima para ver el detalle.</p>
+    <div id="mapa"></div>
+    <div class="escala"><span>Menos</span><div class="tira"></div><span>Más demanda</span></div>
+  </div>
+
+  <div class="panel">
+    <h2>Ranking de comunas</h2>
+    <p class="nota">Cantidad de pre-registros por comuna, de mayor a menor.</p>
+    <p class="vacio">Todavía no hay pre-registros. Cuando lleguen, aparecen acá.</p>
+    <details>
+      <summary>Ver como tabla</summary>
+      <table>
+        <thead><tr><th>Comuna</th><th>Pre-reg.</th><th>Share</th></tr></thead>
+        <tbody><tr><td colspan="3">Sin datos todavía</td></tr></tbody>
+      </table>
+    </details>
+    <p class="umbral">Las comunas con menos de 3 pre-registros no se muestran por separado: se suman en «Otras comunas». Con números chicos, un punto sobre el mapa señalaría un domicilio.</p>
+  </div>
+
+  <p class="pie">
+    Datos agregados por comuna. Esta página no contiene domicilios ni datos de personas.<br>
+    <a href="./">← Volver a REP DATA 360</a> · Mapa © OpenStreetMap · Teselas © CARTO
+  </p>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var COMUNAS = [];
+
+var mapa = L.map('mapa', { scrollWheelZoom: false }).setView([-33.45, -70.66], 10);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap &copy; CARTO', maxZoom: 19
+}).addTo(mapa);
+
+if (COMUNAS.length) {
+  var maxN = Math.max.apply(null, COMUNAS.map(function (c) { return c.n; }));
+
+  COMUNAS.forEach(function (c) {
+    // Area proporcional al conteo: el radio va con la raiz, si no las
+    // comunas grandes se ven exageradas.
+    var r = 10 + 26 * Math.sqrt(c.n / maxN);
+    L.circleMarker([c.lat, c.lon], {
+      radius: r, color: '#FFFFFF', weight: 2,
+      fillColor: c.color, fillOpacity: 0.85
+    }).bindTooltip(
+      '<b>' + c.comuna + '</b><br>' + c.n + ' pre-registro' + (c.n === 1 ? '' : 's'),
+      { direction: 'top' }
+    ).addTo(mapa);
+  });
+
+  mapa.fitBounds(COMUNAS.map(function (c) { return [c.lat, c.lon]; }),
+                 { padding: [60, 60], maxZoom: 12 });
+}
+</script>
+</body>
+</html>
