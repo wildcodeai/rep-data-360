@@ -83,11 +83,27 @@ Los `entry.XXXX` son los IDs internos de cada pregunta. Si agregás, borrás o r
 
 `apps-script.gs` se conserva solo como referencia del backend anterior; **ya no se usa**.
 
-## Mapa de calor de demanda
+## Mapa de demanda
 
 Las columnas `Lat`, `Lon` y `Comuna` de la planilla existen para responder **dónde se concentra la demanda**: qué comunas piden más bolsas, que es el dato que le sirve a un sistema de gestión para priorizar rutas.
 
-El generador (`generar_mapa.py`) vive **fuera de este repo**, junto a la planilla exportada, y produce un `mapa.html` con capa de calor, ranking de comunas y tabla. No se versiona acá a propósito: el mapa contiene domicilios de personas y este repositorio es público.
+Hay **dos mapas distintos**, y la diferencia importa:
+
+| | Detalle | Dónde vive | Contenido |
+|---|---|---|---|
+| `mapa.html` (este repo) | Agregado por comuna | **Publicado** en Pages | Solo conteos. Sin domicilios. |
+| `mapa-detallado.html` | Un marcador por domicilio | **Solo local**, nunca se versiona | Direcciones y coordenadas de personas |
+
+El detallado no se publica nunca: sus marcadores llevan la dirección exacta en el tooltip, y este repositorio es público.
+
+### Cómo el mapa público protege los datos
+
+Dos decisiones deliberadas, no accidentes de implementación:
+
+1. **Cada círculo se ubica en el centro oficial de la comuna**, geocodificado aparte y cacheado. No se usa el promedio de los domicilios: con pocos registros ese promedio queda pegado a una casa real.
+2. **Las comunas con menos de 3 pre-registros no se dibujan**: se suman en «Otras comunas». Un círculo solo sobre una comuna con 1 registro apunta, en la práctica, a ese domicilio.
+
+Los generadores (`generar_mapa.py` y `generar_mapa_publico.py`) viven **fuera de este repo**, junto a la planilla exportada. Solo se versiona el HTML público que producen.
 
 El lector de coordenadas tolera los tres formatos que puede dejar Sheets (`-33.44`, `-33,44` y el `-33.444.710` roto por el separador de miles) y descarta lo que caiga fuera de Chile, así que un cambio de configuración regional en la planilla no rompe el mapa.
 
