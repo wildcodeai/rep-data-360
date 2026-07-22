@@ -471,7 +471,6 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
 
-  let debounceTimer = null;
   let controller = null;
   let activeIndex = -1;
   // Ubicación del último resultado aceptado: alimenta el mapa de calor.
@@ -526,14 +525,41 @@
     setStatus('');
   }
 
-  // Comuna y coordenadas del resultado de Nominatim, para el mapa de calor.
-  function guardarUbicacion(r){
+  function comunaDe(a){
+    return a.city || a.town || a.municipality || a.village ||
+           a.suburb || a.county || '';
+  }
+
+  // El primer número que aparece en lo que escribió la persona.
+  function numeroEscrito(texto){
+    const m = String(texto).match(/\b(\d{1,6})\b/);
+    return m ? m[1] : '';
+  }
+
+  // "Avenida Providencia 1234, Providencia" en vez del display_name completo de
+  // Nominatim ("Normandie, 1234, Avenida Providencia, Barrio Tajamar, ..."),
+  // que es ruidoso para despachar una bolsa.
+  //
+  // Nominatim a veces resuelve la calle pero no el número. En ese caso se
+  // conserva el número que escribió la persona: perderlo dejaría la dirección
+  // inservible para la entrega.
+  function direccionLimpia(r, escrito){
     const a = r.address || {};
+    const numero = a.house_number || numeroEscrito(escrito);
+    const calle = [a.road || a.pedestrian || a.suburb, numero].filter(Boolean).join(' ');
+    const partes = [calle, comunaDe(a)].filter(Boolean);
+    return {
+      texto: partes.join(', ') || r.display_name,
+      numeroConfirmado: !!a.house_number
+    };
+  }
+
+  // Comuna y coordenadas del resultado, para el mapa de calor.
+  function guardarUbicacion(r){
     geo = {
       lat: (+r.lat).toFixed(6),
       lon: (+r.lon).toFixed(6),
-      comuna: a.city || a.town || a.municipality || a.village ||
-              a.suburb || a.county || ''
+      comuna: comunaDe(r.address || {})
     };
   }
 
@@ -577,30 +603,60 @@
   }
 
   function seleccionarDireccion(r){
-    direccionInput.value = r.display_name;
+    const limpia = direccionLimpia(r, direccionInput.value);
+    direccionInput.value = limpia.texto;
     direccionInput.dataset.verified = 'true';
     guardarUbicacion(r);
     marcarValidez(true);
-    setStatus('✓ Dirección verificada', 'ok');
+    setStatus(limpia.numeroConfirmado
+      ? '✓ Dirección verificada'
+      : '✓ Calle y comuna verificadas — revisa que el número esté bien.', 'ok');
     ocultarSugerencias();
   }
 
+  // Escribir NO dispara consultas: la política de uso de Nominatim prohíbe
+  // explícitamente el autocompletado, y una consulta por tecla es la forma más
+  // rápida de que bloqueen la IP. Se busca una sola vez por dirección, cuando la
+  // persona termina de escribir (blur) o al enviar.
   direccionInput.addEventListener('input', function(){
     limpiarVerificacion();
+    ocultarSugerencias();
+  });
+
+  // Una consulta por dirección, nunca dos veces la misma, y nunca más de una por
+  // segundo (también parte de la política de uso).
+  let ultimaBusqueda = 0;
+  let textoBuscado = '';
+
+  async function verificar(query){
+    if(query === textoBuscado) return null;   // ya la buscamos
+    const espera = Math.max(0, 1100 - (Date.now() - ultimaBusqueda));
+    if(espera) await new Promise(function(r){ setTimeout(r, espera); });
+    ultimaBusqueda = Date.now();
+    textoBuscado = query;
+
+    const resultados = await buscarDirecciones(query);
+    if(!resultados.length){
+      direccionInput.dataset.verified = 'false';
+      marcarValidez(false);
+      setStatus('No encontramos esta dirección en Chile. Revisa calle, número y comuna.', 'error');
+      return [];
+    }
+    if(resultados.length === 1){
+      seleccionarDireccion(resultados[0]);
+      return resultados;
+    }
+    // Varias coincidencias: que elija, en vez de adivinar por ella.
+    setStatus('Encontramos varias. Elige tu dirección:', 'cargando');
+    renderSugerencias(resultados);
+    return resultados;
+  }
+
+  direccionInput.addEventListener('blur', function(){
     const query = direccionInput.value.trim();
-    clearTimeout(debounceTimer);
-    if(query.length < 5){ ocultarSugerencias(); return; }
-    setStatus('Buscando dirección…', 'cargando');
-    debounceTimer = setTimeout(async function(){
-      try{
-        const resultados = await buscarDirecciones(query);
-        if(direccionInput.value.trim() !== query) return;
-        setStatus('');
-        renderSugerencias(resultados);
-      }catch(err){
-        if(err.name !== 'AbortError'){ ocultarSugerencias(); setStatus(''); }
-      }
-    }, 500);
+    if(query.length < 5 || direccionInput.dataset.verified === 'true') return;
+    setStatus('Verificando dirección…', 'cargando');
+    verificar(query).catch(function(){ setStatus(''); });
   });
 
   direccionInput.addEventListener('keydown', function(e){
@@ -657,22 +713,18 @@
 
     setStatus('Verificando dirección…', 'cargando');
     try{
-      const resultados = await buscarDirecciones(query);
-      if(resultados.length){
-        direccionInput.value = resultados[0].display_name;
-        direccionInput.dataset.verified = 'true';
-        guardarUbicacion(resultados[0]);
-        marcarValidez(true);
-        setStatus('✓ Dirección verificada', 'ok');
-        completarEnvio();
+      await verificar(query);
+
+      if(direccionInput.dataset.verified === 'true'){
+        completarEnvio();          // una sola coincidencia: ya quedó verificada
       } else {
-        direccionInput.dataset.verified = 'false';
-        marcarValidez(false);
-        setStatus('No encontramos esta dirección en Chile. Revisa calle, número y comuna, o elige una sugerencia de la lista.', 'error');
+        // Sin resultados, o varias para elegir: en ambos casos el estado ya se
+        // mostró y no enviamos hasta que la persona resuelva.
         direccionInput.focus();
       }
     }catch(err){
-      // Si el servicio de verificación falla, no bloqueamos el pre-registro.
+      // Si Nominatim falla, no bloqueamos el pre-registro: se envía sin
+      // coordenadas y el registro queda marcado como "sin ubicar" en el mapa.
       setStatus('');
       completarEnvio();
     }
