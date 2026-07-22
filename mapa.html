@@ -64,6 +64,7 @@
   <h1>Demanda de bolsas por comuna</h1>
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
 
+
   <div class="kpis">
     <div class="kpi"><p class="et">Pre-registros</p><p class="num">0</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">—</p></div>
@@ -110,21 +111,48 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 if (COMUNAS.length) {
   var maxN = Math.max.apply(null, COMUNAS.map(function (c) { return c.n; }));
 
-  COMUNAS.forEach(function (c) {
-    // Area proporcional al conteo: el radio va con la raiz, si no las
-    // comunas grandes se ven exageradas.
-    var r = 10 + 26 * Math.sqrt(c.n / maxN);
-    L.circleMarker([c.lat, c.lon], {
-      radius: r, color: '#FFFFFF', weight: 2,
+  // Area proporcional al conteo: el radio va con la raiz, si no las comunas
+  // grandes se ven exageradas.
+  function radioBase(c) { return 7 + 22 * Math.sqrt(c.n / maxN); }
+
+  var capas = COMUNAS.map(function (c) {
+    var capa = L.circleMarker([c.lat, c.lon], {
+      radius: radioBase(c), color: '#FFFFFF', weight: 2,
       fillColor: c.color, fillOpacity: 0.85
     }).bindTooltip(
       '<b>' + c.comuna + '</b><br>' + c.n + ' pre-registro' + (c.n === 1 ? '' : 's'),
       { direction: 'top' }
     ).addTo(mapa);
+    return { c: c, capa: capa };
   });
 
-  mapa.fitBounds(COMUNAS.map(function (c) { return [c.lat, c.lon]; }),
-                 { padding: [60, 60], maxZoom: 12 });
+  // El radio de un circleMarker es fijo en pixeles, asi que al alejarse las
+  // comunas vecinas se solapan hasta volverse una mancha. Se reescala con el
+  // zoom para que en vista nacional sigan separadas.
+  function ajustarRadios() {
+    var f = Math.min(1.8, Math.max(0.4, Math.pow(1.28, mapa.getZoom() - 10)));
+    capas.forEach(function (o) {
+      o.capa.setRadius(Math.max(3.5, radioBase(o.c) * f));
+    });
+  }
+  mapa.on('zoomend', ajustarRadios);
+
+  // Encuadre: las comunas que concentran el 80% de la demanda. Si se encuadra
+  // todo el pais, una comuna lejana con pocos registros aleja el mapa hasta que
+  // el nucleo real queda del tamano de un punto. El resto sigue ahi: basta
+  // alejar el zoom, y el ranking de abajo las lista todas.
+  var total = COMUNAS.reduce(function (a, c) { return a + c.n; }, 0);
+  var orden = COMUNAS.slice().sort(function (a, b) { return b.n - a.n; });
+  var nucleo = [], suma = 0;
+  for (var i = 0; i < orden.length; i++) {
+    nucleo.push(orden[i]);
+    suma += orden[i].n;
+    if (suma >= total * 0.8 && nucleo.length >= 3) break;
+  }
+
+  mapa.fitBounds(nucleo.map(function (c) { return [c.lat, c.lon]; }),
+                 { padding: [55, 55], maxZoom: 12 });
+  ajustarRadios();
 }
 </script>
 </body>
