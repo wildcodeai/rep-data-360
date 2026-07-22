@@ -260,6 +260,10 @@
   /* FOOTER */
   footer{color:var(--texto-suave);padding:48px 0 28px;font-size:.85rem}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .footer-enlaces{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .footer-enlaces a{color:var(--texto-suave);font-weight:600;font-size:.92rem}
+  .footer-enlaces a:hover{color:#fff}
+  .footer-enlaces .apostilla{font-weight:400;opacity:.7}
   footer .logo{color:var(--texto)}
   .footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid rgba(20,40,32,.3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:rgba(231,243,236,.6);font-size:.78rem}
 
@@ -433,7 +437,12 @@
   <div class="wrap">
     <div class="footer-inner">
       <div class="logo"><span class="logo-dot">360</span> REP DATA 360</div>
-      <a href="#registro" style="color:var(--texto-suave);font-weight:600;font-size:.92rem">Pre-regístrate</a>
+      <div class="footer-enlaces">
+        <a href="#registro">Pre-regístrate</a>
+        <!-- Dice "ejemplo" acá y no solo dentro del mapa: quien lee el enlace
+             tiene que saber que son datos simulados antes de hacer clic. -->
+        <a href="./mapa-demo.html">Mapa de demanda <span class="apostilla">(ejemplo)</span></a>
+      </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 REP DATA 360 · Proyecto de Innovación</span>
