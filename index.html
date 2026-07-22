@@ -444,8 +444,21 @@
 
 <script>
 (function(){
-  // Reemplaza esta URL por la de tu Google Apps Script Web App (ver instrucciones de despliegue).
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxksNX0TLAUDNDcpRszrzVqrjUSYXWQI-fdNlt7PtzuF_7DOGNr-7MPoX8ciN-wUs9m/exec';
+  // Buzón: un Google Formulario. Reemplazó al Apps Script, que dejó de responder
+  // (HTTP 401) porque una web app hay que redesplegarla a mano y falla en silencio.
+  // Un formulario no se despliega, así que no tiene ese modo de falla.
+  // Las respuestas caen en la planilla vinculada al formulario.
+  const FORM = {
+    accion: 'https://docs.google.com/forms/d/e/' +
+            '1FAIpQLSfgB1AZrMbyo0wCx341WrGNxlaQIY6ZCVmtkWRh-ssCcv6lnw/formResponse',
+    campos: {
+      correo:    'entry.2025783056',
+      direccion: 'entry.1850310487',
+      lat:       'entry.2130473241',
+      lon:       'entry.1464269085',
+      comuna:    'entry.1332092840'
+    }
+  };
 
   const form = document.getElementById('preRegistro');
   const direccionInput = document.getElementById('direccion');
@@ -458,9 +471,10 @@
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
 
-  let debounceTimer = null;
   let controller = null;
   let activeIndex = -1;
+  // Ubicación del último resultado aceptado: alimenta el mapa de calor.
+  let geo = null;
 
   // Menú mobile (hamburguesa)
   function cerrarMenu(){
@@ -506,8 +520,47 @@
 
   function limpiarVerificacion(){
     direccionInput.dataset.verified = '';
+    geo = null;
     marcarValidez(null);
     setStatus('');
+  }
+
+  function comunaDe(a){
+    return a.city || a.town || a.municipality || a.village ||
+           a.suburb || a.county || '';
+  }
+
+  // El primer número que aparece en lo que escribió la persona.
+  function numeroEscrito(texto){
+    const m = String(texto).match(/\b(\d{1,6})\b/);
+    return m ? m[1] : '';
+  }
+
+  // "Avenida Providencia 1234, Providencia" en vez del display_name completo de
+  // Nominatim ("Normandie, 1234, Avenida Providencia, Barrio Tajamar, ..."),
+  // que es ruidoso para despachar una bolsa.
+  //
+  // Nominatim a veces resuelve la calle pero no el número. En ese caso se
+  // conserva el número que escribió la persona: perderlo dejaría la dirección
+  // inservible para la entrega.
+  function direccionLimpia(r, escrito){
+    const a = r.address || {};
+    const numero = a.house_number || numeroEscrito(escrito);
+    const calle = [a.road || a.pedestrian || a.suburb, numero].filter(Boolean).join(' ');
+    const partes = [calle, comunaDe(a)].filter(Boolean);
+    return {
+      texto: partes.join(', ') || r.display_name,
+      numeroConfirmado: !!a.house_number
+    };
+  }
+
+  // Comuna y coordenadas del resultado, para el mapa de calor.
+  function guardarUbicacion(r){
+    geo = {
+      lat: (+r.lat).toFixed(6),
+      lon: (+r.lon).toFixed(6),
+      comuna: comunaDe(r.address || {})
+    };
   }
 
   function ocultarSugerencias(){
@@ -550,29 +603,60 @@
   }
 
   function seleccionarDireccion(r){
-    direccionInput.value = r.display_name;
+    const limpia = direccionLimpia(r, direccionInput.value);
+    direccionInput.value = limpia.texto;
     direccionInput.dataset.verified = 'true';
+    guardarUbicacion(r);
     marcarValidez(true);
-    setStatus('✓ Dirección verificada', 'ok');
+    setStatus(limpia.numeroConfirmado
+      ? '✓ Dirección verificada'
+      : '✓ Calle y comuna verificadas — revisa que el número esté bien.', 'ok');
     ocultarSugerencias();
   }
 
+  // Escribir NO dispara consultas: la política de uso de Nominatim prohíbe
+  // explícitamente el autocompletado, y una consulta por tecla es la forma más
+  // rápida de que bloqueen la IP. Se busca una sola vez por dirección, cuando la
+  // persona termina de escribir (blur) o al enviar.
   direccionInput.addEventListener('input', function(){
     limpiarVerificacion();
+    ocultarSugerencias();
+  });
+
+  // Una consulta por dirección, nunca dos veces la misma, y nunca más de una por
+  // segundo (también parte de la política de uso).
+  let ultimaBusqueda = 0;
+  let textoBuscado = '';
+
+  async function verificar(query){
+    if(query === textoBuscado) return null;   // ya la buscamos
+    const espera = Math.max(0, 1100 - (Date.now() - ultimaBusqueda));
+    if(espera) await new Promise(function(r){ setTimeout(r, espera); });
+    ultimaBusqueda = Date.now();
+    textoBuscado = query;
+
+    const resultados = await buscarDirecciones(query);
+    if(!resultados.length){
+      direccionInput.dataset.verified = 'false';
+      marcarValidez(false);
+      setStatus('No encontramos esta dirección en Chile. Revisa calle, número y comuna.', 'error');
+      return [];
+    }
+    if(resultados.length === 1){
+      seleccionarDireccion(resultados[0]);
+      return resultados;
+    }
+    // Varias coincidencias: que elija, en vez de adivinar por ella.
+    setStatus('Encontramos varias. Elige tu dirección:', 'cargando');
+    renderSugerencias(resultados);
+    return resultados;
+  }
+
+  direccionInput.addEventListener('blur', function(){
     const query = direccionInput.value.trim();
-    clearTimeout(debounceTimer);
-    if(query.length < 5){ ocultarSugerencias(); return; }
-    setStatus('Buscando dirección…', 'cargando');
-    debounceTimer = setTimeout(async function(){
-      try{
-        const resultados = await buscarDirecciones(query);
-        if(direccionInput.value.trim() !== query) return;
-        setStatus('');
-        renderSugerencias(resultados);
-      }catch(err){
-        if(err.name !== 'AbortError'){ ocultarSugerencias(); setStatus(''); }
-      }
-    }, 500);
+    if(query.length < 5 || direccionInput.dataset.verified === 'true') return;
+    setStatus('Verificando dirección…', 'cargando');
+    verificar(query).catch(function(){ setStatus(''); });
   });
 
   direccionInput.addEventListener('keydown', function(e){
@@ -629,21 +713,18 @@
 
     setStatus('Verificando dirección…', 'cargando');
     try{
-      const resultados = await buscarDirecciones(query);
-      if(resultados.length){
-        direccionInput.value = resultados[0].display_name;
-        direccionInput.dataset.verified = 'true';
-        marcarValidez(true);
-        setStatus('✓ Dirección verificada', 'ok');
-        completarEnvio();
+      await verificar(query);
+
+      if(direccionInput.dataset.verified === 'true'){
+        completarEnvio();          // una sola coincidencia: ya quedó verificada
       } else {
-        direccionInput.dataset.verified = 'false';
-        marcarValidez(false);
-        setStatus('No encontramos esta dirección en Chile. Revisa calle, número y comuna, o elige una sugerencia de la lista.', 'error');
+        // Sin resultados, o varias para elegir: en ambos casos el estado ya se
+        // mostró y no enviamos hasta que la persona resuelva.
         direccionInput.focus();
       }
     }catch(err){
-      // Si el servicio de verificación falla, no bloqueamos el pre-registro.
+      // Si Nominatim falla, no bloqueamos el pre-registro: se envía sin
+      // coordenadas y el registro queda marcado como "sin ubicar" en el mapa.
       setStatus('');
       completarEnvio();
     }
@@ -661,41 +742,39 @@
       return;
     }
 
+    // La planilla de respuestas usa configuración regional chilena, donde el punto
+    // es separador de miles: "-33.444710" se guardaría como -33.444.710 y perdería
+    // el decimal. Con coma decimal queda el número correcto.
+    const coord = (n) => String(n).replace('.', ',');
+
     const datos = new FormData();
-    datos.append('correo', document.getElementById('correo').value);
-    datos.append('direccion', direccionInput.value);
-    datos.append('fecha', new Date().toISOString());
+    datos.append(FORM.campos.correo, document.getElementById('correo').value);
+    datos.append(FORM.campos.direccion, direccionInput.value);
+    if(geo){
+      datos.append(FORM.campos.lat, coord(geo.lat));
+      datos.append(FORM.campos.lon, coord(geo.lon));
+      datos.append(FORM.campos.comuna, geo.comuna);
+    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando…';
 
     try{
-      // OJO: acá NO se usa mode:'no-cors'. Con no-cors la respuesta queda "opaque"
-      // y el navegador nunca la deja leer, así que el .then() se dispara SIEMPRE
-      // (incluso si el servidor responde un error), y el formulario terminaría
-      // mintiendo sobre el éxito del registro. El POST con FormData es una
-      // "simple request" (no dispara preflight) y el Apps Script responde con
-      // Access-Control-Allow-Origin, así que un fetch normal sí puede leer la
-      // respuesta real y confirmar si el dato quedó guardado.
-      const res = await fetch(SHEET_URL, { method: 'POST', body: datos });
+      // COMPROMISO CONOCIDO: un Google Formulario no manda cabeceras CORS, así que
+      // este POST obliga a mode:'no-cors' y la respuesta queda "opaque" — no se
+      // puede leer el status. El fetch igual RECHAZA si la red falla o el pedido
+      // nunca sale, así que un error de conexión sí se detecta; lo que no podemos
+      // distinguir es un 200 de un 500 del lado de Google.
+      //
+      // Es un paso atrás respecto del Apps Script, que sí dejaba leer la respuesta
+      // y confirmar el guardado de verdad. Se aceptó a cambio de sacarse de encima
+      // el redespliegue manual, que es lo que rompió el formulario (HTTP 401).
+      // La fuente de verdad es la planilla: conviene revisarla cada tanto.
+      await fetch(FORM.accion, { method: 'POST', mode: 'no-cors', body: datos });
 
-      let exito = false;
-      try{
-        const data = await res.json();
-        exito = res.ok && data && data.result === 'ok';
-      }catch(errorParseo){
-        // Si Apps Script responde algo que no es JSON (por ejemplo un redirect
-        // a googleusercontent.com) pero el status fue 2xx, lo tomamos como éxito.
-        exito = res.ok;
-      }
-
-      if(exito){
-        formMsg.style.display = 'block';
-        form.reset();
-        limpiarVerificacion();
-      } else {
-        formErr.style.display = 'block';
-      }
+      formMsg.style.display = 'block';
+      form.reset();
+      limpiarVerificacion();
     }catch(errorRed){
       formErr.style.display = 'block';
     }finally{
