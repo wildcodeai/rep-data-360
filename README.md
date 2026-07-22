@@ -4,17 +4,17 @@ REP DATA 360 es un Proyecto de Innovación enmarcado en la Ley REP N°20.920 (Ch
 
 Sitio publicado: **https://wildcodeai.github.io/rep-data-360/**
 
-> [!WARNING]
-> **El formulario de pre-registro no está guardando datos.** Al día de hoy, el endpoint de Google Apps Script configurado en `index.html` (constante `SHEET_URL`) devuelve **HTTP 401**, así que cualquier persona que complete el formulario va a ver el mensaje de error ("No pudimos registrar tus datos..."), y ningún dato se está escribiendo en la Google Sheet.
+> [!NOTE]
+> **El formulario volvió a guardar datos.** El backend de Google Apps Script quedaba caído con **HTTP 401** cada vez que había que redesplegarlo a mano, así que se reemplazó por un **Google Formulario**, que no se despliega y por lo tanto no tiene ese modo de falla. Las respuestas caen en la planilla vinculada al formulario.
 >
-> Para arreglarlo hay que volver a desplegar el Apps Script: **Implementar > Gestionar implementaciones > editar (lápiz) > Nueva versión**, copiar la URL nueva que termina en `/exec` y reemplazar el valor de `SHEET_URL` en `index.html`. Ver la sección [Configurar el backend](#configurar-el-backend-google-apps-script) más abajo para el detalle completo.
+> El formulario ahora también guarda **latitud, longitud y comuna** de cada dirección verificada, que es lo que alimenta el mapa de calor de demanda por zona.
 
 ## Estructura del proyecto
 
 ```
 .
 ├── index.html                          Todo el sitio: HTML, CSS y JS inline en un solo archivo.
-├── apps-script.gs                      Backend del formulario: recibe el POST y escribe en una Google Sheet.
+├── apps-script.gs                      Backend anterior (Apps Script). Ya no se usa, se conserva como referencia.
 ├── assets/                             Imágenes y video usados por index.html.
 │   ├── hero-laboratorio.webp
 │   ├── mascota-verde.webp / mascota-ambar.webp / mascota-roja.webp
@@ -29,7 +29,7 @@ Sitio publicado: **https://wildcodeai.github.io/rep-data-360/**
 
 ## Cómo desarrollar localmente
 
-Como el formulario usa `fetch` (para consultar direcciones en Nominatim y para enviar el pre-registro al Apps Script), no alcanza con abrir `index.html` directamente desde el navegador con `file://`: los navegadores bloquean o restringen `fetch` bajo el protocolo `file://` por política de CORS/origen, así que hay que servir la carpeta por HTTP.
+Como el formulario usa `fetch` (para consultar direcciones en Nominatim y para enviar el pre-registro al Google Formulario), no alcanza con abrir `index.html` directamente desde el navegador con `file://`: los navegadores bloquean o restringen `fetch` bajo el protocolo `file://` por política de CORS/origen, así que hay que servir la carpeta por HTTP.
 
 Desde la raíz del repo:
 
@@ -55,27 +55,24 @@ El formulario (sección `#registro` de `index.html`) le pide a la persona su cor
 
 1. **Validación de dirección**: mientras la persona escribe, el JS consulta la API pública de **Nominatim / OpenStreetMap** (`nominatim.openstreetmap.org/search`) restringida a Chile (`countrycodes=cl`), muestra sugerencias en un dropdown y marca la dirección como verificada cuando se elige una. Si al enviar el formulario la dirección todavía no fue verificada, se hace una última consulta antes de continuar. Si el servicio de Nominatim falla, el formulario no bloquea el envío igual (se prioriza no perder el lead).
 2. **Honeypot anti-bots**: hay un campo oculto (`empresa`) fuera de la vista, con `tabindex="-1"` y `aria-hidden`. Si viene lleno, es porque lo rellenó un bot, así que se simula un envío exitoso sin mandar ningún dato real.
-3. **Envío**: los datos (`correo`, `direccion`, `fecha`) se mandan por `POST` como `FormData` a una URL de **Google Apps Script** (constante `SHEET_URL` en el `<script>` de `index.html`), que actúa como backend sin servidor propio. El `fetch` lee la respuesta y solo muestra el mensaje de éxito si el Apps Script contesta `{result:'ok'}`; si falla, muestra el error y no borra lo que la persona escribió. A propósito no se usa `mode:'no-cors'`: con esa opción la respuesta queda opaca, el navegador nunca la deja leer y el formulario terminaría diciendo que todo salió bien incluso cuando el registro no se guardó.
-4. El Apps Script (`apps-script.gs`) recibe el `POST` en su función `doPost`, y agrega una fila a la Google Sheet activa con fecha, correo y dirección (si es la primera fila, antes agrega el encabezado).
+3. **Ubicación**: al aceptar una dirección se guardan también su **latitud, longitud y comuna**, tomadas de la misma respuesta de Nominatim. Es lo que permite dibujar el mapa de calor por zona.
+4. **Envío**: los datos se mandan por `POST` como `FormData` al `formResponse` de un **Google Formulario** (constante `FORM` en el `<script>` de `index.html`), que actúa como buzón sin servidor propio. Cada campo viaja con el `entry.XXXX` de su pregunta.
 
-## Configurar el backend (Google Apps Script)
+### Un detalle que cuesta caro si se olvida
 
-Pasos para desplegar (o redesplegar) el backend, tal como están documentados en el propio `apps-script.gs`:
+La planilla de respuestas está en **configuración regional chilena**, donde el punto es separador de miles. Si las coordenadas se mandan como `-33.444710`, Sheets las interpreta como el entero `-33.444.710` y **se pierde el decimal**: el punto queda en cualquier parte menos en Chile. Por eso se mandan con **coma decimal** (`-33,444710`), que es lo que esa configuración espera.
 
-1. Crea una Google Sheet nueva (o usa una existente) para guardar los leads.
-2. Andá a **Extensiones > Apps Script**.
-3. Borrá el código de ejemplo y pegá el contenido completo de `apps-script.gs`.
-4. Guardá el proyecto (`Ctrl+S` / ícono de guardar).
-5. **Implementar > Nueva implementación**.
-6. Seleccioná tipo: **"Aplicación web"**.
-7. Configuración:
-   - Ejecutar como: **Yo** (tu cuenta)
-   - Quién tiene acceso: **Cualquier usuario**
-8. Implementar. La primera vez Google va a pedir autorizar permisos: aceptá (vas a ver una advertencia de "app no verificada" porque es tuya, es normal; **Avanzado > Ir a [nombre del proyecto] (no seguro) > Permitir**).
-9. Copiá la URL que termina en `/exec`.
-10. Pegala en `index.html`, reemplazando el valor de `SHEET_URL` dentro del `<script>` final.
+### Compromiso conocido: la confirmación es optimista
 
-Si más adelante cambiás el código de `apps-script.gs`, tenés que volver a **Implementar > Gestionar implementaciones > editar (lápiz) > Nueva versión** para que el cambio se refleje en la URL `/exec` ya publicada; guardar el archivo no alcanza.
+Un Google Formulario no manda cabeceras CORS, así que el envío obliga a `mode:'no-cors'` y la respuesta queda *opaque*: el navegador no deja leer el status. El `fetch` **sí rechaza** si la red falla, así que un error de conexión se detecta; lo que no se puede distinguir es un 200 de un 500 del lado de Google.
+
+Es un paso atrás respecto del Apps Script, que sí permitía confirmar el guardado de verdad. Se aceptó a cambio de eliminar el redespliegue manual, que es exactamente lo que rompió el formulario. **La fuente de verdad es la planilla**: conviene revisarla cada tanto.
+
+### Si hay que cambiar el formulario
+
+Los `entry.XXXX` son los IDs internos de cada pregunta. Si agregás, borrás o recreás preguntas, cambian: hay que sacarlos de nuevo del HTML público del formulario y actualizar `FORM.campos` en `index.html`.
+
+`apps-script.gs` se conserva solo como referencia del backend anterior; **ya no se usa**.
 
 ## Privacidad
 

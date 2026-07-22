@@ -444,8 +444,21 @@
 
 <script>
 (function(){
-  // Reemplaza esta URL por la de tu Google Apps Script Web App (ver instrucciones de despliegue).
-  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxksNX0TLAUDNDcpRszrzVqrjUSYXWQI-fdNlt7PtzuF_7DOGNr-7MPoX8ciN-wUs9m/exec';
+  // Buzón: un Google Formulario. Reemplazó al Apps Script, que dejó de responder
+  // (HTTP 401) porque una web app hay que redesplegarla a mano y falla en silencio.
+  // Un formulario no se despliega, así que no tiene ese modo de falla.
+  // Las respuestas caen en la planilla vinculada al formulario.
+  const FORM = {
+    accion: 'https://docs.google.com/forms/d/e/' +
+            '1FAIpQLSfgB1AZrMbyo0wCx341WrGNxlaQIY6ZCVmtkWRh-ssCcv6lnw/formResponse',
+    campos: {
+      correo:    'entry.2025783056',
+      direccion: 'entry.1850310487',
+      lat:       'entry.2130473241',
+      lon:       'entry.1464269085',
+      comuna:    'entry.1332092840'
+    }
+  };
 
   const form = document.getElementById('preRegistro');
   const direccionInput = document.getElementById('direccion');
@@ -461,6 +474,8 @@
   let debounceTimer = null;
   let controller = null;
   let activeIndex = -1;
+  // Ubicación del último resultado aceptado: alimenta el mapa de calor.
+  let geo = null;
 
   // Menú mobile (hamburguesa)
   function cerrarMenu(){
@@ -506,8 +521,20 @@
 
   function limpiarVerificacion(){
     direccionInput.dataset.verified = '';
+    geo = null;
     marcarValidez(null);
     setStatus('');
+  }
+
+  // Comuna y coordenadas del resultado de Nominatim, para el mapa de calor.
+  function guardarUbicacion(r){
+    const a = r.address || {};
+    geo = {
+      lat: (+r.lat).toFixed(6),
+      lon: (+r.lon).toFixed(6),
+      comuna: a.city || a.town || a.municipality || a.village ||
+              a.suburb || a.county || ''
+    };
   }
 
   function ocultarSugerencias(){
@@ -552,6 +579,7 @@
   function seleccionarDireccion(r){
     direccionInput.value = r.display_name;
     direccionInput.dataset.verified = 'true';
+    guardarUbicacion(r);
     marcarValidez(true);
     setStatus('✓ Dirección verificada', 'ok');
     ocultarSugerencias();
@@ -633,6 +661,7 @@
       if(resultados.length){
         direccionInput.value = resultados[0].display_name;
         direccionInput.dataset.verified = 'true';
+        guardarUbicacion(resultados[0]);
         marcarValidez(true);
         setStatus('✓ Dirección verificada', 'ok');
         completarEnvio();
@@ -661,41 +690,39 @@
       return;
     }
 
+    // La planilla de respuestas usa configuración regional chilena, donde el punto
+    // es separador de miles: "-33.444710" se guardaría como -33.444.710 y perdería
+    // el decimal. Con coma decimal queda el número correcto.
+    const coord = (n) => String(n).replace('.', ',');
+
     const datos = new FormData();
-    datos.append('correo', document.getElementById('correo').value);
-    datos.append('direccion', direccionInput.value);
-    datos.append('fecha', new Date().toISOString());
+    datos.append(FORM.campos.correo, document.getElementById('correo').value);
+    datos.append(FORM.campos.direccion, direccionInput.value);
+    if(geo){
+      datos.append(FORM.campos.lat, coord(geo.lat));
+      datos.append(FORM.campos.lon, coord(geo.lon));
+      datos.append(FORM.campos.comuna, geo.comuna);
+    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando…';
 
     try{
-      // OJO: acá NO se usa mode:'no-cors'. Con no-cors la respuesta queda "opaque"
-      // y el navegador nunca la deja leer, así que el .then() se dispara SIEMPRE
-      // (incluso si el servidor responde un error), y el formulario terminaría
-      // mintiendo sobre el éxito del registro. El POST con FormData es una
-      // "simple request" (no dispara preflight) y el Apps Script responde con
-      // Access-Control-Allow-Origin, así que un fetch normal sí puede leer la
-      // respuesta real y confirmar si el dato quedó guardado.
-      const res = await fetch(SHEET_URL, { method: 'POST', body: datos });
+      // COMPROMISO CONOCIDO: un Google Formulario no manda cabeceras CORS, así que
+      // este POST obliga a mode:'no-cors' y la respuesta queda "opaque" — no se
+      // puede leer el status. El fetch igual RECHAZA si la red falla o el pedido
+      // nunca sale, así que un error de conexión sí se detecta; lo que no podemos
+      // distinguir es un 200 de un 500 del lado de Google.
+      //
+      // Es un paso atrás respecto del Apps Script, que sí dejaba leer la respuesta
+      // y confirmar el guardado de verdad. Se aceptó a cambio de sacarse de encima
+      // el redespliegue manual, que es lo que rompió el formulario (HTTP 401).
+      // La fuente de verdad es la planilla: conviene revisarla cada tanto.
+      await fetch(FORM.accion, { method: 'POST', mode: 'no-cors', body: datos });
 
-      let exito = false;
-      try{
-        const data = await res.json();
-        exito = res.ok && data && data.result === 'ok';
-      }catch(errorParseo){
-        // Si Apps Script responde algo que no es JSON (por ejemplo un redirect
-        // a googleusercontent.com) pero el status fue 2xx, lo tomamos como éxito.
-        exito = res.ok;
-      }
-
-      if(exito){
-        formMsg.style.display = 'block';
-        form.reset();
-        limpiarVerificacion();
-      } else {
-        formErr.style.display = 'block';
-      }
+      formMsg.style.display = 'block';
+      form.reset();
+      limpiarVerificacion();
     }catch(errorRed){
       formErr.style.display = 'block';
     }finally{
