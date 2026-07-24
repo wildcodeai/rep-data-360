@@ -166,14 +166,14 @@
 
   /* VIDEO */
   .video-frame{
-    margin:40px auto 0;max-width:360px;border-radius:24px;overflow:hidden;
+    margin-top:40px;border-radius:24px;overflow:hidden;
     border:1px solid rgba(54,203,139,.2);background:rgba(15,31,25,.45);
     box-shadow:var(--sombra);
   }
   .video-frame video{width:100%;display:block;max-height:640px;background:#000}
   /* El iframe de YouTube no trae proporción propia: sin aspect-ratio colapsa
-     a la altura por defecto de un iframe (150px). Es un Short vertical: 9/16. */
-  .video-frame iframe{width:100%;display:block;aspect-ratio:9/16;border:0;background:#000}
+     a la altura por defecto de un iframe (150px). */
+  .video-frame iframe{width:100%;display:block;aspect-ratio:16/9;border:0;background:#000}
 
   /* PROYECTO (niveles + etiquetas) */
   .niveles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
@@ -315,8 +315,8 @@
            youtube-nocookie.com evita las cookies de seguimiento de YouTube
            mientras nadie le da play. -->
       <iframe
-        src="https://www.youtube-nocookie.com/embed/RinirhvrWW4?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
-        title="Short: cómo funcionan las bolsas de REP DATA 360"
+        src="https://www.youtube-nocookie.com/embed/tUsiJ-2DXiw?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+        title="Ejemplo de cómo funcionan las bolsas de REP DATA 360"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen
         loading="eager"
