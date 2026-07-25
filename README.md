@@ -18,9 +18,13 @@ Sitio publicado: **https://wildcodeai.github.io/rep-data-360/**
 ├── datos/
 │   ├── registros-genericos.json        500 pre-registros sintéticos: la base del contador y del mapa demo.
 │   └── contador.json                   Solo números. Es lo único que lee el contador del sitio.
-├── tools/
+├── tools/                              Scripts. Ninguno guarda datos personales acá adentro.
 │   ├── generar_registros_genericos.py  Regenera los 500 sintéticos (semilla fija).
-│   └── actualizar_contador.py          Mezcla los reales de la planilla con los sintéticos.
+│   ├── actualizar_contador.py          Mezcla los reales de la planilla con los sintéticos.
+│   ├── publicar_mapa.py                Cadena completa: CSV → los dos mapas → commit y push.
+│   ├── generar_mapa.py                 Mapa detallado, un marcador por domicilio. Escribe FUERA del repo.
+│   ├── generar_mapa_publico.py         Mapa agregado por comuna. Este sí se publica.
+│   └── comunas_centroides.json         Centro oficial de cada comuna, cacheado.
 ├── assets/                             Imágenes y video usados por index.html.
 │   ├── hero-laboratorio.webp
 │   ├── mascota-verde.webp / mascota-ambar.webp / mascota-roja.webp
@@ -57,7 +61,7 @@ GitHub Pages usa un CDN que cachea el contenido por unos **10 minutos**. Si hac�
 
 ## Formulario de pre-registro
 
-El formulario (sección `#registro` de `index.html`) le pide a la persona su correo y su dirección para enviarle una bolsa gratis. El flujo es:
+El formulario (sección `#registro` de `index.html`) le pide a la persona su correo y su dirección para medir la demanda por comuna. **No hay entrega de bolsas**: ver [Aviso post-registro](#aviso-post-registro-no-se-entrega-ninguna-bolsa). El flujo es:
 
 1. **Validación de dirección**: cuando la persona termina de escribir (evento `blur`) o al enviar, el JS consulta una vez la API pública de **Nominatim / OpenStreetMap** (`nominatim.openstreetmap.org/search`) restringida a Chile (`countrycodes=cl`).
    - **Una sola coincidencia** → queda verificada.
@@ -119,7 +123,7 @@ Y para regenerar de paso el mapa demo con los dos sets mezclados:
 
 ```bash
 python3 tools/actualizar_contador.py respuestas.csv --mezcla ../../mezcla.json
-python3 generar_mapa_publico.py ../../mezcla.json sitio/mapa-demo.html
+python3 tools/generar_mapa_publico.py ../../mezcla.json mapa-demo.html
 ```
 
 > [!WARNING]
@@ -142,7 +146,7 @@ Los reales pasan a leerse en vivo en cada visita y `contador.json` queda como ba
 - Quien se registra ve el número subir **en el acto**, aunque nadie haya regenerado el JSON. Queda anotada la fecha en `localStorage` para no contarse dos veces cuando el JSON ya lo incluya, y para no contarse de nuevo si se registra otra vez desde el mismo navegador. **Ese +1 solo lo ve esa persona**: el resto de las visitas ve el número del JSON hasta la próxima actualización.
 - El número **anima al entrar en pantalla**, no al cargar la página (el contador está bajo el pliegue). Con `prefers-reduced-motion` aparece directo.
 - Si `contador.json` no carga, queda el número escrito en el HTML (500). Nunca se ve vacío ni en cero.
-- **El mapa de ejemplo muestra el mismo número.** `mapa-demo.html` lee ese mismo `datos/contador.json`, así que su KPI «Pre-registros» dice siempre lo mismo que la portada. Antes quedaba congelado en el total que tenía al generarse y las dos páginas se contradecían apenas entraba un pre-registro. Si el contador ya suma registros que todavía no se dibujaron —porque nadie regeneró el mapa—, lo aclara debajo del KPI, en vez de dejar arriba un total que no cuadra con el ranking de comunas. El **mapa real** (`mapa.html`) **no** hace esto a propósito: `contador.json` incluye los 500 sintéticos y sumárselos al mapa de datos reales sería inflarlo. Ese `<script>` lo inyecta `generar_mapa_publico.py`, que vive fuera de este repo.
+- **El mapa de ejemplo muestra el mismo número.** `mapa-demo.html` lee ese mismo `datos/contador.json`, así que su KPI «Pre-registros» dice siempre lo mismo que la portada. Antes quedaba congelado en el total que tenía al generarse y las dos páginas se contradecían apenas entraba un pre-registro. Si el contador ya suma registros que todavía no se dibujaron —porque nadie regeneró el mapa—, lo aclara debajo del KPI, en vez de dejar arriba un total que no cuadra con el ranking de comunas. El **mapa real** (`mapa.html`) **no** hace esto a propósito: `contador.json` incluye los 500 sintéticos y sumárselos al mapa de datos reales sería inflarlo. Ese `<script>` lo inyecta `tools/generar_mapa_publico.py`.
 
 **Los 500 sintéticos** salen de `tools/generar_registros_genericos.py`, con semilla fija: correrlo dos veces da exactamente el mismo set, así que el mapa no se reacomoda solo. Usan el mismo esquema que exporta la planilla (`fecha, correo, direccion, lat, lon, comuna`) y los correos se reparten entre `icloud.com`, `hotmail.com`, `gmail.com`, `outlook.com` y `usach.cl`, con nicks inventados además de los `nombre.apellido`. **No son personas.**
 
@@ -166,7 +170,9 @@ Dos decisiones deliberadas, no accidentes de implementación:
 1. **Cada círculo se ubica en el centro oficial de la comuna**, geocodificado aparte y cacheado. No se usa el promedio de los domicilios: con pocos registros ese promedio queda pegado a una casa real.
 2. **Las comunas con menos de 3 pre-registros no se dibujan**: se suman en «Otras comunas». Un círculo solo sobre una comuna con 1 registro apunta, en la práctica, a ese domicilio.
 
-Los generadores (`generar_mapa.py` y `generar_mapa_publico.py`) viven **fuera de este repo**, junto a la planilla exportada. Solo se versiona el HTML público que producen.
+Los generadores viven en `tools/`. Lo que **no** vive acá son los datos: el CSV que baja de la planilla, `datos.json` y `mapa-detallado.html` se quedan en la carpeta de trabajo local, un nivel más arriba del repo.
+
+Esa separación no es cosmética. `mapa-detallado.html` lleva la dirección exacta de cada persona en el tooltip, así que `tools/generar_mapa.py` **se niega a escribirlo adentro del repo** y el `.gitignore` lo bloquea por segunda vez. Si algún día ese mapa aparece acá, algo se rompió.
 
 El lector de coordenadas tolera los tres formatos que puede dejar Sheets (`-33.44`, `-33,44` y el `-33.444.710` roto por el separador de miles) y descarta lo que caiga fuera de Chile, así que un cambio de configuración regional en la planilla no rompe el mapa.
 

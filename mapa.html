@@ -55,6 +55,7 @@
     padding-top:14px;border-top:1px solid #E6EFE9}
   .pie{font-size:11.5px;color:var(--tinta-suave);text-align:center;
     margin-top:22px;line-height:1.6}
+  .desfase{font-size:12.5px;color:var(--tinta-suave);margin:-8px 0 20px}
   a{color:var(--verde-fuerte)}
 </style>
 </head>
@@ -66,10 +67,11 @@
 
 
   <div class="kpis">
-    <div class="kpi"><p class="et">Pre-registros</p><p class="num">0</p></div>
-    <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">—</p></div>
-    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">0</p></div>
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">9</p></div>
+    <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Santiago</p></div>
+    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">4</p></div>
   </div>
+  <p class="desfase" id="kpiDesfase" style="display:none"></p>
 
   <div class="panel">
     <h2>Dónde se concentra</h2>
@@ -82,12 +84,27 @@
   <div class="panel">
     <h2>Ranking de comunas</h2>
     <p class="nota">Cantidad de pre-registros por comuna, de mayor a menor.</p>
-    <p class="vacio">Todavía no hay pre-registros. Cuando lleguen, aparecen acá.</p>
+    
+        <div class="fila">
+          <div class="nombre">Santiago</div>
+          <div class="pista"><div class="barra" style="width:100.0%;background:#1E3A2E"></div></div>
+          <div class="valor">4</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Providencia</div>
+          <div class="pista"><div class="barra" style="width:75.0%;background:#1F8A5C"></div></div>
+          <div class="valor">3</div>
+        </div>
+        <div class="fila">
+          <div class="nombre otras">Otras comunas</div>
+          <div class="pista"><div class="barra otras-barra" style="width:50.0%"></div></div>
+          <div class="valor">2</div>
+        </div>
     <details>
       <summary>Ver como tabla</summary>
       <table>
         <thead><tr><th>Comuna</th><th>Pre-reg.</th><th>Share</th></tr></thead>
-        <tbody><tr><td colspan="3">Sin datos todavía</td></tr></tbody>
+        <tbody><tr><td>Santiago</td><td>4</td><td>44%</td></tr><tr><td>Providencia</td><td>3</td><td>33%</td></tr><tr><td>Otras comunas (2)</td><td>2</td><td>22%</td></tr></tbody>
       </table>
     </details>
     <p class="umbral">Las comunas con menos de 3 pre-registros no se muestran por separado: se suman en «Otras comunas». Con números chicos, un punto sobre el mapa señalaría un domicilio.</p>
@@ -101,7 +118,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var COMUNAS = [];
+var COMUNAS = [{"comuna": "Santiago", "n": 4, "lat": -33.4377, "lon": -70.65107, "color": "#1E3A2E"}, {"comuna": "Providencia", "n": 3, "lat": -33.42884, "lon": -70.61134, "color": "#1F8A5C"}];
 
 var mapa = L.map('mapa', { scrollWheelZoom: false }).setView([-33.45, -70.66], 10);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -155,5 +172,6 @@ if (COMUNAS.length) {
   ajustarRadios();
 }
 </script>
+
 </body>
 </html>

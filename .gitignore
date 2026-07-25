@@ -1,0 +1,18 @@
+# Este repo es público y GitHub Pages sirve todo lo que hay adentro. Lo de acá
+# abajo lleva correos y direcciones de personas reales.
+
+# Un marcador por domicilio, con la dirección en el tooltip. Se genera en la
+# carpeta de trabajo local, un nivel más arriba; esto es la red por si alguien
+# lo genera acá adentro por error. tools/generar_mapa.py además se niega a
+# escribirlo dentro del repo.
+mapa-detallado*.html
+
+# El CSV que baja de la planilla de respuestas y el JSON mezclado que arma
+# tools/actualizar_contador.py --mezcla.
+respuestas*.csv
+mezcla*.json
+datos.json
+
+# Cache de Python de los scripts de tools/
+__pycache__/
+*.pyc
