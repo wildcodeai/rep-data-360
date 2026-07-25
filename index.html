@@ -221,6 +221,60 @@
   .beneficios-mini{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:10px}
   .beneficios-mini li{color:var(--texto-suave);font-size:.92rem;display:flex;gap:10px;align-items:flex-start}
   .beneficios-mini li::before{content:"✓";color:var(--verde-claro);font-weight:800}
+
+  /* CONTADOR DE REGISTRADOS */
+  .contador-card{
+    margin-top:28px;display:flex;align-items:center;gap:20px;
+    background:rgba(15,31,25,.45);backdrop-filter:blur(14px);
+    border:1px solid rgba(54,203,139,.2);border-radius:20px;padding:22px 26px;
+    box-shadow:0 25px 50px -18px rgba(0,0,0,.4);
+  }
+  .contador-num{
+    font-size:clamp(2.3rem,5vw,3.1rem);font-weight:800;line-height:1;
+    color:var(--verde-claro);letter-spacing:-.03em;
+    /* Sin tabular-nums el ancho baila mientras cuenta y el texto de al lado
+       salta de posición. */
+    font-variant-numeric:tabular-nums;
+  }
+  .contador-txt{font-size:.95rem;font-weight:700;color:var(--texto)}
+  .contador-nota{font-size:.73rem;color:var(--texto-suave);font-weight:400;margin-top:5px;line-height:1.45}
+
+  /* MODAL POST-REGISTRO */
+  .modal-fondo{
+    position:fixed;inset:0;z-index:100;display:none;
+    align-items:center;justify-content:center;padding:24px;
+    background:rgba(8,18,14,.75);backdrop-filter:blur(5px);
+  }
+  .modal-fondo.abierto{display:flex}
+  .modal{
+    position:relative;width:100%;max-width:480px;text-align:center;
+    background:linear-gradient(180deg,#173026 0%,#12241d 100%);
+    border:1px solid rgba(54,203,139,.28);border-radius:24px;
+    padding:36px 30px 28px;box-shadow:0 40px 80px -30px rgba(0,0,0,.85);
+    /* En un celular apaisado el modal no entra: que scrollee él y no la página
+       de atrás, que está bloqueada mientras está abierto. */
+    max-height:calc(100vh - 48px);overflow-y:auto;
+    animation:modal-entra .2s ease-out;
+  }
+  @keyframes modal-entra{
+    from{opacity:0;transform:translateY(14px) scale(.97)}
+    to{opacity:1;transform:none}
+  }
+  .modal-icono{font-size:2.6rem;line-height:1;margin-bottom:12px}
+  .modal h3{font-size:1.3rem;margin-bottom:14px;color:var(--texto)}
+  .modal p{color:var(--texto-suave);font-size:.93rem;margin-bottom:14px}
+  .modal .destacado{
+    background:rgba(255,186,69,.12);border:1px solid rgba(255,186,69,.3);
+    border-radius:14px;padding:14px 16px;color:var(--texto);font-size:.93rem;
+  }
+  .modal .destacado strong{color:var(--ambar)}
+  .modal .btn{width:100%;margin-top:6px}
+  .modal-cerrar{
+    position:absolute;top:10px;right:12px;padding:6px 11px;
+    background:none;border:0;border-radius:10px;cursor:pointer;
+    color:var(--texto-suave);font-size:1.5rem;line-height:1;
+  }
+  .modal-cerrar:hover{color:var(--texto)}
   form.card-form{
     position:relative;background:rgba(15,31,25,.45);backdrop-filter:blur(14px);
     border:1px solid rgba(54,203,139,.2);
@@ -315,8 +369,8 @@
            youtube-nocookie.com evita las cookies de seguimiento de YouTube
            mientras nadie le da play. -->
       <iframe
-        src="https://www.youtube-nocookie.com/embed/tUsiJ-2DXiw?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
-        title="Ejemplo de cómo funcionan las bolsas de REP DATA 360"
+        src="https://www.youtube-nocookie.com/embed/CSXsEXRHfp0?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0"
+        title="REP DATA 360 · Prototipo de la bolsa en funcionamiento"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen
         loading="eager"
@@ -329,17 +383,27 @@
   <div class="wrap registro-inner">
     <div>
       <span class="eyebrow">Pre-registro</span>
-      <h2>Pre-registra tu domicilio y <span class="highlight">recibe gratis tu bolsa</span></h2>
-      <p class="lede">Sé de los primeros hogares en probar REP DATA 360. Te avisamos cuando el sistema llegue a tu comuna.</p>
+      <h2>Pre-registra tu domicilio y <span class="highlight">suma tu comuna al mapa</span></h2>
+      <p class="lede">Estamos midiendo cuántos hogares querrían una bolsa como esta. Tu pre-registro es un voto en ese mapa de demanda.</p>
       <ul class="beneficios-mini">
-        <li>Bolsa REP DATA 360 sin costo para tu hogar.</li>
-        <li>Feedback semanal para reciclar mejor.</li>
-        <li>Prioridad en la etapa piloto de tu comuna.</li>
+        <li>Toma 30 segundos: solo correo y dirección.</li>
+        <li>Tu comuna suma un punto en el mapa de demanda.</li>
+        <li>Es un trabajo académico: no se entrega ninguna bolsa ni se cobra nada.</li>
       </ul>
+
+      <div class="contador-card">
+        <p class="contador-num" id="contadorNumero">500</p>
+        <div>
+          <p class="contador-txt">personas ya se pre-registraron</p>
+          <!-- La página le pide correo y dirección real a la gente: presentar la
+               base sintética como pre-registros reales sería mentirle. -->
+          <p class="contador-nota">Incluye 500 pre-registros de demostración del proyecto.</p>
+        </div>
+      </div>
     </div>
     <form class="card-form" id="preRegistro">
       <h3>Regístrate en 30 segundos</h3>
-      <p class="sub">Solo usamos tus datos para coordinar la entrega y el retiro.</p>
+      <p class="sub">Usamos tus datos solo para el conteo y el mapa de este trabajo.</p>
       <div class="field">
         <label for="correo">Correo electrónico</label>
         <input type="email" id="correo" name="correo" placeholder="nombre@correo.com" required>
@@ -356,9 +420,9 @@
         <input type="text" id="empresa" name="empresa" tabindex="-1" autocomplete="off">
       </div>
       <button type="submit" class="btn btn-primary" id="submitBtn">Enviar</button>
-      <p class="form-msg ok" id="formMsg" aria-live="polite">¡Listo! Te contactaremos por correo cuando el piloto llegue a tu zona. 🎉</p>
+      <p class="form-msg ok" id="formMsg" aria-live="polite">¡Listo! Tu pre-registro quedó guardado. 🎉</p>
       <p class="form-msg err" id="formErr" role="alert" aria-live="polite">No pudimos registrar tus datos. Intenta nuevamente en unos segundos.</p>
-      <p class="privacidad">Al enviar aceptas ser contactado sobre el piloto de REP DATA 360. Proyecto de Innovación · Ley REP N°20.920.</p>
+      <p class="privacidad">Al enviar aceptas que usemos tu correo y dirección para este trabajo académico. Proyecto de Innovación · Usach · Ley REP N°20.920.</p>
     </form>
   </div>
 </section>
@@ -381,6 +445,24 @@
   </div>
 </footer>
 
+<!-- Se abre al guardarse el pre-registro. La página promete un mapa de demanda,
+     no una bolsa; esto lo deja dicho con todas las letras antes de que la
+     persona se vaya esperando un despacho. -->
+<div class="modal-fondo" id="modalGracias" role="dialog" aria-modal="true"
+     aria-labelledby="modalTitulo" aria-describedby="modalTexto">
+  <div class="modal">
+    <button type="button" class="modal-cerrar" id="modalCerrar" aria-label="Cerrar">×</button>
+    <div class="modal-icono" aria-hidden="true">🌱</div>
+    <h3 id="modalTitulo">¡Gracias por participar!</h3>
+    <div id="modalTexto">
+      <p class="destacado"><strong>No vas a recibir ninguna bolsa.</strong> REP DATA 360 no es un producto a la venta ni un piloto en marcha.</p>
+      <p>Es un trabajo para el ramo de Innovación de la Universidad de Santiago de Chile (Usach). Tu pre-registro sirve para medir cuánta gente querría una bolsa así, y eso es justamente lo que estamos estudiando.</p>
+      <p>Gracias por darnos una mano con el proyecto. 💚</p>
+    </div>
+    <button type="button" class="btn btn-primary" id="modalOk">Entendido</button>
+  </div>
+</div>
+
 <script>
 (function(){
   // Buzón: un Google Formulario. Reemplazó al Apps Script, que dejó de responder
@@ -399,6 +481,23 @@
     }
   };
 
+  // Contador de pre-registrados.
+  //
+  // El sitio es estático y la planilla de respuestas es privada, así que el
+  // navegador NO puede contar las respuestas reales por su cuenta: lee el JSON
+  // que deja tools/actualizar_contador.py cada vez que se baja el CSV.
+  //
+  // Para que el número se actualice solo: agregá a la planilla una hoja «Conteo»
+  // de una sola celda (=CONTARA(Respuestas!B2:B)), publicá ESA hoja como CSV
+  // (Archivo > Compartir > Publicar en la web) y pegá la URL en csvPublicado.
+  // Nunca la hoja de respuestas: publicar en la web es público de verdad y esa
+  // hoja lleva correos y direcciones. Ver el README.
+  const CONTADOR = {
+    json: './datos/contador.json',
+    csvPublicado: ''
+  };
+  const LS_REGISTRO = 'repdata360:registrado';
+
   const form = document.getElementById('preRegistro');
   const direccionInput = document.getElementById('direccion');
   const dropdown = document.getElementById('direccionSugerencias');
@@ -409,6 +508,10 @@
   const empresaInput = document.getElementById('empresa');
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
+  const contadorNumero = document.getElementById('contadorNumero');
+  const modal = document.getElementById('modalGracias');
+  const modalOk = document.getElementById('modalOk');
+  const modalCerrar = document.getElementById('modalCerrar');
 
   let controller = null;
   let activeIndex = -1;
@@ -444,6 +547,141 @@
 
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') cerrarMenu();
+  });
+
+  // ---- Contador de pre-registrados -------------------------------------
+  const formatoNumero = function(n){ return n.toLocaleString('es-CL'); };
+  let totalMostrado = null;
+
+  // El pre-registro propio suma en el acto, sin esperar a que alguien regenere
+  // el JSON. Se guarda la fecha y no un simple "true" para no contarse dos veces
+  // cuando el JSON ya venga actualizado e incluya a esta persona.
+  function yaRegistrado(){
+    try{ return localStorage.getItem(LS_REGISTRO) || ''; }catch(e){ return ''; }
+  }
+
+  function animarHasta(total){
+    // Arranca cerca del final: contar 500 desde cero es un segundo mirando
+    // números correr sin que aporte nada.
+    const desde = Math.max(0, total - 120);
+    const duracion = 900;
+    const t0 = performance.now();
+    (function paso(t){
+      const p = Math.min(1, (t - t0) / duracion);
+      const suave = 1 - Math.pow(1 - p, 3);
+      contadorNumero.textContent = formatoNumero(Math.round(desde + (total - desde) * suave));
+      if(p < 1) requestAnimationFrame(paso);
+    })(t0);
+  }
+
+  function mostrarTotal(total){
+    totalMostrado = total;
+    const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(sinMovimiento || !('IntersectionObserver' in window)){
+      contadorNumero.textContent = formatoNumero(total);
+      return;
+    }
+    // Animar apenas carga la página no se ve: el contador está más abajo del
+    // pliegue. Se dispara cuando entra en pantalla.
+    const io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(e){
+        if(!e.isIntersecting) return;
+        io.disconnect();
+        animarHasta(total);
+      });
+    }, { threshold: .4 });
+    io.observe(contadorNumero);
+  }
+
+  function sumarPropio(){
+    if(yaRegistrado()) return;                  // no se cuenta dos veces
+    try{ localStorage.setItem(LS_REGISTRO, new Date().toISOString().slice(0, 10)); }catch(e){}
+    if(totalMostrado === null) return;
+    totalMostrado += 1;
+    contadorNumero.textContent = formatoNumero(totalMostrado);
+  }
+
+  async function cargarContador(){
+    let base;
+    try{
+      const res = await fetch(CONTADOR.json, { cache: 'no-store' });
+      if(!res.ok) throw new Error('contador.json: ' + res.status);
+      base = await res.json();
+    }catch(e){
+      return;   // se queda el número escrito en el HTML
+    }
+
+    const generados = +base.generados || 0;
+    let total = +base.total || (generados + (+base.reales || 0));
+
+    if(CONTADOR.csvPublicado){
+      try{
+        const res = await fetch(CONTADOR.csvPublicado, { cache: 'no-store' });
+        if(res.ok){
+          const lineas = (await res.text()).split(/\r?\n/)
+            .filter(function(l){ return l.trim() !== ''; });
+          const ultima = (lineas[lineas.length - 1] || '').replace(/"/g, '').trim();
+          // Dos formas de publicar la planilla. Lo recomendado es una hoja de una
+          // sola celda con el conteo (=CONTARA(...)): así el contador queda en vivo
+          // sin exponer correos ni direcciones. Si igual se publicó la hoja de
+          // respuestas entera, se cuentan las filas menos el encabezado.
+          const reales = (lineas.length <= 2 && /^\d+$/.test(ultima))
+            ? +ultima
+            : Math.max(0, lineas.length - 1);
+          total = generados + reales;
+        }
+      }catch(e){
+        // Google caído o URL mal pegada: seguimos con el número del JSON.
+      }
+    }
+
+    // Estrictamente posterior: si la persona se registró el mismo día en que se
+    // regeneró el JSON, es probable que ya esté contada ahí.
+    if(base.actualizado && yaRegistrado() > base.actualizado) total += 1;
+
+    mostrarTotal(total);
+  }
+
+  cargarContador();
+
+  // ---- Modal de agradecimiento -----------------------------------------
+  let focoPrevio = null;
+
+  function teclasModal(e){
+    if(e.key === 'Escape'){ cerrarModal(); return; }
+    if(e.key !== 'Tab') return;
+    // Encerrar el tabulador adentro del modal: con aria-modal, un lector de
+    // pantalla que se escapa al formulario de atrás deja a la persona perdida.
+    const focos = modal.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+    if(!focos.length) return;
+    const primero = focos[0], ultimo = focos[focos.length - 1];
+    if(e.shiftKey && document.activeElement === primero){
+      e.preventDefault(); ultimo.focus();
+    }else if(!e.shiftKey && document.activeElement === ultimo){
+      e.preventDefault(); primero.focus();
+    }
+  }
+
+  function abrirModal(){
+    focoPrevio = document.activeElement;
+    modal.classList.add('abierto');
+    document.body.style.overflow = 'hidden';
+    modalOk.focus();
+    document.addEventListener('keydown', teclasModal);
+  }
+
+  function cerrarModal(){
+    if(!modal.classList.contains('abierto')) return;
+    modal.classList.remove('abierto');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', teclasModal);
+    if(focoPrevio && focoPrevio.focus) focoPrevio.focus();
+  }
+
+  modalOk.addEventListener('click', cerrarModal);
+  modalCerrar.addEventListener('click', cerrarModal);
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) cerrarModal();   // clic en el fondo, no en la tarjeta
   });
 
   function setStatus(msg, tipo){
@@ -673,7 +911,9 @@
     formErr.style.display = 'none';
     formMsg.style.display = 'none';
 
-    // Trampa anti-bots: si el campo oculto viene relleno, simulamos éxito sin enviar datos reales.
+    // Trampa anti-bots: si el campo oculto viene relleno, simulamos éxito sin
+    // enviar datos reales. Tampoco sumamos al contador: del otro lado no hay
+    // nadie que se haya registrado.
     if(empresaInput && empresaInput.value){
       formMsg.style.display = 'block';
       form.reset();
@@ -714,6 +954,8 @@
       formMsg.style.display = 'block';
       form.reset();
       limpiarVerificacion();
+      sumarPropio();
+      abrirModal();
     }catch(errorRed){
       formErr.style.display = 'block';
     }finally{
