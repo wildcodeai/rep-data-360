@@ -265,6 +265,19 @@ if (COMUNAS.length) {
   }).then(function (c) {
     var total = +c.total || 0;
     if (!total) return;
+
+    // El +1 de quien acaba de registrarse. La portada lo suma en el acto, sin
+    // esperar a que alguien regenere contador.json; si el mapa no hace lo mismo,
+    // las dos paginas muestran numeros distintos justo para la persona que las
+    // esta mirando. Misma clave y misma regla de fechas que index.html.
+    try {
+      var marca = localStorage.getItem('repdata360:registrado') || '';
+      if (c.actualizado && marca > c.actualizado) total += 1;
+    } catch (e) {
+      // localStorage bloqueado (modo privado, cookies de terceros): sin el +1
+      // el mapa muestra el numero del archivo, que es el que ve todo el mundo.
+    }
+
     kpi.textContent = total.toLocaleString('es-CL');
 
     // El banner dice que la base es sintetica. Cuando el mapa ya lleva mezclados
