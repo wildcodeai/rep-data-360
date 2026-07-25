@@ -15,6 +15,12 @@ Sitio publicado: **https://wildcodeai.github.io/rep-data-360/**
 .
 ├── index.html                          Todo el sitio: HTML, CSS y JS inline en un solo archivo.
 ├── apps-script.gs                      Backend anterior (Apps Script). Ya no se usa, se conserva como referencia.
+├── datos/
+│   ├── registros-genericos.json        500 pre-registros sintéticos: la base del contador y del mapa demo.
+│   └── contador.json                   Solo números. Es lo único que lee el contador del sitio.
+├── tools/
+│   ├── generar_registros_genericos.py  Regenera los 500 sintéticos (semilla fija).
+│   └── actualizar_contador.py          Mezcla los reales de la planilla con los sintéticos.
 ├── assets/                             Imágenes y video usados por index.html.
 │   ├── hero-laboratorio.webp
 │   ├── mascota-verde.webp / mascota-ambar.webp / mascota-roja.webp
@@ -83,6 +89,56 @@ Los `entry.XXXX` son los IDs internos de cada pregunta. Si agregás, borrás o r
 
 `apps-script.gs` se conserva solo como referencia del backend anterior; **ya no se usa**.
 
+## Aviso post-registro: no se entrega ninguna bolsa
+
+Al guardarse un pre-registro se abre un **modal** que dice, con todas las letras, que la persona **no va a recibir ninguna bolsa**, que REP DATA 360 es un trabajo para el ramo de Innovación de la Usach, y le agradece haber participado.
+
+No es un detalle de copy: la página le pide **correo y dirección real** a gente que no conocemos. Si alguien se registra creyendo que le llega un despacho, le sacamos un dato personal a cambio de algo que no existe. Por eso el resto de la sección de registro promete lo mismo que el modal (un punto en el mapa de demanda, no una bolsa) y el contador aclara que incluye la base sintética.
+
+Si en algún momento el proyecto sí entrega bolsas, hay que tocar **las tres cosas juntas**: el modal, los tres puntos de la lista de la sección `#registro` y la nota del contador.
+
+## Contador de pre-registrados
+
+El recuadro de la sección `#registro` muestra cuánta gente se pre-registró:
+
+```
+total = registros sintéticos (500) + pre-registros reales de la planilla
+```
+
+El sitio es **estático** y la planilla es **privada**, así que el navegador no puede contar las respuestas reales por su cuenta: lee `datos/contador.json`, que es un archivo de tres números que se regenera a mano.
+
+**Para actualizarlo** (mismo CSV que se usa para el mapa):
+
+```bash
+python3 tools/actualizar_contador.py respuestas.csv
+```
+
+Y para regenerar de paso el mapa demo con los dos sets mezclados:
+
+```bash
+python3 tools/actualizar_contador.py respuestas.csv --mezcla ../../mezcla.json
+python3 generar_mapa_publico.py ../../mezcla.json sitio/mapa-demo.html
+```
+
+> [!WARNING]
+> El archivo de `--mezcla` lleva **correos y direcciones reales** y este repo es **público**. Por eso no tiene ruta por defecto y el script se niega a escribirlo adentro del repo. Guardalo afuera.
+
+**Para que el número se actualice solo** (opcional, un solo paso manual):
+
+1. En la planilla, creá una hoja nueva —llamala `Conteo`— con una sola celda: `=CONTARA(Respuestas!B2:B)`.
+2. *Archivo > Compartir > Publicar en la web*, elegí **esa hoja** (no la de respuestas) y formato **CSV**.
+3. Pegá la URL en `CONTADOR.csvPublicado`, en el `<script>` de `index.html`.
+
+Los reales pasan a leerse en vivo en cada visita y `contador.json` queda como base sintética y como red de seguridad si Google no responde. **Publicá la hoja de conteo, no la de respuestas**: publicar en la web es público de verdad, y la de respuestas lleva correos y direcciones. El lector acepta las dos formas (una celda con el número, o filas menos encabezado), pero solo una es segura.
+
+**Detalles de comportamiento**, para que nadie los tome por bugs:
+
+- Quien se registra ve el número subir **en el acto**, aunque nadie haya regenerado el JSON. Queda anotada la fecha en `localStorage` para no contarse dos veces cuando el JSON ya lo incluya, y para no contarse de nuevo si se registra otra vez desde el mismo navegador. **Ese +1 solo lo ve esa persona**: el resto de las visitas ve el número del JSON hasta la próxima actualización.
+- El número **anima al entrar en pantalla**, no al cargar la página (el contador está bajo el pliegue). Con `prefers-reduced-motion` aparece directo.
+- Si `contador.json` no carga, queda el número escrito en el HTML (500). Nunca se ve vacío ni en cero.
+
+**Los 500 sintéticos** salen de `tools/generar_registros_genericos.py`, con semilla fija: correrlo dos veces da exactamente el mismo set, así que el mapa no se reacomoda solo. Usan el mismo esquema que exporta la planilla (`fecha, correo, direccion, lat, lon, comuna`) y los correos se reparten entre `icloud.com`, `hotmail.com`, `gmail.com`, `outlook.com` y `usach.cl`, con nicks inventados además de los `nombre.apellido`. **No son personas.**
+
 ## Mapa de demanda
 
 Las columnas `Lat`, `Lon` y `Comuna` de la planilla existen para responder **dónde se concentra la demanda**: qué comunas piden más bolsas, que es el dato que le sirve a un sistema de gestión para priorizar rutas.
@@ -111,9 +167,9 @@ El lector de coordenadas tolera los tres formatos que puede dejar Sheets (`-33.4
 
 El formulario recolecta **correo electrónico y dirección domiciliaria**, que son datos personales bajo la Ley 19.628 sobre Protección de la Vida Privada (Chile). Recomendaciones mientras dure el piloto:
 
-- No dejar la Google Sheet con acceso público ni compartida más allá de quienes necesitan gestionarla.
-- Usar los datos solo para lo que se le dijo a la persona (coordinar entrega y retiro de la bolsa piloto).
-- Borrar los datos recolectados una vez que termine el piloto.
+- No dejar la Google Sheet con acceso público ni compartida más allá de quienes necesitan gestionarla. Si se publica la hoja para el contador en vivo, **publicá solo una hoja con el conteo** (una celda con un `COUNTA`), nunca la de respuestas con correos y direcciones.
+- Usar los datos solo para lo que se le dijo a la persona: medir la demanda para este trabajo académico. No hay entrega, ni contacto comercial.
+- Borrar los datos recolectados una vez que termine el ramo.
 
 ## Equipo
 

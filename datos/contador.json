@@ -1,0 +1,7 @@
+{
+ "_comentario": "Lo lee el contador de index.html. 'generados' es la base sintetica de datos/registros-genericos.json; 'reales' son los pre-registros de la planilla al dia de 'actualizado'.",
+ "generados": 500,
+ "reales": 0,
+ "total": 500,
+ "actualizado": "2026-07-24"
+}
