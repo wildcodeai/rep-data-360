@@ -550,6 +550,11 @@
   // El pre-registro propio suma en el acto, sin esperar a que alguien regenere
   // el JSON. Se guarda el instante y no un simple "true" para no contarse dos
   // veces cuando el JSON ya venga actualizado e incluya a esta persona.
+  //
+  // Al recargar solo se puede sumar 1, aunque se hayan mandado varios: lo que
+  // queda guardado es el instante del último envío, no cuántos hubo. Vale la
+  // pena vivir con eso; mandar varios pre-registros desde el mismo navegador es
+  // algo que pasa probando, no usando el sitio.
   function yaRegistrado(){
     try{ return localStorage.getItem(LS_REGISTRO) || ''; }catch(e){ return ''; }
   }
@@ -593,7 +598,12 @@
   }
 
   function sumarPropio(){
-    if(yaRegistrado()) return;                  // no se cuenta dos veces
+    // Suma en CADA envío, no solo en el primero. Antes cortaba acá si ya había
+    // una marca guardada, y entonces el segundo pre-registro desde el mismo
+    // navegador no movía nada: la página se veía congelada justo cuando la
+    // persona acababa de mandar algo. Y cada envío es una fila más en la
+    // planilla, que es lo que cuenta el contador, así que sumar de nuevo no
+    // infla nada. La marca se pisa con la del último envío.
     try{ localStorage.setItem(LS_REGISTRO, new Date().toISOString()); }catch(e){}
     if(totalMostrado === null){
       // contador.json no cargó: el número visible es el que quedó escrito en el
