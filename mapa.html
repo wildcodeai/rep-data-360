@@ -65,15 +65,6 @@
   <h1>Demanda de bolsas por comuna</h1>
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
 
-  <div style="background:#FDF6E3;border:1px solid #F6C544;border-radius:12px;
-       padding:14px 18px;font-size:13.5px;line-height:1.55;margin-bottom:20px">
-    <b>Base de ejemplo — la mayor parte de estas cifras es sintética.</b>
-    Se generó para mostrar cómo se ve el mapa cuando haya demanda real, y no
-    corresponde a personas ni a domicilios. <span id="bannerMezcla">A esa base se le suman 10 pre-registros reales, agregados por comuna.</span>
-    Los pre-registros reales sí son personas, y se muestran agregados por comuna:
-    sin correos, sin direcciones y sin un círculo propio por debajo de 3.
-  </div>
-
   <div class="kpis">
     <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">510</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Santiago</p></div>
@@ -256,7 +247,6 @@ if (COMUNAS.length) {
   var dibujados = 510;
   var kpi = document.getElementById('kpiPreregistros');
   var nota = document.getElementById('kpiDesfase');
-  var mezcla = document.getElementById('bannerMezcla');
   if (!kpi) return;
 
   fetch('./datos/contador.json', { cache: 'no-store' }).then(function (r) {
@@ -285,16 +275,6 @@ if (COMUNAS.length) {
     }
 
     kpi.textContent = total.toLocaleString('es-CL');
-
-    // El banner dice que la base es sintetica. Cuando el mapa ya lleva mezclados
-    // pre-registros de verdad, hay que decirlo ahi mismo: si no, el aviso pasa a
-    // ser falso justo en la pagina donde esa gente esta contada.
-    var reales = +c.reales || 0;
-    if (reales > 0 && mezcla) {
-      mezcla.textContent = reales === 1
-        ? 'A esa base se le suma 1 pre-registro real, agregado por comuna.'
-        : 'A esa base se le suman ' + reales + ' pre-registros reales, agregados por comuna.';
-    }
 
     // El desglose por comuna se hornea al generar el mapa. Si el contador ya
     // suma pre-registros que todavia no se dibujaron, hay que decirlo: si no,
