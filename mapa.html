@@ -66,7 +66,7 @@
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
 
   <div class="kpis">
-    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">515</p></div>
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">516</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Santiago</p></div>
     <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">21</p></div>
   </div>
@@ -171,14 +171,14 @@
         </div>
         <div class="fila">
           <div class="nombre otras">Otras comunas</div>
-          <div class="pista"><div class="barra otras-barra" style="width:6.2%"></div></div>
-          <div class="valor">4</div>
+          <div class="pista"><div class="barra otras-barra" style="width:7.8%"></div></div>
+          <div class="valor">5</div>
         </div>
     <details>
       <summary>Ver como tabla</summary>
       <table>
         <thead><tr><th>Comuna</th><th>Pre-reg.</th><th>Share</th></tr></thead>
-        <tbody><tr><td>Santiago</td><td>64</td><td>12%</td></tr><tr><td>Puente Alto</td><td>60</td><td>12%</td></tr><tr><td>Ñuñoa</td><td>46</td><td>9%</td></tr><tr><td>Maipú</td><td>45</td><td>9%</td></tr><tr><td>Providencia</td><td>43</td><td>8%</td></tr><tr><td>La Florida</td><td>42</td><td>8%</td></tr><tr><td>Las Condes</td><td>38</td><td>7%</td></tr><tr><td>Peñalolén</td><td>30</td><td>6%</td></tr><tr><td>Valparaíso</td><td>28</td><td>5%</td></tr><tr><td>Recoleta</td><td>21</td><td>4%</td></tr><tr><td>Estación Central</td><td>21</td><td>4%</td></tr><tr><td>San Miguel</td><td>19</td><td>4%</td></tr><tr><td>Viña del Mar</td><td>18</td><td>3%</td></tr><tr><td>Concepción</td><td>16</td><td>3%</td></tr><tr><td>Quilicura</td><td>9</td><td>2%</td></tr><tr><td>Macul</td><td>8</td><td>2%</td></tr><tr><td>Vallenar</td><td>3</td><td>1%</td></tr><tr><td>Otras comunas (4)</td><td>4</td><td>1%</td></tr></tbody>
+        <tbody><tr><td>Santiago</td><td>64</td><td>12%</td></tr><tr><td>Puente Alto</td><td>60</td><td>12%</td></tr><tr><td>Ñuñoa</td><td>46</td><td>9%</td></tr><tr><td>Maipú</td><td>45</td><td>9%</td></tr><tr><td>Providencia</td><td>43</td><td>8%</td></tr><tr><td>La Florida</td><td>42</td><td>8%</td></tr><tr><td>Las Condes</td><td>38</td><td>7%</td></tr><tr><td>Peñalolén</td><td>30</td><td>6%</td></tr><tr><td>Valparaíso</td><td>28</td><td>5%</td></tr><tr><td>Recoleta</td><td>21</td><td>4%</td></tr><tr><td>Estación Central</td><td>21</td><td>4%</td></tr><tr><td>San Miguel</td><td>19</td><td>4%</td></tr><tr><td>Viña del Mar</td><td>18</td><td>3%</td></tr><tr><td>Concepción</td><td>16</td><td>3%</td></tr><tr><td>Quilicura</td><td>9</td><td>2%</td></tr><tr><td>Macul</td><td>8</td><td>2%</td></tr><tr><td>Vallenar</td><td>3</td><td>1%</td></tr><tr><td>Otras comunas (4)</td><td>5</td><td>1%</td></tr></tbody>
       </table>
     </details>
     <p class="umbral">Las comunas con menos de 3 pre-registros no se muestran por separado: se suman en «Otras comunas». Con números chicos, un punto sobre el mapa señalaría un domicilio.</p>
@@ -249,7 +249,7 @@ if (COMUNAS.length) {
 
 <script>
 (function () {
-  var dibujados = 515;
+  var dibujados = 516;
   var kpi = document.getElementById('kpiPreregistros');
   var nota = document.getElementById('kpiDesfase');
   if (!kpi) return;
@@ -258,22 +258,49 @@ if (COMUNAS.length) {
     if (!r.ok) throw new Error('contador.json: ' + r.status);
     return r.json();
   }).then(function (c) {
-    var total = +c.total || 0;
-    if (!total) return;
+    var base = +c.total || 0;
+    if (!base) return;
 
-    // El +1 de quien acaba de registrarse. La portada lo suma en el acto, sin
-    // esperar a que alguien regenere contador.json; si el mapa no hace lo mismo,
-    // las dos paginas muestran numeros distintos justo para la persona que las
-    // esta mirando. Misma clave y misma regla que index.html.
+    // Conteo en vivo, la misma cuenta que hace index.html: de la celda publicada
+    // no se usa el valor sino cuanto crecio desde 'planilla_al_corte'. Si las dos
+    // paginas no hicieran lo mismo, volverian a decir numeros distintos del mismo
+    // dato, que es de donde se salio.
+    if (!c.planilla_csv || !isFinite(+c.planilla_al_corte)) {
+      return mostrar(base, c);
+    }
+    // El parametro de mas saltea la cache del CDN de Google, igual que en
+    // index.html: sin el, la celda publicada llega con el valor de hace un rato.
+    fetch(c.planilla_csv + '&_=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error('csv: ' + r.status);
+      return r.text();
+    }).then(function (txt) {
+      var lineas = txt.split(/\r?\n/).filter(function (l) { return l.trim() !== ''; });
+      var ultima = (lineas[lineas.length - 1] || '').replace(/"/g, '').trim();
+      if (lineas.length <= 2 && /^\d+$/.test(ultima)) {
+        base = Math.max(+c.generados || 0, base + (+ultima - +c.planilla_al_corte));
+      }
+      mostrar(base, c);
+    }).catch(function () {
+      mostrar(base, c);   // Google caido o sin red: queda el numero del archivo.
+    });
+  }).catch(function () {
+    // Sin contador.json queda el numero horneado, que es exactamente el que
+    // dibuja el mapa. Nunca se ve vacio ni en cero.
+  });
+
+  function mostrar(total, c) {
+    // El +1 de quien acaba de registrarse. La portada lo suma en el acto; si el
+    // mapa no hace lo mismo, las dos paginas muestran numeros distintos justo
+    // para la persona que las esta mirando. Misma clave y misma regla.
     //
     // Se compara contra 'generado', el instante del corte, y no contra la fecha:
     // con la fecha sola, quien se pre-registro ese mismo dia ANTES de regenerar
-    // se sumaba de nuevo aunque ya estuviera adentro del total, y quedaba contado
-    // dos veces.
+    // se sumaba de nuevo aunque ya estuviera adentro del total. Y no se suma si
+    // el conteo en vivo ya crecio: ahi la fila propia ya esta contada.
     try {
       var marca = localStorage.getItem('repdata360:registrado') || '';
       var corte = c.generado || c.actualizado || '';
-      if (corte && marca > corte) total += 1;
+      if (total <= (+c.total || 0) && corte && marca > corte) total += 1;
     } catch (e) {
       // localStorage bloqueado (modo privado, cookies de terceros): sin el +1
       // el mapa muestra el numero del archivo, que es el que ve todo el mundo.
@@ -291,10 +318,7 @@ if (COMUNAS.length) {
         : faltan + ' pre-registros más recientes todavía no están dibujados en el mapa: entran al regenerarlo.';
       nota.style.display = 'block';
     }
-  }).catch(function () {
-    // Sin contador.json queda el numero horneado, que es exactamente el que
-    // dibuja el mapa. Nunca se ve vacio ni en cero.
-  });
+  }
 })();
 </script>
 </body>

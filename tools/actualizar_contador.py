@@ -29,6 +29,25 @@ RAIZ = Path(__file__).resolve().parent.parent
 GENERICOS = RAIZ / "datos" / "registros-genericos.json"
 CONTADOR = RAIZ / "datos" / "contador.json"
 
+# Hoja «Conteo» de la planilla, publicada en la web como CSV: una sola celda con
+# =CONTARA(...). Es lo unico publico de una planilla que por lo demas es privada,
+# y por eso puede leerla el navegador de cualquiera que entre al sitio: sin esto,
+# el numero solo cambia cuando alguien regenera contador.json a mano.
+#
+# Publicar la hoja de RESPUESTAS en vez de esta seria filtrar correos y
+# direcciones. Si algun dia hay que rehacerla, que sea otra vez una celda sola.
+#
+# Lo que devuelve NO es el numero de pre-registros: esa formula cuenta tambien el
+# encabezado y las filas .demo@ de prueba. No se corrige en la planilla a
+# proposito: el sitio se calibra solo guardando aca abajo cuanto marcaba la celda
+# en este corte, y despues suma la diferencia. Asi funciona con cualquier formula
+# que crezca de a uno por fila nueva, y si se borran filas, tambien baja.
+CSV_PUBLICADO = (
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSw5w4U9IS5zsJstyxGxWVRqA"
+    "CVjfsXqH9m1D7T8UIE0PuUxIaeuCTdmnES2EpPTNS9Qfo__LlSt5LS/pub"
+    "?gid=127842915&single=true&output=csv"
+)
+
 # Encabezados de la planilla -> nombres que usamos aca. Mismo mapeo que
 # generar_mapa.py, que lee el mismo CSV.
 COLUMNAS = {
@@ -58,6 +77,38 @@ def leer_csv(ruta):
     # Una fila sin correo ni direccion es una fila vacia al final de la planilla,
     # no una persona.
     return [f for f in filas if f.get("correo") or f.get("direccion")]
+
+
+def leer_celda_publicada():
+    """Cuanto marca ahora la celda publicada. None si no se pudo leer.
+
+    Se lee al generar para dejar anotado el punto de partida. El navegador
+    despues compara contra ese numero, asi que lo unico que importa es que sea
+    el mismo valor que va a ver el, no que signifique algo por si solo.
+    """
+    import random
+    import urllib.request
+    # El parametro de mas es para saltear la cache del CDN de Google, que sirve
+    # esa URL con el valor de hace un rato: recien probado, la URL pelada devolvia
+    # 19 y con el parametro 17, que era lo correcto. Calibrar contra el numero
+    # viejo dejaria al contador arrastrando esa diferencia para siempre.
+    url = f"{CSV_PUBLICADO}&_={random.randrange(10 ** 9)}"
+    try:
+        with urllib.request.urlopen(url, timeout=15) as r:
+            texto = r.read().decode("utf-8-sig")
+    except Exception as e:
+        print(f"   no pude leer la celda publicada ({e.__class__.__name__}): el "
+              "contador va a quedar en el numero del archivo hasta la proxima")
+        return None
+
+    lineas = [l.strip().strip('"') for l in texto.splitlines() if l.strip()]
+    if len(lineas) > 2 or not lineas or not lineas[-1].isdigit():
+        # Mas de dos lineas es la hoja de respuestas entera, no la celda del
+        # conteo. Se ignora: si se publico eso por error, el problema es otro y
+        # mucho mas grave que un contador desactualizado.
+        print("   la URL publicada no devuelve una celda con un numero. La ignoro.")
+        return None
+    return int(lineas[-1])
 
 
 def es_prueba(fila):
@@ -105,12 +156,26 @@ def main():
         "generado": (datetime.now(timezone.utc).replace(microsecond=0)
                      .strftime("%Y-%m-%dT%H:%M:%S.000Z")),
     }
+
+    # El par que deja el contador en vivo: la URL de la celda publicada y cuanto
+    # marcaba en este corte. El navegador la vuelve a leer y suma la diferencia,
+    # asi que no hace falta regenerar nada para que el numero suba. Si no se pudo
+    # leer, no se escriben: sin el punto de partida la diferencia no significa
+    # nada, y es preferible el numero del archivo antes que uno inventado.
+    celda = leer_celda_publicada() if args.csv else None
+    if celda is not None:
+        contador["planilla_csv"] = CSV_PUBLICADO
+        contador["planilla_al_corte"] = celda
+
     CONTADOR.parent.mkdir(parents=True, exist_ok=True)
     CONTADOR.write_text(json.dumps(contador, ensure_ascii=False, indent=1) + "\n",
                         encoding="utf-8")
 
     print(f"contador: {contador['total']} "
           f"({contador['generados']} genericos + {contador['reales']} reales)")
+    if celda is not None:
+        print(f"   celda publicada en {celda}: de aca en mas el sitio suma solo "
+              "lo que entre a la planilla")
     if pruebas:
         print(f"   {len(pruebas)} fila(s) .demo@ descartada(s): son envios de prueba "
               "del generador, no personas")

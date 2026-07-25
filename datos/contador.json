@@ -1,8 +1,10 @@
 {
  "_comentario": "Lo lee el contador de index.html. 'generados' es la base sintetica de datos/registros-genericos.json; 'reales' son los pre-registros de la planilla al dia de 'actualizado'. 'generado' es el instante exacto del corte: con el la pagina sabe si quien la mira ya esta contado aca.",
  "generados": 500,
- "reales": 15,
- "total": 515,
+ "reales": 16,
+ "total": 516,
  "actualizado": "2026-07-25",
- "generado": "2026-07-25T20:54:28.000Z"
+ "generado": "2026-07-25T21:09:10.000Z",
+ "planilla_csv": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSw5w4U9IS5zsJstyxGxWVRqACVjfsXqH9m1D7T8UIE0PuUxIaeuCTdmnES2EpPTNS9Qfo__LlSt5LS/pub?gid=127842915&single=true&output=csv",
+ "planilla_al_corte": 17
 }
