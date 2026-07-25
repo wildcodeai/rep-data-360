@@ -55,6 +55,7 @@
     padding-top:14px;border-top:1px solid #E6EFE9}
   .pie{font-size:11.5px;color:var(--tinta-suave);text-align:center;
     margin-top:22px;line-height:1.6}
+  .desfase{font-size:12.5px;color:var(--tinta-suave);margin:-8px 0 20px}
   a{color:var(--verde-fuerte)}
 </style>
 </head>
@@ -73,10 +74,11 @@
   </div>
 
   <div class="kpis">
-    <div class="kpi"><p class="et">Pre-registros</p><p class="num">500</p></div>
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">500</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Puente Alto</p></div>
     <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">16</p></div>
   </div>
+  <p class="desfase" id="kpiDesfase" style="display:none"></p>
 
   <div class="panel">
     <h2>Dónde se concentra</h2>
@@ -241,6 +243,38 @@ if (COMUNAS.length) {
                  { padding: [55, 55], maxZoom: 12 });
   ajustarRadios();
 }
+</script>
+
+<script>
+(function () {
+  var dibujados = 500;
+  var kpi = document.getElementById('kpiPreregistros');
+  var nota = document.getElementById('kpiDesfase');
+  if (!kpi) return;
+
+  fetch('./datos/contador.json', { cache: 'no-store' }).then(function (r) {
+    if (!r.ok) throw new Error('contador.json: ' + r.status);
+    return r.json();
+  }).then(function (c) {
+    var total = +c.total || 0;
+    if (!total) return;
+    kpi.textContent = total.toLocaleString('es-CL');
+
+    // El desglose por comuna se hornea al generar el mapa. Si el contador ya
+    // suma pre-registros que todavia no se dibujaron, hay que decirlo: si no,
+    // el total de arriba no cuadra con la suma del ranking de abajo.
+    var faltan = total - dibujados;
+    if (faltan > 0 && nota) {
+      nota.textContent = faltan === 1
+        ? '1 pre-registro más reciente todavía no está dibujado en el mapa: entra al regenerarlo.'
+        : faltan + ' pre-registros más recientes todavía no están dibujados en el mapa: entran al regenerarlo.';
+      nota.style.display = 'block';
+    }
+  }).catch(function () {
+    // Sin contador.json queda el numero horneado, que es exactamente el que
+    // dibuja el mapa. Nunca se ve vacio ni en cero.
+  });
+})();
 </script>
 </body>
 </html>
