@@ -113,11 +113,19 @@ total = registros sintéticos (500) + pre-registros reales de la planilla
 
 El sitio es **estático** y la planilla es **privada**, así que el navegador no puede contar las respuestas reales por su cuenta: lee `datos/contador.json`, que es un archivo de tres números que se regenera a mano.
 
-**Para actualizarlo** (mismo CSV que se usa para el mapa):
+**Para actualizarlo**, no hace falta nada aparte: `publicar_mapa.py` lo regenera y lo sube junto con el mapa. Se hacían por separado y el contador quedaba atrás del mapa, mostrando un número viejo en la portada. Si querés correrlo suelto (mismo CSV que usa el mapa):
 
 ```bash
 python3 tools/actualizar_contador.py respuestas.csv
 ```
+
+### El +1 de quien se acaba de pre-registrar
+
+Entre que alguien envía el formulario y que se regenera `contador.json` pasan horas o días. En el medio, esa persona vería su propio pre-registro sin ningún efecto y pensaría que no llegó. Por eso el navegador guarda el instante de su envío en `localStorage` (`repdata360:registrado`) y le suma **1** al número, tanto en la portada como en el KPI del mapa.
+
+Ese +1 se aplica solo si el envío es **posterior a `generado`**, el instante exacto del corte que deja el script. Si ya está adentro del archivo, no se cuenta dos veces. Va en UTC terminado en `Z` a propósito: es el mismo formato que `toISOString()` del navegador, y así los dos se comparan como texto. Antes se comparaba solo la fecha, y quien se pre-registraba **el mismo día** en que se había regenerado el corte no veía su +1 nunca.
+
+El mapa suma ese +1 al KPI pero **no dibuja el punto**: el desglose por comuna se hornea al generar el archivo. Cuando eso pasa, aparece la nota de abajo del KPI explicándolo. Y aunque se regenere, una comuna con menos de 3 pre-registros sigue sin círculo propio: se suma en «Otras comunas».
 
 Y para regenerar de paso el mapa demo con los dos sets mezclados:
 
