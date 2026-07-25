@@ -85,19 +85,11 @@ def color_de(n, maximo):
     return RAMPA[max(1, idx)]
 
 
-# El texto de la mezcla se hornea al generar y ademas lo reescribe el <script>
-# desde contador.json. Horneado, porque el aviso de que la base es sintetica no
-# puede depender de que un fetch salga bien: sin el, el mapa se leeria como si
-# los 510 fueran personas.
-BANNER_DEMO = """
-  <div style="background:#FDF6E3;border:1px solid #F6C544;border-radius:12px;
-       padding:14px 18px;font-size:13.5px;line-height:1.55;margin-bottom:20px">
-    <b>Base de ejemplo — la mayor parte de estas cifras es sintética.</b>
-    Se generó para mostrar cómo se ve el mapa cuando haya demanda real, y no
-    corresponde a personas ni a domicilios. <span id="bannerMezcla">__MEZCLA__</span>
-    Los pre-registros reales sí son personas, y se muestran agregados por comuna:
-    sin correos, sin direcciones y sin un círculo propio por debajo de __MINIMO__.
-  </div>"""
+# El recuadro amarillo que aclaraba que la base es sintetica se saco el 25 jul
+# 2026, por pedido, junto con la etiqueta «(base de ejemplo)» del enlace en la
+# portada. En el cuerpo de la pagina ya no queda nada que lo diga: quedan el
+# <title> y la meta description, que son lo que ve la pestaña y lo que sale al
+# compartir el link. Si alguna vez hay que volver a decirlo, este es el lugar.
 
 # Va en el mapa publicado, el que mezcla la base sintetica con los reales. El
 # "Pre-registros" de arriba se hornea al generar el HTML, asi que se quedaria
@@ -114,7 +106,6 @@ SYNC_CONTADOR = """
   var dibujados = __DIBUJADOS__;
   var kpi = document.getElementById('kpiPreregistros');
   var nota = document.getElementById('kpiDesfase');
-  var mezcla = document.getElementById('bannerMezcla');
   if (!kpi) return;
 
   fetch('./datos/contador.json', { cache: 'no-store' }).then(function (r) {
@@ -143,16 +134,6 @@ SYNC_CONTADOR = """
     }
 
     kpi.textContent = total.toLocaleString('es-CL');
-
-    // El banner dice que la base es sintetica. Cuando el mapa ya lleva mezclados
-    // pre-registros de verdad, hay que decirlo ahi mismo: si no, el aviso pasa a
-    // ser falso justo en la pagina donde esa gente esta contada.
-    var reales = +c.reales || 0;
-    if (reales > 0 && mezcla) {
-      mezcla.textContent = reales === 1
-        ? 'A esa base se le suma 1 pre-registro real, agregado por comuna.'
-        : 'A esa base se le suman ' + reales + ' pre-registros reales, agregados por comuna.';
-    }
 
     // El desglose por comuna se hornea al generar el mapa. Si el contador ya
     // suma pre-registros que todavia no se dibujaron, hay que decirlo: si no,
@@ -219,7 +200,7 @@ SYNC_PROPIO = """
 </script>"""
 
 
-def construir(publicas, ocultas, total, demo=False, reales=0):
+def construir(publicas, ocultas, total, demo=False):
     maximo = publicas[0][1] if publicas else 0
     lider = publicas[0][0] if publicas else "—"
     n_comunas = len(publicas) + len(ocultas)
@@ -259,18 +240,6 @@ def construir(publicas, ocultas, total, demo=False, reales=0):
         tabla += (f"<tr><td>Otras comunas ({len(ocultas)})</td><td>{suma}</td>"
                   f"<td>{suma / total * 100:.0f}%</td></tr>")
     tabla = tabla or '<tr><td colspan="3">Sin datos todavía</td></tr>'
-
-    # Misma frase que escribe el <script> desde contador.json, para que el banner
-    # no cambie de texto al cargar y para que diga la verdad aunque el fetch falle.
-    mezcla = ""
-    if reales == 1:
-        mezcla = "A esa base se le suma 1 pre-registro real, agregado por comuna."
-    elif reales > 1:
-        mezcla = (f"A esa base se le suman {reales} pre-registros reales, "
-                  "agregados por comuna.")
-
-    banner = (BANNER_DEMO.replace("__MEZCLA__", mezcla)
-              .replace("__MINIMO__", str(MINIMO))) if demo else ""
 
     nota_umbral = (
         f"<p class=\"umbral\">Las comunas con menos de {MINIMO} pre-registros no se "
@@ -344,7 +313,6 @@ def construir(publicas, ocultas, total, demo=False, reales=0):
 
   <h1>Demanda de bolsas por comuna</h1>
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
-{banner}
 
   <div class="kpis">
     <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">{total}</p></div>

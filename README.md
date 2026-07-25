@@ -101,7 +101,7 @@ No es un detalle de copy: la página le pide **correo y dirección real** a gent
 
 Si en algún momento el proyecto sí entrega bolsas, hay que tocar **las dos cosas juntas**: el modal y los tres puntos de la lista de la sección `#registro`.
 
-El contador **no** aclara que su base es sintética: el número se muestra pelado, por decisión del equipo. Dónde sí queda dicho es en el banner del mapa, que detalla cuántos de esos pre-registros son reales.
+El contador **no** aclara que su base es sintética: el número se muestra pelado, por decisión del equipo. El mapa tampoco lo hace en el cuerpo de la página desde el 25 jul 2026, cuando se sacó su recuadro de aviso, también por decisión del equipo. Queda dicho en el `<title>` y en la `meta description` del mapa, que es lo que se ve en la pestaña y al compartir el link.
 
 ## Contador de pre-registrados
 
@@ -129,7 +129,9 @@ El mapa suma ese +1 al KPI pero **no dibuja el punto**: el desglose por comuna s
 
 El script **descarta las filas `.demo@`**: son los envíos que deja el botón «Enviar al formulario real» del generador al probar el circuito, no personas. Es la misma marca que usa `COMO-ACTUALIZAR-EL-MAPA.md` para poder borrarlas a mano de la planilla, y avisa cuántas descartó.
 
-El banner del mapa dice cuántos de esos pre-registros son reales (*«A esa base se le suman N pre-registros reales, agregados por comuna»*). No es cosmético: sin eso, el aviso de «base de ejemplo» sería falso justo en la página donde esa gente está contada. La frase se **hornea** al generar el archivo y además la reescribe el `<script>`: el aviso no puede depender de que un `fetch` salga bien. Los domicilios nunca aparecen, y las comunas con menos de 3 pre-registros se agrupan en «Otras comunas», así que nadie queda señalado por un círculo propio.
+El mapa tuvo hasta el 25 jul 2026 un recuadro que aclaraba que la base era sintética y cuántos de esos pre-registros eran reales. Se sacó por pedido. Si alguna vez hay que volver a decirlo, el lugar es el comentario que quedó en su reemplazo en `tools/generar_mapa_publico.py`, justo antes de `SYNC_CONTADOR`.
+
+Lo que no cambió es cómo se protegen los datos: los domicilios nunca aparecen, y las comunas con menos de 3 pre-registros se agrupan en «Otras comunas», así que nadie queda señalado por un círculo propio.
 
 > [!NOTE]
 > Hubo una opción `--mezcla` que dejaba los dos sets juntos en un archivo con correos y direcciones reales, para alimentar un segundo mapa. Ya no existe: hay un solo mapa y `publicar_mapa.py` mezcla **en memoria**, contando por comuna, sin escribir nada con datos personales.

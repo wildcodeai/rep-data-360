@@ -169,8 +169,7 @@ def publicar_publico(puntos, descartadas=()):
     centros = g.centroides([c for c, _ in grandes]) if grandes else {}
     publicas = [(c, n, centros.get(c)) for c, n in grandes]
     (SITIO / "mapa.html").write_text(
-        g.construir(publicas, ocultas, total, demo=True,
-                    reales=len(puntos) + len(descartadas)), encoding="utf-8")
+        g.construir(publicas, ocultas, total, demo=True), encoding="utf-8")
     print(f"   mapa.html ({total} pre-registros: {len(genericos)} de la base de "
           f"ejemplo + {len(puntos) + len(descartadas)} reales · "
           f"{len(publicas)} comuna(s) en el mapa, {len(ocultas)} en «Otras»)")
