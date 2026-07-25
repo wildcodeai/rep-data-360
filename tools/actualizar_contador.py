@@ -21,7 +21,7 @@ pasaselo a generar_mapa_publico.py, que agrega por comuna y no publica domicilio
 import argparse
 import csv
 import json
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -91,11 +91,20 @@ def main():
     contador = {
         "_comentario": ("Lo lee el contador de index.html. 'generados' es la base "
                         "sintetica de datos/registros-genericos.json; 'reales' son "
-                        "los pre-registros de la planilla al dia de 'actualizado'."),
+                        "los pre-registros de la planilla al dia de 'actualizado'. "
+                        "'generado' es el instante exacto del corte: con el la "
+                        "pagina sabe si quien la mira ya esta contado aca."),
         "generados": len(genericos),
         "reales": len(reales),
         "total": len(genericos) + len(reales),
         "actualizado": date.today().isoformat(),
+        # Con fecha sola, quien se pre-registra el mismo dia en que se regenero
+        # el corte no ve su +1: '2026-07-25' no es mayor que '2026-07-25'. El
+        # instante desempata. Va en UTC y terminado en Z a proposito: el navegador
+        # guarda su marca con toISOString(), que tambien es UTC, y asi las dos se
+        # pueden comparar como texto. Con husos distintos esa comparacion miente.
+        "generado": (datetime.now(timezone.utc).replace(microsecond=0)
+                     .strftime("%Y-%m-%dT%H:%M:%S.000Z")),
     }
     CONTADOR.parent.mkdir(parents=True, exist_ok=True)
     CONTADOR.write_text(json.dumps(contador, ensure_ascii=False, indent=1) + "\n",

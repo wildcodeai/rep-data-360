@@ -1,7 +1,8 @@
 {
- "_comentario": "Lo lee el contador de index.html. 'generados' es la base sintetica de datos/registros-genericos.json; 'reales' son los pre-registros de la planilla al dia de 'actualizado'.",
+ "_comentario": "Lo lee el contador de index.html. 'generados' es la base sintetica de datos/registros-genericos.json; 'reales' son los pre-registros de la planilla al dia de 'actualizado'. 'generado' es el instante exacto del corte: con el la pagina sabe si quien la mira ya esta contado aca.",
  "generados": 500,
- "reales": 9,
- "total": 509,
- "actualizado": "2026-07-24"
+ "reales": 10,
+ "total": 510,
+ "actualizado": "2026-07-25",
+ "generado": "2026-07-25T20:06:59.000Z"
 }

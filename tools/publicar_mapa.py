@@ -69,14 +69,30 @@ def main():
     # 2. Mapa publico, agregado por comuna.
     publicar_publico(puntos)
 
+    # 3. Contador de la portada. Va en la misma corrida a proposito: son dos
+    # archivos que cuentan lo mismo, y cuando se actualizaban por separado el
+    # contador quedaba atras del mapa y la portada mostraba un numero viejo.
+    r = corro(sys.executable, str(Path(__file__).parent / "actualizar_contador.py"),
+              str(entrada))
+    if r.returncode:
+        print("No pude actualizar el contador:", r.stderr.strip())
+        return 1
+    for linea in r.stdout.strip().splitlines():
+        print("   " + linea.strip())
+
     if not publicar:
         print("\n--sin-publicar: no subo nada. Revisa mapa.html y volve a correr sin la bandera.")
         return 0
 
-    # 3. Commit y push.
+    # 4. Commit y push.
+    #
+    # El mapa se compara por archivo, pero contador.json no: lleva el instante
+    # del corte, que cambia en cada corrida aunque no haya entrado nadie nuevo.
+    # Sin esto, cada `publicar_mapa.py` dejaria un commit vacio de contenido.
     estado = corro("git", "status", "--porcelain", "mapa.html")
-    if not estado.stdout.strip():
+    if not estado.stdout.strip() and not contador_cambio():
         print("\nEl mapa publicado no cambio. No hay nada que subir.")
+        corro("git", "checkout", "--", "datos/contador.json")
         return 0
 
     rama = corro("git", "rev-parse", "--abbrev-ref", "HEAD").stdout.strip()
@@ -84,7 +100,7 @@ def main():
         print(f"\nEstas en la rama '{rama}', no en main. Cambiate a main y volve a correr.")
         return 1
 
-    corro("git", "add", "mapa.html")
+    corro("git", "add", "mapa.html", "datos/contador.json")
     r = corro("git", "-c", "user.email=wildcodeai@gmail.com",
               "-c", "user.name=César Guerrero Torres",
               "commit", "-m",
@@ -101,6 +117,24 @@ def main():
     print("\nPublicado. GitHub Pages tarda ~1 minuto en redesplegar:")
     print("   https://wildcodeai.github.io/rep-data-360/mapa.html")
     return 0
+
+
+def contador_cambio():
+    """True si cambiaron los numeros del contador, ignorando el instante del corte."""
+    import json
+
+    def numeros(texto):
+        try:
+            d = json.loads(texto)
+        except (ValueError, TypeError):
+            return None
+        return (d.get("generados"), d.get("reales"), d.get("total"))
+
+    publicado = corro("git", "show", "HEAD:datos/contador.json")
+    if publicado.returncode:
+        return True   # todavia no esta versionado: hay que subirlo
+    nuevo = (SITIO / "datos" / "contador.json").read_text(encoding="utf-8")
+    return numeros(publicado.stdout) != numeros(nuevo)
 
 
 def publicar_publico(puntos):

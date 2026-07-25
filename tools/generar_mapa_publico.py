@@ -156,6 +156,53 @@ SYNC_CONTADOR = """
 </script>"""
 
 
+# El mapa de datos reales no puede leer el total de contador.json: ese numero
+# incluye la base sintetica y aca solo se dibujan pre-registros de verdad. Lo
+# unico que necesita del JSON es el instante del corte, para saber si quien esta
+# mirando se pre-registro despues y todavia no entro al archivo.
+SYNC_PROPIO = """
+<script>
+(function () {
+  var dibujados = __DIBUJADOS__;
+  var kpi = document.getElementById('kpiPreregistros');
+  var nota = document.getElementById('kpiDesfase');
+  if (!kpi) return;
+
+  var marca = '';
+  try {
+    marca = localStorage.getItem('repdata360:registrado') || '';
+  } catch (e) {
+    return;   // localStorage bloqueado: queda el numero horneado, el de todos.
+  }
+  if (!marca) return;
+
+  fetch('./datos/contador.json', { cache: 'no-store' }).then(function (r) {
+    if (!r.ok) throw new Error('contador.json: ' + r.status);
+    return r.json();
+  }).then(function (c) {
+    // Misma regla y misma clave que index.html: solo suma si el pre-registro es
+    // posterior al corte. Si ya entro al archivo, esta contado en 'dibujados'.
+    var corte = c.generado || c.actualizado || '';
+    if (!corte || marca <= corte) return;
+
+    kpi.textContent = (dibujados + 1).toLocaleString('es-CL');
+
+    // El desglose por comuna se hornea al generar el mapa, asi que el punto de
+    // esta persona todavia no esta. Decirlo evita la lectura de que el envio se
+    // perdio, y de paso explica por que el total no cuadra con el ranking.
+    if (nota) {
+      nota.textContent = 'Tu pre-registro ya está guardado, pero todavía no está '
+        + 'dibujado en el mapa: entra en la próxima actualización. Las comunas con '
+        + 'menos de ' + __MINIMO__ + ' pre-registros tampoco se muestran por separado.';
+      nota.style.display = 'block';
+    }
+  }).catch(function () {
+    // Sin contador.json queda el numero horneado, que es el que dibuja el mapa.
+  });
+})();
+</script>"""
+
+
 def construir(publicas, ocultas, total, demo=False):
     maximo = publicas[0][1] if publicas else 0
     lider = publicas[0][0] if publicas else "—"
@@ -362,7 +409,7 @@ if (COMUNAS.length) {{
   ajustarRadios();
 }}
 </script>
-{SYNC_CONTADOR.replace("__DIBUJADOS__", str(total)) if demo else ""}
+{(SYNC_CONTADOR if demo else SYNC_PROPIO).replace("__DIBUJADOS__", str(total)).replace("__MINIMO__", str(MINIMO))}
 </body>
 </html>
 """

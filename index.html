@@ -548,22 +548,27 @@
   let totalMostrado = null;
 
   // El pre-registro propio suma en el acto, sin esperar a que alguien regenere
-  // el JSON. Se guarda la fecha y no un simple "true" para no contarse dos veces
-  // cuando el JSON ya venga actualizado e incluya a esta persona.
+  // el JSON. Se guarda el instante y no un simple "true" para no contarse dos
+  // veces cuando el JSON ya venga actualizado e incluya a esta persona.
   function yaRegistrado(){
     try{ return localStorage.getItem(LS_REGISTRO) || ''; }catch(e){ return ''; }
   }
 
-  function animarHasta(total){
+  function animarHasta(){
     // Arranca cerca del final: contar 500 desde cero es un segundo mirando
     // números correr sin que aporte nada.
+    const total = totalMostrado;
     const desde = Math.max(0, total - 120);
     const duracion = 900;
     const t0 = performance.now();
     (function paso(t){
       const p = Math.min(1, (t - t0) / duracion);
       const suave = 1 - Math.pow(1 - p, 3);
-      contadorNumero.textContent = formatoNumero(Math.round(desde + (total - desde) * suave));
+      // Contra totalMostrado y no contra el total del arranque: si la persona se
+      // pre-registra antes de que el contador entre en pantalla, la animación se
+      // dispara después y con el número viejo le borraría su propio +1.
+      contadorNumero.textContent = formatoNumero(
+        Math.round(desde + (totalMostrado - desde) * suave));
       if(p < 1) requestAnimationFrame(paso);
     })(t0);
   }
@@ -581,7 +586,7 @@
       entradas.forEach(function(e){
         if(!e.isIntersecting) return;
         io.disconnect();
-        animarHasta(total);
+        animarHasta();
       });
     }, { threshold: .4 });
     io.observe(contadorNumero);
@@ -589,8 +594,15 @@
 
   function sumarPropio(){
     if(yaRegistrado()) return;                  // no se cuenta dos veces
-    try{ localStorage.setItem(LS_REGISTRO, new Date().toISOString().slice(0, 10)); }catch(e){}
-    if(totalMostrado === null) return;
+    try{ localStorage.setItem(LS_REGISTRO, new Date().toISOString()); }catch(e){}
+    if(totalMostrado === null){
+      // contador.json no cargó: el número visible es el que quedó escrito en el
+      // HTML. Igual hay que moverlo, o quien acaba de registrarse ve el contador
+      // clavado y piensa que su envío no llegó.
+      const visible = +contadorNumero.textContent.replace(/\D/g, '');
+      if(!visible) return;
+      totalMostrado = visible;
+    }
     totalMostrado += 1;
     contadorNumero.textContent = formatoNumero(totalMostrado);
   }
@@ -629,9 +641,12 @@
       }
     }
 
-    // Estrictamente posterior: si la persona se registró el mismo día en que se
-    // regeneró el JSON, es probable que ya esté contada ahí.
-    if(base.actualizado && yaRegistrado() > base.actualizado) total += 1;
+    // Estrictamente posterior al corte: si el pre-registro es anterior, ya está
+    // contado en el JSON. Se compara contra 'generado', que trae la hora exacta;
+    // con la fecha sola, quien se registraba el mismo día en que se regeneró el
+    // corte no veía su +1 nunca. Ambos son ISO, así que alcanza comparar texto.
+    const corte = base.generado || base.actualizado;
+    if(corte && yaRegistrado() > corte) total += 1;
 
     mostrarTotal(total);
   }

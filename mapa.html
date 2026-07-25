@@ -67,7 +67,7 @@
 
 
   <div class="kpis">
-    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">9</p></div>
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">10</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Santiago</p></div>
     <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">4</p></div>
   </div>
@@ -97,14 +97,14 @@
         </div>
         <div class="fila">
           <div class="nombre otras">Otras comunas</div>
-          <div class="pista"><div class="barra otras-barra" style="width:50.0%"></div></div>
-          <div class="valor">2</div>
+          <div class="pista"><div class="barra otras-barra" style="width:75.0%"></div></div>
+          <div class="valor">3</div>
         </div>
     <details>
       <summary>Ver como tabla</summary>
       <table>
         <thead><tr><th>Comuna</th><th>Pre-reg.</th><th>Share</th></tr></thead>
-        <tbody><tr><td>Santiago</td><td>4</td><td>44%</td></tr><tr><td>Providencia</td><td>3</td><td>33%</td></tr><tr><td>Otras comunas (2)</td><td>2</td><td>22%</td></tr></tbody>
+        <tbody><tr><td>Santiago</td><td>4</td><td>40%</td></tr><tr><td>Providencia</td><td>3</td><td>30%</td></tr><tr><td>Otras comunas (2)</td><td>3</td><td>30%</td></tr></tbody>
       </table>
     </details>
     <p class="umbral">Las comunas con menos de 3 pre-registros no se muestran por separado: se suman en «Otras comunas». Con números chicos, un punto sobre el mapa señalaría un domicilio.</p>
@@ -173,5 +173,45 @@ if (COMUNAS.length) {
 }
 </script>
 
+<script>
+(function () {
+  var dibujados = 10;
+  var kpi = document.getElementById('kpiPreregistros');
+  var nota = document.getElementById('kpiDesfase');
+  if (!kpi) return;
+
+  var marca = '';
+  try {
+    marca = localStorage.getItem('repdata360:registrado') || '';
+  } catch (e) {
+    return;   // localStorage bloqueado: queda el numero horneado, el de todos.
+  }
+  if (!marca) return;
+
+  fetch('./datos/contador.json', { cache: 'no-store' }).then(function (r) {
+    if (!r.ok) throw new Error('contador.json: ' + r.status);
+    return r.json();
+  }).then(function (c) {
+    // Misma regla y misma clave que index.html: solo suma si el pre-registro es
+    // posterior al corte. Si ya entro al archivo, esta contado en 'dibujados'.
+    var corte = c.generado || c.actualizado || '';
+    if (!corte || marca <= corte) return;
+
+    kpi.textContent = (dibujados + 1).toLocaleString('es-CL');
+
+    // El desglose por comuna se hornea al generar el mapa, asi que el punto de
+    // esta persona todavia no esta. Decirlo evita la lectura de que el envio se
+    // perdio, y de paso explica por que el total no cuadra con el ranking.
+    if (nota) {
+      nota.textContent = 'Tu pre-registro ya está guardado, pero todavía no está '
+        + 'dibujado en el mapa: entra en la próxima actualización. Las comunas con '
+        + 'menos de ' + 3 + ' pre-registros tampoco se muestran por separado.';
+      nota.style.display = 'block';
+    }
+  }).catch(function () {
+    // Sin contador.json queda el numero horneado, que es el que dibuja el mapa.
+  });
+})();
+</script>
 </body>
 </html>
