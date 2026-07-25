@@ -66,9 +66,9 @@
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
 
   <div class="kpis">
-    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">510</p></div>
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">515</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Santiago</p></div>
-    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">18</p></div>
+    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">21</p></div>
   </div>
   <p class="desfase" id="kpiDesfase" style="display:none"></p>
 
@@ -151,8 +151,8 @@
         </div>
         <div class="fila">
           <div class="nombre">Concepción</div>
-          <div class="pista"><div class="barra" style="width:23.4%;background:#8BD4A8"></div></div>
-          <div class="valor">15</div>
+          <div class="pista"><div class="barra" style="width:25.0%;background:#8BD4A8"></div></div>
+          <div class="valor">16</div>
         </div>
         <div class="fila">
           <div class="nombre">Quilicura</div>
@@ -165,15 +165,20 @@
           <div class="valor">8</div>
         </div>
         <div class="fila">
-          <div class="nombre otras">Otras comunas</div>
-          <div class="pista"><div class="barra otras-barra" style="width:4.7%"></div></div>
+          <div class="nombre">Vallenar</div>
+          <div class="pista"><div class="barra" style="width:4.7%;background:#8BD4A8"></div></div>
           <div class="valor">3</div>
+        </div>
+        <div class="fila">
+          <div class="nombre otras">Otras comunas</div>
+          <div class="pista"><div class="barra otras-barra" style="width:6.2%"></div></div>
+          <div class="valor">4</div>
         </div>
     <details>
       <summary>Ver como tabla</summary>
       <table>
         <thead><tr><th>Comuna</th><th>Pre-reg.</th><th>Share</th></tr></thead>
-        <tbody><tr><td>Santiago</td><td>64</td><td>13%</td></tr><tr><td>Puente Alto</td><td>60</td><td>12%</td></tr><tr><td>Ñuñoa</td><td>46</td><td>9%</td></tr><tr><td>Maipú</td><td>45</td><td>9%</td></tr><tr><td>Providencia</td><td>43</td><td>8%</td></tr><tr><td>La Florida</td><td>42</td><td>8%</td></tr><tr><td>Las Condes</td><td>38</td><td>7%</td></tr><tr><td>Peñalolén</td><td>30</td><td>6%</td></tr><tr><td>Valparaíso</td><td>28</td><td>5%</td></tr><tr><td>Recoleta</td><td>21</td><td>4%</td></tr><tr><td>Estación Central</td><td>21</td><td>4%</td></tr><tr><td>San Miguel</td><td>19</td><td>4%</td></tr><tr><td>Viña del Mar</td><td>18</td><td>4%</td></tr><tr><td>Concepción</td><td>15</td><td>3%</td></tr><tr><td>Quilicura</td><td>9</td><td>2%</td></tr><tr><td>Macul</td><td>8</td><td>2%</td></tr><tr><td>Otras comunas (2)</td><td>3</td><td>1%</td></tr></tbody>
+        <tbody><tr><td>Santiago</td><td>64</td><td>12%</td></tr><tr><td>Puente Alto</td><td>60</td><td>12%</td></tr><tr><td>Ñuñoa</td><td>46</td><td>9%</td></tr><tr><td>Maipú</td><td>45</td><td>9%</td></tr><tr><td>Providencia</td><td>43</td><td>8%</td></tr><tr><td>La Florida</td><td>42</td><td>8%</td></tr><tr><td>Las Condes</td><td>38</td><td>7%</td></tr><tr><td>Peñalolén</td><td>30</td><td>6%</td></tr><tr><td>Valparaíso</td><td>28</td><td>5%</td></tr><tr><td>Recoleta</td><td>21</td><td>4%</td></tr><tr><td>Estación Central</td><td>21</td><td>4%</td></tr><tr><td>San Miguel</td><td>19</td><td>4%</td></tr><tr><td>Viña del Mar</td><td>18</td><td>3%</td></tr><tr><td>Concepción</td><td>16</td><td>3%</td></tr><tr><td>Quilicura</td><td>9</td><td>2%</td></tr><tr><td>Macul</td><td>8</td><td>2%</td></tr><tr><td>Vallenar</td><td>3</td><td>1%</td></tr><tr><td>Otras comunas (4)</td><td>4</td><td>1%</td></tr></tbody>
       </table>
     </details>
     <p class="umbral">Las comunas con menos de 3 pre-registros no se muestran por separado: se suman en «Otras comunas». Con números chicos, un punto sobre el mapa señalaría un domicilio.</p>
@@ -187,7 +192,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var COMUNAS = [{"comuna": "Santiago", "n": 64, "lat": -33.4377, "lon": -70.65107, "color": "#1E3A2E"}, {"comuna": "Puente Alto", "n": 60, "lat": -33.60953, "lon": -70.57547, "color": "#1E3A2E"}, {"comuna": "Ñuñoa", "n": 46, "lat": -33.45432, "lon": -70.59364, "color": "#1F8A5C"}, {"comuna": "Maipú", "n": 45, "lat": -33.50944, "lon": -70.75618, "color": "#1F8A5C"}, {"comuna": "Providencia", "n": 43, "lat": -33.42884, "lon": -70.61134, "color": "#1F8A5C"}, {"comuna": "La Florida", "n": 42, "lat": -33.52042, "lon": -70.60062, "color": "#1F8A5C"}, {"comuna": "Las Condes", "n": 38, "lat": -33.40845, "lon": -70.56715, "color": "#2FB179"}, {"comuna": "Peñalolén", "n": 30, "lat": -33.47659, "lon": -70.54183, "color": "#2FB179"}, {"comuna": "Valparaíso", "n": 28, "lat": -33.04585, "lon": -71.61967, "color": "#2FB179"}, {"comuna": "Recoleta", "n": 21, "lat": -33.40207, "lon": -70.64289, "color": "#8BD4A8"}, {"comuna": "Estación Central", "n": 21, "lat": -33.45364, "lon": -70.68987, "color": "#8BD4A8"}, {"comuna": "San Miguel", "n": 19, "lat": -33.48597, "lon": -70.64955, "color": "#8BD4A8"}, {"comuna": "Viña del Mar", "n": 18, "lat": -33.02445, "lon": -71.55176, "color": "#8BD4A8"}, {"comuna": "Concepción", "n": 15, "lat": -36.82707, "lon": -73.05021, "color": "#8BD4A8"}, {"comuna": "Quilicura", "n": 9, "lat": -33.36004, "lon": -70.71186, "color": "#8BD4A8"}, {"comuna": "Macul", "n": 8, "lat": -33.48216, "lon": -70.59919, "color": "#8BD4A8"}];
+var COMUNAS = [{"comuna": "Santiago", "n": 64, "lat": -33.4377, "lon": -70.65107, "color": "#1E3A2E"}, {"comuna": "Puente Alto", "n": 60, "lat": -33.60953, "lon": -70.57547, "color": "#1E3A2E"}, {"comuna": "Ñuñoa", "n": 46, "lat": -33.45432, "lon": -70.59364, "color": "#1F8A5C"}, {"comuna": "Maipú", "n": 45, "lat": -33.50944, "lon": -70.75618, "color": "#1F8A5C"}, {"comuna": "Providencia", "n": 43, "lat": -33.42884, "lon": -70.61134, "color": "#1F8A5C"}, {"comuna": "La Florida", "n": 42, "lat": -33.52042, "lon": -70.60062, "color": "#1F8A5C"}, {"comuna": "Las Condes", "n": 38, "lat": -33.40845, "lon": -70.56715, "color": "#2FB179"}, {"comuna": "Peñalolén", "n": 30, "lat": -33.47659, "lon": -70.54183, "color": "#2FB179"}, {"comuna": "Valparaíso", "n": 28, "lat": -33.04585, "lon": -71.61967, "color": "#2FB179"}, {"comuna": "Recoleta", "n": 21, "lat": -33.40207, "lon": -70.64289, "color": "#8BD4A8"}, {"comuna": "Estación Central", "n": 21, "lat": -33.45364, "lon": -70.68987, "color": "#8BD4A8"}, {"comuna": "San Miguel", "n": 19, "lat": -33.48597, "lon": -70.64955, "color": "#8BD4A8"}, {"comuna": "Viña del Mar", "n": 18, "lat": -33.02445, "lon": -71.55176, "color": "#8BD4A8"}, {"comuna": "Concepción", "n": 16, "lat": -36.82707, "lon": -73.05021, "color": "#8BD4A8"}, {"comuna": "Quilicura", "n": 9, "lat": -33.36004, "lon": -70.71186, "color": "#8BD4A8"}, {"comuna": "Macul", "n": 8, "lat": -33.48216, "lon": -70.59919, "color": "#8BD4A8"}, {"comuna": "Vallenar", "n": 3, "lat": -28.57504, "lon": -70.76164, "color": "#8BD4A8"}];
 
 var mapa = L.map('mapa', { scrollWheelZoom: false }).setView([-33.45, -70.66], 10);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -244,7 +249,7 @@ if (COMUNAS.length) {
 
 <script>
 (function () {
-  var dibujados = 510;
+  var dibujados = 515;
   var kpi = document.getElementById('kpiPreregistros');
   var nota = document.getElementById('kpiDesfase');
   if (!kpi) return;
