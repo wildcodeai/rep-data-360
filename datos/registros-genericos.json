@@ -1,0 +1,4002 @@
+[
+ {
+  "fecha": "27/03/2026 00:43:19",
+  "correo": "flaco.moni@icloud.com",
+  "direccion": "Los Cerezos 4846, Maipú",
+  "lat": "-33.483219",
+  "lon": "-70.776316",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "27/03/2026 02:29:27",
+  "correo": "tallarin2001@hotmail.com",
+  "direccion": "El Bosque 2149, Maipú",
+  "lat": "-33.499302",
+  "lon": "-70.783943",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "27/03/2026 13:37:34",
+  "correo": "nicolas.castro@usach.cl",
+  "direccion": "Las Camelias 193, Valparaíso",
+  "lat": "-33.025487",
+  "lon": "-71.614044",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "27/03/2026 14:21:43",
+  "correo": "paula.gonzalez@gmail.com",
+  "direccion": "Avenida Ossa 2205, Peñalolén",
+  "lat": "-33.487364",
+  "lon": "-70.539895",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "28/03/2026 00:48:26",
+  "correo": "andres.castillo@outlook.com",
+  "direccion": "El Bosque 4254, Puente Alto",
+  "lat": "-33.600062",
+  "lon": "-70.548709",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "28/03/2026 01:05:43",
+  "correo": "peke@outlook.com",
+  "direccion": "Las Rosas 204, Las Condes",
+  "lat": "-33.395852",
+  "lon": "-70.594932",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "28/03/2026 04:02:41",
+  "correo": "emiliaflores91@icloud.com",
+  "direccion": "Pasaje Los Copihues 2931, Puente Alto",
+  "lat": "-33.632384",
+  "lon": "-70.558415",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "28/03/2026 05:52:23",
+  "correo": "felipe.araya@icloud.com",
+  "direccion": "Arturo Prat 1421, Providencia",
+  "lat": "-33.439483",
+  "lon": "-70.597541",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "28/03/2026 05:53:31",
+  "correo": "pollito_real@icloud.com",
+  "direccion": "San Martín 1981, Maipú",
+  "lat": "-33.496161",
+  "lon": "-70.752783",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "28/03/2026 09:53:25",
+  "correo": "betoseba_ok@usach.cl",
+  "direccion": "Avenida Macul 3639, Concepción",
+  "lat": "-36.818381",
+  "lon": "-73.046916",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "28/03/2026 12:39:51",
+  "correo": "tallarin_seba.dev@outlook.com",
+  "direccion": "Avenida Colón 4824, Santiago",
+  "lat": "-33.463866",
+  "lon": "-70.673513",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "29/03/2026 05:01:58",
+  "correo": "lectortomi_real@icloud.com",
+  "direccion": "Arturo Prat 130, La Florida",
+  "lat": "-33.517294",
+  "lon": "-70.582077",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "29/03/2026 05:49:16",
+  "correo": "zeta96@gmail.com",
+  "direccion": "Pasaje Los Copihues 200, Providencia",
+  "lat": "-33.422376",
+  "lon": "-70.600769",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "29/03/2026 10:20:40",
+  "correo": "amorales87@gmail.com",
+  "direccion": "Los Aromos 1805, Puente Alto",
+  "lat": "-33.632357",
+  "lon": "-70.572299",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "29/03/2026 17:29:41",
+  "correo": "nortino_stgo@gmail.com",
+  "direccion": "Avenida Providencia 1876, Las Condes",
+  "lat": "-33.391907",
+  "lon": "-70.585229",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "30/03/2026 01:08:05",
+  "correo": "emilia.silva@icloud.com",
+  "direccion": "Los Robles 3132, Providencia",
+  "lat": "-33.442543",
+  "lon": "-70.617221",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "30/03/2026 02:41:02",
+  "correo": "sopaipillabicicletaxd@icloud.com",
+  "direccion": "Las Acacias 2766, Recoleta",
+  "lat": "-33.410089",
+  "lon": "-70.660719",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "30/03/2026 03:58:06",
+  "correo": "papo.ruloito@gmail.com",
+  "direccion": "Avenida Colón 4548, Concepción",
+  "lat": "-36.843140",
+  "lon": "-73.060332",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "30/03/2026 05:01:27",
+  "correo": "ximi.dev@hotmail.com",
+  "direccion": "Las Acacias 3815, Puente Alto",
+  "lat": "-33.635324",
+  "lon": "-70.588246",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "30/03/2026 06:36:36",
+  "correo": "rulo96@icloud.com",
+  "direccion": "Los Robles 4448, Puente Alto",
+  "lat": "-33.595747",
+  "lon": "-70.566570",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "30/03/2026 11:11:31",
+  "correo": "benjamin.valenzuela@outlook.com",
+  "direccion": "Avenida Providencia 1062, Puente Alto",
+  "lat": "-33.629765",
+  "lon": "-70.554779",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "30/03/2026 18:25:50",
+  "correo": "ignaciodiaz62@hotmail.com",
+  "direccion": "San Martín 4074, Puente Alto",
+  "lat": "-33.608881",
+  "lon": "-70.541149",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "31/03/2026 01:00:23",
+  "correo": "osossatun_stgo@outlook.com",
+  "direccion": "El Bosque 123, Estación Central",
+  "lat": "-33.460206",
+  "lon": "-70.680205",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "31/03/2026 01:20:22",
+  "correo": "josefa.gonzalez@outlook.com",
+  "direccion": "San Martín 1679, Viña del Mar",
+  "lat": "-33.014624",
+  "lon": "-71.560840",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "31/03/2026 02:24:49",
+  "correo": "ximixd@hotmail.com",
+  "direccion": "Pasaje Los Copihues 4005, Providencia",
+  "lat": "-33.426696",
+  "lon": "-70.598364",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "31/03/2026 04:22:00",
+  "correo": "vichi88@outlook.com",
+  "direccion": "Los Alerces 2418, Santiago",
+  "lat": "-33.450085",
+  "lon": "-70.657451",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "31/03/2026 07:18:52",
+  "correo": "catalina.riquelme@usach.cl",
+  "direccion": "Los Alerces 565, Macul",
+  "lat": "-33.491719",
+  "lon": "-70.596671",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "31/03/2026 09:46:34",
+  "correo": "daniela.silva@usach.cl",
+  "direccion": "Pasaje Los Copihues 3232, Santiago",
+  "lat": "-33.433002",
+  "lon": "-70.671232",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "31/03/2026 14:49:23",
+  "correo": "pollito96@icloud.com",
+  "direccion": "Avenida Providencia 2489, Puente Alto",
+  "lat": "-33.625725",
+  "lon": "-70.582862",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "31/03/2026 15:21:47",
+  "correo": "fcastro85@icloud.com",
+  "direccion": "San Martín 4229, Puente Alto",
+  "lat": "-33.631223",
+  "lon": "-70.598751",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "31/03/2026 18:57:35",
+  "correo": "constanza.fuentes@gmail.com",
+  "direccion": "Los Maitenes 4608, San Miguel",
+  "lat": "-33.489767",
+  "lon": "-70.653896",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "31/03/2026 19:29:44",
+  "correo": "felipe.morales@icloud.com",
+  "direccion": "Avenida Matta 4427, Maipú",
+  "lat": "-33.504558",
+  "lon": "-70.738871",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "31/03/2026 21:10:16",
+  "correo": "josefa.sepulveda@icloud.com",
+  "direccion": "Los Maitenes 4935, Recoleta",
+  "lat": "-33.416940",
+  "lon": "-70.644445",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "01/04/2026 10:50:44",
+  "correo": "tutibetoxd@icloud.com",
+  "direccion": "Avenida Grecia 1333, Santiago",
+  "lat": "-33.428316",
+  "lon": "-70.670574",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "01/04/2026 12:23:32",
+  "correo": "paula.torres@hotmail.com",
+  "direccion": "Arturo Prat 965, Las Condes",
+  "lat": "-33.400025",
+  "lon": "-70.594657",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "01/04/2026 13:09:41",
+  "correo": "pancho.pandita21@hotmail.com",
+  "direccion": "Avenida Macul 3203, Puente Alto",
+  "lat": "-33.618912",
+  "lon": "-70.569563",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "02/04/2026 03:25:23",
+  "correo": "coni.dev@hotmail.com",
+  "direccion": "San Martín 3605, La Florida",
+  "lat": "-33.527668",
+  "lon": "-70.591226",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "02/04/2026 06:06:36",
+  "correo": "daniela.ramirez@usach.cl",
+  "direccion": "San Martín 3869, Santiago",
+  "lat": "-33.438222",
+  "lon": "-70.682004",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "02/04/2026 06:27:08",
+  "correo": "kiwi@icloud.com",
+  "direccion": "Las Camelias 3026, Las Condes",
+  "lat": "-33.390960",
+  "lon": "-70.553005",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "02/04/2026 14:16:17",
+  "correo": "andresalvarez54@gmail.com",
+  "direccion": "Los Aromos 2193, La Florida",
+  "lat": "-33.549641",
+  "lon": "-70.625006",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "02/04/2026 16:57:43",
+  "correo": "ximituti2001@gmail.com",
+  "direccion": "Avenida Macul 1764, Las Condes",
+  "lat": "-33.393513",
+  "lon": "-70.561277",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "03/04/2026 02:48:38",
+  "correo": "cristobal.hernandez@usach.cl",
+  "direccion": "El Bosque 4076, Santiago",
+  "lat": "-33.453240",
+  "lon": "-70.658687",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "03/04/2026 15:52:22",
+  "correo": "peke_recicla@icloud.com",
+  "direccion": "Los Cerezos 4189, Puente Alto",
+  "lat": "-33.609398",
+  "lon": "-70.599257",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "03/04/2026 17:55:12",
+  "correo": "bicicleta21@gmail.com",
+  "direccion": "Avenida Grecia 4685, Santiago",
+  "lat": "-33.432014",
+  "lon": "-70.680543",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "04/04/2026 00:18:58",
+  "correo": "gatoazul_ok@usach.cl",
+  "direccion": "Las Rosas 284, Ñuñoa",
+  "lat": "-33.446800",
+  "lon": "-70.610728",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "04/04/2026 01:38:14",
+  "correo": "betouwu@hotmail.com",
+  "direccion": "San Martín 4686, Valparaíso",
+  "lat": "-33.043766",
+  "lon": "-71.617159",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "04/04/2026 02:28:25",
+  "correo": "ignacio.araya@usach.cl",
+  "direccion": "El Bosque 1880, Providencia",
+  "lat": "-33.424363",
+  "lon": "-70.604418",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "04/04/2026 03:47:28",
+  "correo": "manu@icloud.com",
+  "direccion": "Pasaje Los Copihues 4342, Estación Central",
+  "lat": "-33.460165",
+  "lon": "-70.669125",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "04/04/2026 10:31:48",
+  "correo": "emiliagonzalez32@gmail.com",
+  "direccion": "Avenida Macul 4515, Santiago",
+  "lat": "-33.459409",
+  "lon": "-70.687801",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "04/04/2026 12:15:42",
+  "correo": "ososs_tutiito@gmail.com",
+  "direccion": "Manuel Rodríguez 1728, Las Condes",
+  "lat": "-33.412114",
+  "lon": "-70.578388",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "04/04/2026 16:34:26",
+  "correo": "nicolas.soto@gmail.com",
+  "direccion": "Las Camelias 952, Ñuñoa",
+  "lat": "-33.471978",
+  "lon": "-70.593389",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "05/04/2026 01:04:20",
+  "correo": "gonzalosandoval26@icloud.com",
+  "direccion": "Avenida Macul 2814, Santiago",
+  "lat": "-33.440015",
+  "lon": "-70.655323",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "05/04/2026 10:30:35",
+  "correo": "isilva89@outlook.com",
+  "direccion": "Las Rosas 2856, Estación Central",
+  "lat": "-33.470919",
+  "lon": "-70.674195",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "05/04/2026 16:13:47",
+  "correo": "vflores@usach.cl",
+  "direccion": "Los Maitenes 4685, Viña del Mar",
+  "lat": "-33.034767",
+  "lon": "-71.530793",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "05/04/2026 21:40:30",
+  "correo": "compostera_real@outlook.com",
+  "direccion": "Los Maitenes 1139, Puente Alto",
+  "lat": "-33.637187",
+  "lon": "-70.579709",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "06/04/2026 02:03:45",
+  "correo": "ecko.terremoto_recicla@hotmail.com",
+  "direccion": "San Martín 868, San Miguel",
+  "lat": "-33.503642",
+  "lon": "-70.646677",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "06/04/2026 07:49:18",
+  "correo": "papo@hotmail.com",
+  "direccion": "Arturo Prat 2250, Santiago",
+  "lat": "-33.433312",
+  "lon": "-70.661064",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "06/04/2026 23:52:11",
+  "correo": "lolouwu@hotmail.com",
+  "direccion": "Avenida Providencia 2804, Recoleta",
+  "lat": "-33.413064",
+  "lon": "-70.626233",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "07/04/2026 00:13:12",
+  "correo": "jmunoz85@outlook.com",
+  "direccion": "El Bosque 4238, La Florida",
+  "lat": "-33.518116",
+  "lon": "-70.573067",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "07/04/2026 01:53:57",
+  "correo": "tuti_kiwi@usach.cl",
+  "direccion": "Manuel Rodríguez 2765, San Miguel",
+  "lat": "-33.487994",
+  "lon": "-70.644310",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "07/04/2026 02:48:29",
+  "correo": "kari.lector96@outlook.com",
+  "direccion": "Avenida Matta 742, Maipú",
+  "lat": "-33.487181",
+  "lon": "-70.753460",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "07/04/2026 07:06:18",
+  "correo": "emiliaespinoza89@usach.cl",
+  "direccion": "Manuel Rodríguez 2136, Viña del Mar",
+  "lat": "-33.008259",
+  "lon": "-71.566085",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "07/04/2026 18:47:04",
+  "correo": "daniela.riquelme@hotmail.com",
+  "direccion": "Los Aromos 1339, Ñuñoa",
+  "lat": "-33.469228",
+  "lon": "-70.595855",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "07/04/2026 19:36:41",
+  "correo": "josefa.silva@hotmail.com",
+  "direccion": "Los Maitenes 850, San Miguel",
+  "lat": "-33.506527",
+  "lon": "-70.662127",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "07/04/2026 19:38:23",
+  "correo": "joaquin.reyes@hotmail.com",
+  "direccion": "Los Robles 264, Recoleta",
+  "lat": "-33.415109",
+  "lon": "-70.630292",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "08/04/2026 00:03:06",
+  "correo": "compostera_manuito@outlook.com",
+  "direccion": "Avenida Grecia 1474, Concepción",
+  "lat": "-36.839477",
+  "lon": "-73.067402",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "08/04/2026 03:47:01",
+  "correo": "imorales78@icloud.com",
+  "direccion": "Los Maitenes 219, Providencia",
+  "lat": "-33.440399",
+  "lon": "-70.599499",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "09/04/2026 04:12:24",
+  "correo": "sopaipilla007@hotmail.com",
+  "direccion": "Los Maitenes 1450, Ñuñoa",
+  "lat": "-33.442007",
+  "lon": "-70.607294",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "09/04/2026 05:36:34",
+  "correo": "diego.guerrero@icloud.com",
+  "direccion": "Avenida Matta 3547, Maipú",
+  "lat": "-33.522200",
+  "lon": "-70.797364",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "09/04/2026 20:42:31",
+  "correo": "vicentecastillo27@outlook.com",
+  "direccion": "Avenida Grecia 2896, Viña del Mar",
+  "lat": "-33.016650",
+  "lon": "-71.575309",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "09/04/2026 21:13:29",
+  "correo": "terremoto_ok@outlook.com",
+  "direccion": "Pasaje Los Copihues 3460, Maipú",
+  "lat": "-33.489799",
+  "lon": "-70.736753",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "10/04/2026 02:36:19",
+  "correo": "tallarintallarin21@hotmail.com",
+  "direccion": "Las Rosas 4718, Santiago",
+  "lat": "-33.465652",
+  "lon": "-70.655227",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "10/04/2026 21:42:28",
+  "correo": "kari21@gmail.com",
+  "direccion": "Las Rosas 1041, Providencia",
+  "lat": "-33.441117",
+  "lon": "-70.609259",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "11/04/2026 08:34:52",
+  "correo": "barbaracastro36@hotmail.com",
+  "direccion": "Manuel Rodríguez 4600, Peñalolén",
+  "lat": "-33.472331",
+  "lon": "-70.562903",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "11/04/2026 16:18:35",
+  "correo": "reciclo.lunita.dev@icloud.com",
+  "direccion": "Las Acacias 4714, Santiago",
+  "lat": "-33.446462",
+  "lon": "-70.644642",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "11/04/2026 20:50:57",
+  "correo": "ososs88@hotmail.com",
+  "direccion": "Avenida Ossa 3028, Maipú",
+  "lat": "-33.497050",
+  "lon": "-70.753491",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "12/04/2026 00:37:27",
+  "correo": "terremotopandita.dev@hotmail.com",
+  "direccion": "Los Aromos 1956, Providencia",
+  "lat": "-33.427105",
+  "lon": "-70.617877",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "12/04/2026 03:40:44",
+  "correo": "emilia.lopez@gmail.com",
+  "direccion": "Arturo Prat 2781, Valparaíso",
+  "lat": "-33.054745",
+  "lon": "-71.602072",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "12/04/2026 09:51:54",
+  "correo": "chinitoxd@icloud.com",
+  "direccion": "Pasaje Los Copihues 4713, Concepción",
+  "lat": "-36.832099",
+  "lon": "-73.025277",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "12/04/2026 11:26:28",
+  "correo": "lolotkm@gmail.com",
+  "direccion": "Los Robles 1238, Recoleta",
+  "lat": "-33.394721",
+  "lon": "-70.647039",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "12/04/2026 14:30:20",
+  "correo": "compostera_stgo@hotmail.com",
+  "direccion": "Las Rosas 3009, Peñalolén",
+  "lat": "-33.481020",
+  "lon": "-70.535697",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "12/04/2026 16:49:53",
+  "correo": "diego.sepulveda@icloud.com",
+  "direccion": "Avenida Providencia 890, Estación Central",
+  "lat": "-33.456502",
+  "lon": "-70.699040",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "12/04/2026 17:07:23",
+  "correo": "vicente.espinoza@gmail.com",
+  "direccion": "Avenida Macul 2615, Providencia",
+  "lat": "-33.430908",
+  "lon": "-70.604506",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "12/04/2026 17:09:13",
+  "correo": "javi.dev@icloud.com",
+  "direccion": "Los Aromos 3639, Providencia",
+  "lat": "-33.425474",
+  "lon": "-70.599353",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "12/04/2026 17:52:53",
+  "correo": "barbara.lopez@outlook.com",
+  "direccion": "El Bosque 3545, Providencia",
+  "lat": "-33.439088",
+  "lon": "-70.601687",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "12/04/2026 21:25:41",
+  "correo": "vflores@gmail.com",
+  "direccion": "Avenida Macul 371, Maipú",
+  "lat": "-33.484979",
+  "lon": "-70.780370",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "12/04/2026 22:42:14",
+  "correo": "tomasespinoza62@icloud.com",
+  "direccion": "Las Rosas 2541, Recoleta",
+  "lat": "-33.420133",
+  "lon": "-70.640913",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "13/04/2026 08:31:59",
+  "correo": "ggonzalez91@hotmail.com",
+  "direccion": "Las Camelias 506, La Florida",
+  "lat": "-33.536210",
+  "lon": "-70.617635",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "13/04/2026 08:52:47",
+  "correo": "diego.martinez@icloud.com",
+  "direccion": "Las Rosas 536, Puente Alto",
+  "lat": "-33.623213",
+  "lon": "-70.569018",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "13/04/2026 13:41:15",
+  "correo": "bicicletaito@icloud.com",
+  "direccion": "Las Rosas 2056, Ñuñoa",
+  "lat": "-33.470019",
+  "lon": "-70.597735",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "13/04/2026 17:52:42",
+  "correo": "francisca.soto@gmail.com",
+  "direccion": "Avenida Macul 4007, Providencia",
+  "lat": "-33.443944",
+  "lon": "-70.600304",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "13/04/2026 18:35:50",
+  "correo": "tomipipe_23@hotmail.com",
+  "direccion": "Manuel Rodríguez 3415, Puente Alto",
+  "lat": "-33.626261",
+  "lon": "-70.571540",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "14/04/2026 00:04:11",
+  "correo": "dperez86@usach.cl",
+  "direccion": "Los Aromos 4997, La Florida",
+  "lat": "-33.535340",
+  "lon": "-70.607652",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "15/04/2026 07:40:21",
+  "correo": "pollito.cl@icloud.com",
+  "direccion": "Los Aromos 314, Viña del Mar",
+  "lat": "-33.010701",
+  "lon": "-71.541164",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "15/04/2026 08:39:55",
+  "correo": "cristobal.vergara@gmail.com",
+  "direccion": "San Martín 4542, Ñuñoa",
+  "lat": "-33.450778",
+  "lon": "-70.608235",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "15/04/2026 23:23:19",
+  "correo": "betolunita_9@icloud.com",
+  "direccion": "Pasaje Los Copihues 2135, Maipú",
+  "lat": "-33.523044",
+  "lon": "-70.791291",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "16/04/2026 04:53:10",
+  "correo": "ecko_zeta_23@gmail.com",
+  "direccion": "Los Maitenes 3304, Valparaíso",
+  "lat": "-33.058557",
+  "lon": "-71.613517",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "16/04/2026 06:50:39",
+  "correo": "rodrigo.lopez@gmail.com",
+  "direccion": "Manuel Rodríguez 4527, Estación Central",
+  "lat": "-33.454430",
+  "lon": "-70.701291",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "16/04/2026 16:33:36",
+  "correo": "chinito.mica_23@gmail.com",
+  "direccion": "Pasaje Los Copihues 550, Ñuñoa",
+  "lat": "-33.469842",
+  "lon": "-70.608048",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "16/04/2026 18:25:54",
+  "correo": "betovaletkm@gmail.com",
+  "direccion": "Las Camelias 2580, Puente Alto",
+  "lat": "-33.587572",
+  "lon": "-70.565123",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "17/04/2026 01:33:48",
+  "correo": "barbara.contreras@outlook.com",
+  "direccion": "Manuel Rodríguez 1527, Viña del Mar",
+  "lat": "-33.044061",
+  "lon": "-71.542816",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "17/04/2026 01:39:06",
+  "correo": "verdecito_rulotkm@usach.cl",
+  "direccion": "Los Robles 1677, La Florida",
+  "lat": "-33.534617",
+  "lon": "-70.618921",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "17/04/2026 23:03:27",
+  "correo": "bicicleta_real@hotmail.com",
+  "direccion": "Los Nogales 812, Ñuñoa",
+  "lat": "-33.464889",
+  "lon": "-70.612563",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "18/04/2026 02:49:48",
+  "correo": "josefavergara1@icloud.com",
+  "direccion": "Las Acacias 2599, La Florida",
+  "lat": "-33.531750",
+  "lon": "-70.629598",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "18/04/2026 09:56:20",
+  "correo": "tomas.torres@hotmail.com",
+  "direccion": "Manuel Rodríguez 3833, Puente Alto",
+  "lat": "-33.623917",
+  "lon": "-70.606366",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "18/04/2026 19:19:17",
+  "correo": "mcastillo86@gmail.com",
+  "direccion": "Avenida Ossa 4961, Santiago",
+  "lat": "-33.439737",
+  "lon": "-70.666936",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "18/04/2026 20:59:44",
+  "correo": "bicicleta.tomiito@icloud.com",
+  "direccion": "Los Robles 301, Providencia",
+  "lat": "-33.438476",
+  "lon": "-70.615338",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "19/04/2026 15:50:45",
+  "correo": "pollito_ok@icloud.com",
+  "direccion": "Manuel Rodríguez 2167, Peñalolén",
+  "lat": "-33.489400",
+  "lon": "-70.528578",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "19/04/2026 21:04:43",
+  "correo": "kiwi.pandita_ok@icloud.com",
+  "direccion": "El Bosque 1726, Santiago",
+  "lat": "-33.462549",
+  "lon": "-70.682311",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "20/04/2026 11:45:25",
+  "correo": "felipe.espinoza@gmail.com",
+  "direccion": "Avenida Providencia 3774, Puente Alto",
+  "lat": "-33.636400",
+  "lon": "-70.558031",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "20/04/2026 19:15:43",
+  "correo": "ignacio.espinoza@gmail.com",
+  "direccion": "Avenida Grecia 562, Providencia",
+  "lat": "-33.431828",
+  "lon": "-70.617781",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "20/04/2026 19:26:18",
+  "correo": "jsilva99@outlook.com",
+  "direccion": "Los Maitenes 3794, Ñuñoa",
+  "lat": "-33.448066",
+  "lon": "-70.614494",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "20/04/2026 21:20:55",
+  "correo": "danibeto@gmail.com",
+  "direccion": "Arturo Prat 4624, Viña del Mar",
+  "lat": "-33.016583",
+  "lon": "-71.565201",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "21/04/2026 12:46:16",
+  "correo": "lolo007@usach.cl",
+  "direccion": "Los Cerezos 3032, Valparaíso",
+  "lat": "-33.050421",
+  "lon": "-71.622063",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "21/04/2026 21:44:38",
+  "correo": "peke@hotmail.com",
+  "direccion": "San Martín 2066, Ñuñoa",
+  "lat": "-33.454126",
+  "lon": "-70.585580",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "22/04/2026 08:54:22",
+  "correo": "verdecito88@hotmail.com",
+  "direccion": "Arturo Prat 1541, Santiago",
+  "lat": "-33.445221",
+  "lon": "-70.680912",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "22/04/2026 16:35:39",
+  "correo": "reciclo_pollito@icloud.com",
+  "direccion": "Avenida Colón 265, Puente Alto",
+  "lat": "-33.608864",
+  "lon": "-70.577528",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "22/04/2026 18:50:13",
+  "correo": "male.papotkm@usach.cl",
+  "direccion": "Avenida Providencia 3963, Maipú",
+  "lat": "-33.498528",
+  "lon": "-70.769468",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "22/04/2026 21:54:12",
+  "correo": "mica_9@icloud.com",
+  "direccion": "Avenida Providencia 3155, Recoleta",
+  "lat": "-33.396684",
+  "lon": "-70.643954",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "23/04/2026 01:57:51",
+  "correo": "composterazeta2001@hotmail.com",
+  "direccion": "Avenida Macul 1491, Providencia",
+  "lat": "-33.445300",
+  "lon": "-70.608159",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "23/04/2026 06:42:33",
+  "correo": "kiwiososs@outlook.com",
+  "direccion": "Avenida Ossa 3965, Peñalolén",
+  "lat": "-33.486598",
+  "lon": "-70.525793",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "23/04/2026 10:59:07",
+  "correo": "franciscamorales86@icloud.com",
+  "direccion": "Avenida Macul 711, Ñuñoa",
+  "lat": "-33.455120",
+  "lon": "-70.616694",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "23/04/2026 14:19:05",
+  "correo": "pancho.pollito2001@outlook.com",
+  "direccion": "Los Maitenes 3450, Concepción",
+  "lat": "-36.835194",
+  "lon": "-73.038051",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "24/04/2026 04:12:24",
+  "correo": "ososs_daniuwu@usach.cl",
+  "direccion": "Los Cerezos 1999, Maipú",
+  "lat": "-33.541498",
+  "lon": "-70.762488",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "24/04/2026 09:53:24",
+  "correo": "micaxd@hotmail.com",
+  "direccion": "Avenida Matta 3973, Providencia",
+  "lat": "-33.423404",
+  "lon": "-70.604176",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "25/04/2026 01:15:43",
+  "correo": "vale@hotmail.com",
+  "direccion": "Los Cerezos 562, Ñuñoa",
+  "lat": "-33.461196",
+  "lon": "-70.607763",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "25/04/2026 16:03:08",
+  "correo": "chirimoya@hotmail.com",
+  "direccion": "Los Maitenes 3288, La Florida",
+  "lat": "-33.512939",
+  "lon": "-70.584846",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "25/04/2026 16:29:01",
+  "correo": "verdecito_real@gmail.com",
+  "direccion": "Avenida Grecia 4742, Las Condes",
+  "lat": "-33.412934",
+  "lon": "-70.583833",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "25/04/2026 20:38:54",
+  "correo": "chinito@usach.cl",
+  "direccion": "El Bosque 566, La Florida",
+  "lat": "-33.526465",
+  "lon": "-70.596308",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "26/04/2026 00:23:15",
+  "correo": "andres.araya@outlook.com",
+  "direccion": "Avenida Grecia 769, Quilicura",
+  "lat": "-33.383114",
+  "lon": "-70.730659",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "26/04/2026 09:37:22",
+  "correo": "felipemorales68@gmail.com",
+  "direccion": "Avenida Macul 2501, Santiago",
+  "lat": "-33.453555",
+  "lon": "-70.685875",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "27/04/2026 00:12:17",
+  "correo": "nacho_stgo@outlook.com",
+  "direccion": "El Bosque 2278, Santiago",
+  "lat": "-33.453595",
+  "lon": "-70.682692",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "27/04/2026 01:32:29",
+  "correo": "cflores@icloud.com",
+  "direccion": "Avenida Macul 3379, Providencia",
+  "lat": "-33.439302",
+  "lon": "-70.612650",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "27/04/2026 03:06:15",
+  "correo": "valentinariquelme63@icloud.com",
+  "direccion": "Las Rosas 1256, Quilicura",
+  "lat": "-33.374285",
+  "lon": "-70.705901",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "27/04/2026 03:08:26",
+  "correo": "ososstkm@icloud.com",
+  "direccion": "Las Camelias 3352, Las Condes",
+  "lat": "-33.382525",
+  "lon": "-70.573273",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "27/04/2026 08:56:17",
+  "correo": "camilasepulveda4@gmail.com",
+  "direccion": "San Martín 863, Valparaíso",
+  "lat": "-33.037064",
+  "lon": "-71.600922",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "27/04/2026 13:10:20",
+  "correo": "dmorales@gmail.com",
+  "direccion": "Las Acacias 3051, Peñalolén",
+  "lat": "-33.483097",
+  "lon": "-70.555152",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "27/04/2026 17:20:30",
+  "correo": "fernandamorales78@gmail.com",
+  "direccion": "Los Maitenes 1140, Ñuñoa",
+  "lat": "-33.468371",
+  "lon": "-70.604217",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "27/04/2026 23:06:57",
+  "correo": "motehuevoduro_recicla@usach.cl",
+  "direccion": "Avenida Colón 4641, Santiago",
+  "lat": "-33.448861",
+  "lon": "-70.664954",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "28/04/2026 02:31:24",
+  "correo": "dani2001@gmail.com",
+  "direccion": "Los Maitenes 3588, Puente Alto",
+  "lat": "-33.605821",
+  "lon": "-70.585366",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "28/04/2026 15:10:50",
+  "correo": "rous_real@hotmail.com",
+  "direccion": "Los Alerces 1925, Estación Central",
+  "lat": "-33.448331",
+  "lon": "-70.691997",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "28/04/2026 15:12:01",
+  "correo": "composterarous.cl@outlook.com",
+  "direccion": "Los Alerces 1443, Maipú",
+  "lat": "-33.518097",
+  "lon": "-70.732448",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "28/04/2026 16:42:46",
+  "correo": "kari.dev@hotmail.com",
+  "direccion": "Los Cerezos 2854, Peñalolén",
+  "lat": "-33.476880",
+  "lon": "-70.543110",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "28/04/2026 22:34:07",
+  "correo": "malechirimoya88@gmail.com",
+  "direccion": "Las Rosas 1695, Santiago",
+  "lat": "-33.429756",
+  "lon": "-70.662067",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "29/04/2026 04:36:14",
+  "correo": "nachobicicletaito@icloud.com",
+  "direccion": "Los Alerces 298, Ñuñoa",
+  "lat": "-33.465580",
+  "lon": "-70.607609",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "29/04/2026 10:56:54",
+  "correo": "cristobal.sandoval@hotmail.com",
+  "direccion": "Las Rosas 1379, La Florida",
+  "lat": "-33.522928",
+  "lon": "-70.588171",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "30/04/2026 03:36:45",
+  "correo": "cristobal.martinez@outlook.com",
+  "direccion": "Las Rosas 729, Las Condes",
+  "lat": "-33.413270",
+  "lon": "-70.542510",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "30/04/2026 06:09:32",
+  "correo": "cristobalreyes40@hotmail.com",
+  "direccion": "Las Acacias 2981, La Florida",
+  "lat": "-33.545314",
+  "lon": "-70.583995",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "30/04/2026 07:39:10",
+  "correo": "emiliaespinoza84@icloud.com",
+  "direccion": "Las Rosas 264, Las Condes",
+  "lat": "-33.416543",
+  "lon": "-70.584376",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "30/04/2026 09:31:38",
+  "correo": "mmunoz80@icloud.com",
+  "direccion": "Avenida Colón 2149, Peñalolén",
+  "lat": "-33.492450",
+  "lon": "-70.542655",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "30/04/2026 14:23:47",
+  "correo": "antoniacastro42@gmail.com",
+  "direccion": "Avenida Matta 2148, Santiago",
+  "lat": "-33.464881",
+  "lon": "-70.652992",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "30/04/2026 15:53:40",
+  "correo": "josefa.gutierrez@gmail.com",
+  "direccion": "Los Alerces 1889, Maipú",
+  "lat": "-33.486013",
+  "lon": "-70.747760",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "30/04/2026 20:45:54",
+  "correo": "pancho.dev@icloud.com",
+  "direccion": "Pasaje Los Copihues 3534, Peñalolén",
+  "lat": "-33.490980",
+  "lon": "-70.526576",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "01/05/2026 14:31:47",
+  "correo": "peke.javi_stgo@hotmail.com",
+  "direccion": "Avenida Matta 2122, Las Condes",
+  "lat": "-33.425419",
+  "lon": "-70.553684",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "01/05/2026 16:35:59",
+  "correo": "emilia.reyes@hotmail.com",
+  "direccion": "Avenida Grecia 1986, Recoleta",
+  "lat": "-33.395732",
+  "lon": "-70.630135",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "01/05/2026 16:47:56",
+  "correo": "sebaniko_360@usach.cl",
+  "direccion": "Las Camelias 434, Maipú",
+  "lat": "-33.521884",
+  "lon": "-70.720782",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "01/05/2026 20:22:02",
+  "correo": "joaquin.vergara@icloud.com",
+  "direccion": "Arturo Prat 4984, Peñalolén",
+  "lat": "-33.472008",
+  "lon": "-70.558521",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "01/05/2026 23:01:10",
+  "correo": "diego.morales@outlook.com",
+  "direccion": "Arturo Prat 2740, Santiago",
+  "lat": "-33.464581",
+  "lon": "-70.675029",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "02/05/2026 03:08:42",
+  "correo": "camila.hernandez@hotmail.com",
+  "direccion": "Los Cerezos 1559, La Florida",
+  "lat": "-33.512163",
+  "lon": "-70.613395",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "02/05/2026 04:40:13",
+  "correo": "diegotorres60@gmail.com",
+  "direccion": "Las Camelias 3801, Santiago",
+  "lat": "-33.447476",
+  "lon": "-70.661762",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "02/05/2026 15:30:34",
+  "correo": "vicente.guerrero@outlook.com",
+  "direccion": "Avenida Macul 4857, Valparaíso",
+  "lat": "-33.042668",
+  "lon": "-71.628522",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "02/05/2026 18:17:06",
+  "correo": "dflores90@icloud.com",
+  "direccion": "El Bosque 3527, Las Condes",
+  "lat": "-33.398702",
+  "lon": "-70.544102",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "02/05/2026 20:32:53",
+  "correo": "paula.vergara@icloud.com",
+  "direccion": "Las Rosas 4486, Peñalolén",
+  "lat": "-33.467887",
+  "lon": "-70.528229",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "03/05/2026 11:51:56",
+  "correo": "sebastianlopez88@outlook.com",
+  "direccion": "Manuel Rodríguez 348, La Florida",
+  "lat": "-33.532089",
+  "lon": "-70.567962",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "03/05/2026 13:13:47",
+  "correo": "rous.composteraxd@usach.cl",
+  "direccion": "Los Alerces 1235, Viña del Mar",
+  "lat": "-33.029715",
+  "lon": "-71.545961",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "03/05/2026 17:34:08",
+  "correo": "antonia.hernandez@gmail.com",
+  "direccion": "Las Acacias 1803, Maipú",
+  "lat": "-33.496002",
+  "lon": "-70.778197",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "03/05/2026 18:41:22",
+  "correo": "joaquin.munoz@hotmail.com",
+  "direccion": "Manuel Rodríguez 3097, Ñuñoa",
+  "lat": "-33.466094",
+  "lon": "-70.591039",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "04/05/2026 02:23:14",
+  "correo": "emiliasandoval43@icloud.com",
+  "direccion": "Las Camelias 2433, Concepción",
+  "lat": "-36.838319",
+  "lon": "-73.043399",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "04/05/2026 02:30:23",
+  "correo": "huevoduro_pollito_real@icloud.com",
+  "direccion": "El Bosque 3658, Valparaíso",
+  "lat": "-33.051189",
+  "lon": "-71.618694",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "04/05/2026 04:00:28",
+  "correo": "pipe_beto_23@gmail.com",
+  "direccion": "Arturo Prat 1420, Santiago",
+  "lat": "-33.453559",
+  "lon": "-70.672412",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "04/05/2026 05:48:49",
+  "correo": "tlopez@icloud.com",
+  "direccion": "Las Acacias 1603, Santiago",
+  "lat": "-33.454078",
+  "lon": "-70.687560",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "04/05/2026 14:44:31",
+  "correo": "isidora.sandoval@hotmail.com",
+  "direccion": "Avenida Ossa 4312, Las Condes",
+  "lat": "-33.405513",
+  "lon": "-70.539718",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "05/05/2026 08:00:01",
+  "correo": "emilia.soto@hotmail.com",
+  "direccion": "Las Acacias 3051, Ñuñoa",
+  "lat": "-33.464872",
+  "lon": "-70.589006",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "05/05/2026 09:55:33",
+  "correo": "male_ok@outlook.com",
+  "direccion": "Avenida Macul 4460, La Florida",
+  "lat": "-33.549061",
+  "lon": "-70.581023",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "05/05/2026 14:12:51",
+  "correo": "martinafuentes72@usach.cl",
+  "direccion": "Las Acacias 1717, Estación Central",
+  "lat": "-33.467183",
+  "lon": "-70.679123",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "05/05/2026 21:47:29",
+  "correo": "sebastian.guerrero@icloud.com",
+  "direccion": "Los Maitenes 1803, Las Condes",
+  "lat": "-33.410113",
+  "lon": "-70.599788",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "06/05/2026 01:58:58",
+  "correo": "kiwi.dev@usach.cl",
+  "direccion": "Avenida Providencia 622, Ñuñoa",
+  "lat": "-33.470326",
+  "lon": "-70.589593",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "06/05/2026 03:55:29",
+  "correo": "zeta_lector96@hotmail.com",
+  "direccion": "Manuel Rodríguez 1205, Concepción",
+  "lat": "-36.839681",
+  "lon": "-73.038615",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "06/05/2026 06:41:50",
+  "correo": "fernandacastro75@icloud.com",
+  "direccion": "Arturo Prat 1072, Puente Alto",
+  "lat": "-33.600188",
+  "lon": "-70.546023",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "07/05/2026 00:07:37",
+  "correo": "sebastian.espinoza@icloud.com",
+  "direccion": "Las Acacias 1068, La Florida",
+  "lat": "-33.539238",
+  "lon": "-70.630574",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "07/05/2026 05:06:24",
+  "correo": "camila.reyes@hotmail.com",
+  "direccion": "Los Nogales 4356, Peñalolén",
+  "lat": "-33.494649",
+  "lon": "-70.533131",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "07/05/2026 11:20:12",
+  "correo": "vichi@hotmail.com",
+  "direccion": "Los Maitenes 3734, Viña del Mar",
+  "lat": "-33.026308",
+  "lon": "-71.555933",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "07/05/2026 12:45:25",
+  "correo": "calvarez@hotmail.com",
+  "direccion": "Arturo Prat 1985, Providencia",
+  "lat": "-33.422713",
+  "lon": "-70.606382",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "07/05/2026 16:11:46",
+  "correo": "lunita2001@hotmail.com",
+  "direccion": "Los Alerces 3663, Quilicura",
+  "lat": "-33.340391",
+  "lon": "-70.725357",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "07/05/2026 16:20:10",
+  "correo": "verdecitoximi21@gmail.com",
+  "direccion": "Arturo Prat 1202, Viña del Mar",
+  "lat": "-33.007082",
+  "lon": "-71.561761",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "07/05/2026 20:53:23",
+  "correo": "fmartinez72@hotmail.com",
+  "direccion": "Los Alerces 2317, Maipú",
+  "lat": "-33.497467",
+  "lon": "-70.745129",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "07/05/2026 23:26:15",
+  "correo": "tomasramirez60@hotmail.com",
+  "direccion": "Los Robles 412, Ñuñoa",
+  "lat": "-33.448105",
+  "lon": "-70.589854",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "08/05/2026 00:04:03",
+  "correo": "panchodaniuwu@outlook.com",
+  "direccion": "Avenida Ossa 4177, Santiago",
+  "lat": "-33.444045",
+  "lon": "-70.651497",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "08/05/2026 08:12:14",
+  "correo": "sebastian.flores@icloud.com",
+  "direccion": "Las Camelias 1580, San Miguel",
+  "lat": "-33.501660",
+  "lon": "-70.639905",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "08/05/2026 14:25:48",
+  "correo": "katajavi88@hotmail.com",
+  "direccion": "Los Cerezos 4184, Recoleta",
+  "lat": "-33.400264",
+  "lon": "-70.647120",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "08/05/2026 18:34:46",
+  "correo": "felipe.silva@usach.cl",
+  "direccion": "Manuel Rodríguez 4484, La Florida",
+  "lat": "-33.527212",
+  "lon": "-70.588768",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "09/05/2026 00:47:35",
+  "correo": "vdiaz84@icloud.com",
+  "direccion": "Avenida Colón 3834, Puente Alto",
+  "lat": "-33.608411",
+  "lon": "-70.607527",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "09/05/2026 01:30:20",
+  "correo": "josefacastro39@icloud.com",
+  "direccion": "Los Cerezos 4036, Las Condes",
+  "lat": "-33.394298",
+  "lon": "-70.582568",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "09/05/2026 04:54:00",
+  "correo": "valentina.hernandez@hotmail.com",
+  "direccion": "Las Camelias 3551, Santiago",
+  "lat": "-33.427545",
+  "lon": "-70.669054",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "09/05/2026 07:23:40",
+  "correo": "papo@usach.cl",
+  "direccion": "Avenida Providencia 2535, Quilicura",
+  "lat": "-33.342981",
+  "lon": "-70.734584",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "09/05/2026 11:29:27",
+  "correo": "francisca.alvarez@icloud.com",
+  "direccion": "Manuel Rodríguez 2622, Valparaíso",
+  "lat": "-33.034652",
+  "lon": "-71.603335",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "09/05/2026 13:38:33",
+  "correo": "paulagonzalez25@icloud.com",
+  "direccion": "Pasaje Los Copihues 257, Santiago",
+  "lat": "-33.456663",
+  "lon": "-70.681129",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "10/05/2026 06:28:51",
+  "correo": "pandita_coni@usach.cl",
+  "direccion": "Los Alerces 2991, Viña del Mar",
+  "lat": "-33.012632",
+  "lon": "-71.535565",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "10/05/2026 09:13:03",
+  "correo": "josefa.diaz@outlook.com",
+  "direccion": "Las Camelias 1059, La Florida",
+  "lat": "-33.544115",
+  "lon": "-70.574967",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "10/05/2026 20:59:47",
+  "correo": "javierdiaz59@icloud.com",
+  "direccion": "Las Camelias 437, Maipú",
+  "lat": "-33.501328",
+  "lon": "-70.793956",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "11/05/2026 02:57:46",
+  "correo": "nikoito@hotmail.com",
+  "direccion": "Los Nogales 3571, Santiago",
+  "lat": "-33.460619",
+  "lon": "-70.671048",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "11/05/2026 12:35:33",
+  "correo": "andres.castillo@hotmail.com",
+  "direccion": "Manuel Rodríguez 4999, Puente Alto",
+  "lat": "-33.607613",
+  "lon": "-70.562477",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "11/05/2026 12:36:01",
+  "correo": "rodrigo.vergara@hotmail.com",
+  "direccion": "Los Cerezos 1224, La Florida",
+  "lat": "-33.521266",
+  "lon": "-70.570355",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "11/05/2026 13:02:31",
+  "correo": "lector.pandita007@gmail.com",
+  "direccion": "Avenida Colón 4873, La Florida",
+  "lat": "-33.528902",
+  "lon": "-70.586217",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "11/05/2026 14:07:07",
+  "correo": "cami21@icloud.com",
+  "direccion": "Avenida Grecia 3246, Santiago",
+  "lat": "-33.451501",
+  "lon": "-70.682747",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "11/05/2026 15:53:46",
+  "correo": "dani@icloud.com",
+  "direccion": "Las Acacias 534, Peñalolén",
+  "lat": "-33.484441",
+  "lon": "-70.555875",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "11/05/2026 23:07:41",
+  "correo": "gatoazulxd@hotmail.com",
+  "direccion": "Los Alerces 1658, Macul",
+  "lat": "-33.491020",
+  "lon": "-70.605343",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "12/05/2026 00:57:08",
+  "correo": "franciscamunoz18@hotmail.com",
+  "direccion": "Avenida Providencia 4544, Santiago",
+  "lat": "-33.458411",
+  "lon": "-70.662697",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "12/05/2026 07:08:42",
+  "correo": "chirimoya_ok@icloud.com",
+  "direccion": "Los Alerces 4666, Maipú",
+  "lat": "-33.487607",
+  "lon": "-70.752331",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "12/05/2026 18:58:35",
+  "correo": "joaquinhernandez99@hotmail.com",
+  "direccion": "Las Camelias 2666, Estación Central",
+  "lat": "-33.471101",
+  "lon": "-70.695276",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "12/05/2026 21:20:41",
+  "correo": "lector@hotmail.com",
+  "direccion": "Avenida Providencia 1611, Santiago",
+  "lat": "-33.461283",
+  "lon": "-70.672292",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "13/05/2026 13:56:50",
+  "correo": "kari007@hotmail.com",
+  "direccion": "San Martín 1181, Santiago",
+  "lat": "-33.450782",
+  "lon": "-70.670509",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "13/05/2026 21:58:55",
+  "correo": "fernanda.castro@icloud.com",
+  "direccion": "Los Alerces 1740, Las Condes",
+  "lat": "-33.406168",
+  "lon": "-70.599315",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "13/05/2026 22:17:17",
+  "correo": "josefa.castro@outlook.com",
+  "direccion": "Los Aromos 1989, Ñuñoa",
+  "lat": "-33.455911",
+  "lon": "-70.611220",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "14/05/2026 01:07:20",
+  "correo": "vicente.ramirez@hotmail.com",
+  "direccion": "Avenida Colón 3249, Ñuñoa",
+  "lat": "-33.449744",
+  "lon": "-70.615014",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "14/05/2026 05:22:01",
+  "correo": "katapanchotkm@gmail.com",
+  "direccion": "Las Camelias 2040, Puente Alto",
+  "lat": "-33.626739",
+  "lon": "-70.574877",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "14/05/2026 05:28:10",
+  "correo": "tallarinpapo88@hotmail.com",
+  "direccion": "Las Acacias 2063, Santiago",
+  "lat": "-33.465285",
+  "lon": "-70.683613",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "14/05/2026 22:18:17",
+  "correo": "chirimoya007@outlook.com",
+  "direccion": "Avenida Matta 250, Ñuñoa",
+  "lat": "-33.448935",
+  "lon": "-70.584257",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "15/05/2026 06:06:32",
+  "correo": "sebastian.lopez@outlook.com",
+  "direccion": "Los Nogales 2783, Santiago",
+  "lat": "-33.448345",
+  "lon": "-70.669276",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "15/05/2026 07:51:30",
+  "correo": "pipe88@icloud.com",
+  "direccion": "Avenida Grecia 4567, La Florida",
+  "lat": "-33.512708",
+  "lon": "-70.606265",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "15/05/2026 12:57:57",
+  "correo": "fran96@hotmail.com",
+  "direccion": "Los Nogales 3320, Macul",
+  "lat": "-33.493882",
+  "lon": "-70.615063",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "15/05/2026 13:46:58",
+  "correo": "martina.gutierrez@gmail.com",
+  "direccion": "Las Acacias 421, Valparaíso",
+  "lat": "-33.037685",
+  "lon": "-71.588672",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "16/05/2026 15:56:35",
+  "correo": "nacho@usach.cl",
+  "direccion": "Los Aromos 4966, Viña del Mar",
+  "lat": "-33.006593",
+  "lon": "-71.560091",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "16/05/2026 19:34:19",
+  "correo": "nortino_pipe88@hotmail.com",
+  "direccion": "Avenida Colón 3503, Puente Alto",
+  "lat": "-33.624919",
+  "lon": "-70.567788",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "17/05/2026 03:14:02",
+  "correo": "fernanda.vergara@icloud.com",
+  "direccion": "Arturo Prat 3884, Las Condes",
+  "lat": "-33.431402",
+  "lon": "-70.555526",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "17/05/2026 11:36:41",
+  "correo": "papo@outlook.com",
+  "direccion": "Manuel Rodríguez 1557, Puente Alto",
+  "lat": "-33.604551",
+  "lon": "-70.557079",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "17/05/2026 11:52:32",
+  "correo": "mmartinez@icloud.com",
+  "direccion": "Los Robles 399, Maipú",
+  "lat": "-33.496008",
+  "lon": "-70.722483",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "17/05/2026 12:39:19",
+  "correo": "benjamin.flores@icloud.com",
+  "direccion": "El Bosque 984, Valparaíso",
+  "lat": "-33.046289",
+  "lon": "-71.607366",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "18/05/2026 05:25:10",
+  "correo": "tallarinxd@icloud.com",
+  "direccion": "Las Acacias 4034, La Florida",
+  "lat": "-33.526147",
+  "lon": "-70.619766",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "18/05/2026 09:15:22",
+  "correo": "male_real@hotmail.com",
+  "direccion": "Los Aromos 2333, Puente Alto",
+  "lat": "-33.602798",
+  "lon": "-70.554675",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "18/05/2026 12:37:09",
+  "correo": "felipe.contreras@outlook.com",
+  "direccion": "San Martín 1389, Puente Alto",
+  "lat": "-33.635432",
+  "lon": "-70.569043",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "18/05/2026 20:15:10",
+  "correo": "rous_9@outlook.com",
+  "direccion": "Avenida Ossa 4793, Puente Alto",
+  "lat": "-33.601131",
+  "lon": "-70.590620",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "19/05/2026 04:05:38",
+  "correo": "sebastian.sandoval@icloud.com",
+  "direccion": "Los Maitenes 3647, Concepción",
+  "lat": "-36.845581",
+  "lon": "-73.063270",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "19/05/2026 11:00:51",
+  "correo": "diego.espinoza@icloud.com",
+  "direccion": "Los Nogales 1400, Santiago",
+  "lat": "-33.442720",
+  "lon": "-70.680372",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "19/05/2026 11:01:05",
+  "correo": "vicente.fuentes@gmail.com",
+  "direccion": "El Bosque 4185, Puente Alto",
+  "lat": "-33.631682",
+  "lon": "-70.559069",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "19/05/2026 13:04:52",
+  "correo": "chinitolunita21@usach.cl",
+  "direccion": "Avenida Matta 4807, La Florida",
+  "lat": "-33.532671",
+  "lon": "-70.602938",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "19/05/2026 15:33:29",
+  "correo": "cmorales@hotmail.com",
+  "direccion": "Los Robles 4963, La Florida",
+  "lat": "-33.530796",
+  "lon": "-70.613703",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "20/05/2026 02:06:11",
+  "correo": "felipeperez98@icloud.com",
+  "direccion": "Avenida Ossa 3724, Santiago",
+  "lat": "-33.467268",
+  "lon": "-70.668279",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "20/05/2026 15:39:36",
+  "correo": "tomasriquelme88@hotmail.com",
+  "direccion": "Avenida Ossa 389, Maipú",
+  "lat": "-33.541876",
+  "lon": "-70.748159",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "20/05/2026 15:51:22",
+  "correo": "javier.sepulveda@gmail.com",
+  "direccion": "Avenida Ossa 3588, Maipú",
+  "lat": "-33.533894",
+  "lon": "-70.750154",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "21/05/2026 16:47:03",
+  "correo": "gatoazul_stgo@icloud.com",
+  "direccion": "Los Maitenes 4970, Las Condes",
+  "lat": "-33.430789",
+  "lon": "-70.556167",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "21/05/2026 17:11:12",
+  "correo": "martina.ramirez@icloud.com",
+  "direccion": "San Martín 565, Maipú",
+  "lat": "-33.486516",
+  "lon": "-70.780922",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "21/05/2026 22:22:04",
+  "correo": "macarena.sandoval@gmail.com",
+  "direccion": "Los Nogales 4176, La Florida",
+  "lat": "-33.510774",
+  "lon": "-70.604109",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "21/05/2026 23:47:39",
+  "correo": "ososs_recicla@gmail.com",
+  "direccion": "Avenida Macul 2930, La Florida",
+  "lat": "-33.513286",
+  "lon": "-70.607371",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "22/05/2026 01:16:08",
+  "correo": "emilia.castillo@icloud.com",
+  "direccion": "Manuel Rodríguez 2366, Ñuñoa",
+  "lat": "-33.449662",
+  "lon": "-70.595353",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "22/05/2026 08:39:02",
+  "correo": "catalina.castro@hotmail.com",
+  "direccion": "El Bosque 1979, Providencia",
+  "lat": "-33.426695",
+  "lon": "-70.624714",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "22/05/2026 09:05:31",
+  "correo": "isidorarojas91@usach.cl",
+  "direccion": "Los Nogales 2099, Las Condes",
+  "lat": "-33.385604",
+  "lon": "-70.556085",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "22/05/2026 14:23:20",
+  "correo": "joaquin.perez@icloud.com",
+  "direccion": "Los Aromos 1878, Macul",
+  "lat": "-33.478961",
+  "lon": "-70.589050",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "22/05/2026 17:24:53",
+  "correo": "lector_male96@gmail.com",
+  "direccion": "Los Alerces 4748, Peñalolén",
+  "lat": "-33.491382",
+  "lon": "-70.515616",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "22/05/2026 18:58:37",
+  "correo": "javi_chirimoya21@gmail.com",
+  "direccion": "Los Alerces 3394, Estación Central",
+  "lat": "-33.454693",
+  "lon": "-70.697640",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "23/05/2026 22:01:45",
+  "correo": "diego.rodriguez@usach.cl",
+  "direccion": "Los Robles 3018, Recoleta",
+  "lat": "-33.417391",
+  "lon": "-70.644359",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "24/05/2026 11:39:49",
+  "correo": "flaco_ok@hotmail.com",
+  "direccion": "Pasaje Los Copihues 1318, Maipú",
+  "lat": "-33.500694",
+  "lon": "-70.742612",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "24/05/2026 12:09:34",
+  "correo": "cristobal.alvarez@icloud.com",
+  "direccion": "San Martín 4947, San Miguel",
+  "lat": "-33.490614",
+  "lon": "-70.652398",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "24/05/2026 13:16:27",
+  "correo": "gonzalo.castillo@icloud.com",
+  "direccion": "Arturo Prat 649, Maipú",
+  "lat": "-33.527076",
+  "lon": "-70.790857",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "24/05/2026 21:14:50",
+  "correo": "terremoto.huevoduro_ok@hotmail.com",
+  "direccion": "Avenida Providencia 4840, Ñuñoa",
+  "lat": "-33.459222",
+  "lon": "-70.592712",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "24/05/2026 21:29:24",
+  "correo": "valentina.munoz2@gmail.com",
+  "direccion": "Avenida Colón 2183, Peñalolén",
+  "lat": "-33.471985",
+  "lon": "-70.523914",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "25/05/2026 02:47:35",
+  "correo": "tomas.riquelme@usach.cl",
+  "direccion": "Las Acacias 3449, Quilicura",
+  "lat": "-33.366993",
+  "lon": "-70.726406",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "25/05/2026 07:52:08",
+  "correo": "joaquin.martinez@icloud.com",
+  "direccion": "Los Cerezos 721, Viña del Mar",
+  "lat": "-33.016395",
+  "lon": "-71.530753",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "25/05/2026 08:15:04",
+  "correo": "mrodriguez@hotmail.com",
+  "direccion": "Los Alerces 1902, Maipú",
+  "lat": "-33.520518",
+  "lon": "-70.723313",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "25/05/2026 10:28:37",
+  "correo": "verdecito21@icloud.com",
+  "direccion": "Avenida Ossa 3777, La Florida",
+  "lat": "-33.535743",
+  "lon": "-70.590332",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "25/05/2026 13:49:35",
+  "correo": "martina.silva@gmail.com",
+  "direccion": "Los Alerces 1761, Santiago",
+  "lat": "-33.455071",
+  "lon": "-70.661279",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "25/05/2026 16:02:48",
+  "correo": "benjamin.castro@usach.cl",
+  "direccion": "Arturo Prat 479, Providencia",
+  "lat": "-33.437055",
+  "lon": "-70.606716",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "25/05/2026 21:57:26",
+  "correo": "terremoto96@usach.cl",
+  "direccion": "Las Camelias 2427, Valparaíso",
+  "lat": "-33.022316",
+  "lon": "-71.610297",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "26/05/2026 05:02:21",
+  "correo": "ecko.cl@gmail.com",
+  "direccion": "Los Aromos 2457, Maipú",
+  "lat": "-33.532400",
+  "lon": "-70.777606",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "26/05/2026 05:43:03",
+  "correo": "manu_360@outlook.com",
+  "direccion": "Avenida Ossa 2348, Puente Alto",
+  "lat": "-33.588681",
+  "lon": "-70.567819",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "26/05/2026 12:30:25",
+  "correo": "atun_360@icloud.com",
+  "direccion": "El Bosque 4039, Concepción",
+  "lat": "-36.825032",
+  "lon": "-73.034880",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "27/05/2026 03:14:07",
+  "correo": "camiito@usach.cl",
+  "direccion": "Los Maitenes 4708, Estación Central",
+  "lat": "-33.456925",
+  "lon": "-70.677429",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "27/05/2026 06:38:56",
+  "correo": "zeta.cl@outlook.com",
+  "direccion": "Avenida Grecia 3927, Valparaíso",
+  "lat": "-33.054814",
+  "lon": "-71.588533",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "27/05/2026 15:58:04",
+  "correo": "antonia.gonzalez@gmail.com",
+  "direccion": "Avenida Grecia 3728, Providencia",
+  "lat": "-33.418396",
+  "lon": "-70.610425",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "27/05/2026 18:14:44",
+  "correo": "emilia.castro@usach.cl",
+  "direccion": "Arturo Prat 2480, Recoleta",
+  "lat": "-33.407151",
+  "lon": "-70.636617",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "28/05/2026 05:20:17",
+  "correo": "javier.soto@icloud.com",
+  "direccion": "Avenida Colón 4656, Puente Alto",
+  "lat": "-33.605635",
+  "lon": "-70.574434",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "28/05/2026 15:35:38",
+  "correo": "josefa.hernandez@hotmail.com",
+  "direccion": "San Martín 951, Puente Alto",
+  "lat": "-33.631370",
+  "lon": "-70.585459",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "29/05/2026 04:24:54",
+  "correo": "emiliacastro17@hotmail.com",
+  "direccion": "Los Alerces 2928, La Florida",
+  "lat": "-33.550191",
+  "lon": "-70.614237",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "29/05/2026 15:30:31",
+  "correo": "valentina.valenzuela@icloud.com",
+  "direccion": "Avenida Grecia 1010, Santiago",
+  "lat": "-33.446440",
+  "lon": "-70.673135",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "30/05/2026 03:29:23",
+  "correo": "manu@gmail.com",
+  "direccion": "Las Acacias 2844, Ñuñoa",
+  "lat": "-33.469212",
+  "lon": "-70.586021",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "31/05/2026 05:49:40",
+  "correo": "ososs_stgo@outlook.com",
+  "direccion": "Las Camelias 4291, Estación Central",
+  "lat": "-33.446798",
+  "lon": "-70.686719",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "31/05/2026 07:46:13",
+  "correo": "fmartinez85@gmail.com",
+  "direccion": "Las Rosas 3649, La Florida",
+  "lat": "-33.526733",
+  "lon": "-70.568782",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "31/05/2026 08:44:54",
+  "correo": "bflores88@gmail.com",
+  "direccion": "Arturo Prat 3803, Ñuñoa",
+  "lat": "-33.449823",
+  "lon": "-70.584530",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "31/05/2026 15:18:53",
+  "correo": "felipe.sepulveda@hotmail.com",
+  "direccion": "Avenida Colón 2228, Santiago",
+  "lat": "-33.438608",
+  "lon": "-70.677130",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "31/05/2026 19:04:34",
+  "correo": "gonzalo.silva@icloud.com",
+  "direccion": "Las Rosas 1308, Las Condes",
+  "lat": "-33.422898",
+  "lon": "-70.588330",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "31/05/2026 21:48:45",
+  "correo": "javi2001@hotmail.com",
+  "direccion": "Avenida Matta 151, Valparaíso",
+  "lat": "-33.052296",
+  "lon": "-71.616742",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "01/06/2026 00:15:47",
+  "correo": "sebastiancastillo23@gmail.com",
+  "direccion": "Los Nogales 3071, Maipú",
+  "lat": "-33.514530",
+  "lon": "-70.729599",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "01/06/2026 01:17:18",
+  "correo": "josefa.castro@icloud.com",
+  "direccion": "San Martín 1521, Recoleta",
+  "lat": "-33.400714",
+  "lon": "-70.647738",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "01/06/2026 05:03:49",
+  "correo": "cristobal.reyes@hotmail.com",
+  "direccion": "Las Camelias 2234, La Florida",
+  "lat": "-33.544168",
+  "lon": "-70.587266",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "01/06/2026 06:12:14",
+  "correo": "nortino.manu88@hotmail.com",
+  "direccion": "Los Maitenes 818, Peñalolén",
+  "lat": "-33.488721",
+  "lon": "-70.533750",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "01/06/2026 09:24:07",
+  "correo": "niko_stgo@gmail.com",
+  "direccion": "Avenida Macul 2785, Santiago",
+  "lat": "-33.434919",
+  "lon": "-70.653885",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "01/06/2026 13:51:10",
+  "correo": "rodrigo.castro@hotmail.com",
+  "direccion": "Avenida Matta 2361, Las Condes",
+  "lat": "-33.428228",
+  "lon": "-70.589820",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "01/06/2026 15:03:44",
+  "correo": "francisca.ramirez@usach.cl",
+  "direccion": "San Martín 149, Las Condes",
+  "lat": "-33.395074",
+  "lon": "-70.584249",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "01/06/2026 20:03:42",
+  "correo": "kiwi.dev@gmail.com",
+  "direccion": "Avenida Ossa 553, Puente Alto",
+  "lat": "-33.590725",
+  "lon": "-70.570328",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "02/06/2026 04:52:55",
+  "correo": "joaquinfuentes76@gmail.com",
+  "direccion": "Pasaje Los Copihues 3834, Valparaíso",
+  "lat": "-33.044897",
+  "lon": "-71.622662",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "02/06/2026 06:21:06",
+  "correo": "recicloxd@gmail.com",
+  "direccion": "Avenida Grecia 861, Quilicura",
+  "lat": "-33.360464",
+  "lon": "-70.736595",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "02/06/2026 07:08:33",
+  "correo": "atorres80@gmail.com",
+  "direccion": "Los Robles 821, San Miguel",
+  "lat": "-33.486025",
+  "lon": "-70.646059",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "02/06/2026 10:14:28",
+  "correo": "franciscafuentes38@outlook.com",
+  "direccion": "Las Camelias 4266, Ñuñoa",
+  "lat": "-33.454503",
+  "lon": "-70.582953",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "02/06/2026 15:30:38",
+  "correo": "fernanda.flores@gmail.com",
+  "direccion": "El Bosque 998, Peñalolén",
+  "lat": "-33.466441",
+  "lon": "-70.553506",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "03/06/2026 02:06:59",
+  "correo": "macarena.rojas@hotmail.com",
+  "direccion": "Los Alerces 2862, Recoleta",
+  "lat": "-33.398476",
+  "lon": "-70.626303",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "03/06/2026 02:24:33",
+  "correo": "katatallarinxd@gmail.com",
+  "direccion": "Avenida Colón 204, Las Condes",
+  "lat": "-33.399291",
+  "lon": "-70.577303",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "03/06/2026 08:34:57",
+  "correo": "josefa.sandoval@usach.cl",
+  "direccion": "Los Maitenes 3375, Maipú",
+  "lat": "-33.511781",
+  "lon": "-70.775408",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "03/06/2026 11:26:21",
+  "correo": "reciclo.flaco96@hotmail.com",
+  "direccion": "Pasaje Los Copihues 3312, San Miguel",
+  "lat": "-33.490306",
+  "lon": "-70.666463",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "03/06/2026 17:13:34",
+  "correo": "fran_flacotkm@gmail.com",
+  "direccion": "Avenida Macul 855, Peñalolén",
+  "lat": "-33.492918",
+  "lon": "-70.558156",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "03/06/2026 18:02:35",
+  "correo": "gatoazulterremoto_9@icloud.com",
+  "direccion": "Los Cerezos 331, Las Condes",
+  "lat": "-33.427245",
+  "lon": "-70.566674",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "04/06/2026 04:51:50",
+  "correo": "cristobal.valenzuela@usach.cl",
+  "direccion": "Los Nogales 3560, Valparaíso",
+  "lat": "-33.050977",
+  "lon": "-71.630399",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "04/06/2026 21:01:01",
+  "correo": "kata96@hotmail.com",
+  "direccion": "Las Rosas 713, Valparaíso",
+  "lat": "-33.038386",
+  "lon": "-71.630198",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "05/06/2026 02:23:34",
+  "correo": "martina.soto@icloud.com",
+  "direccion": "Las Rosas 4543, Las Condes",
+  "lat": "-33.414186",
+  "lon": "-70.590753",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "05/06/2026 11:34:11",
+  "correo": "macarena.sepulveda@usach.cl",
+  "direccion": "Avenida Macul 463, Concepción",
+  "lat": "-36.813381",
+  "lon": "-73.069176",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "05/06/2026 20:55:40",
+  "correo": "rodrigo.morales@gmail.com",
+  "direccion": "El Bosque 411, Puente Alto",
+  "lat": "-33.629374",
+  "lon": "-70.602820",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "05/06/2026 21:33:25",
+  "correo": "benjamindiaz34@hotmail.com",
+  "direccion": "Los Alerces 1126, Santiago",
+  "lat": "-33.463259",
+  "lon": "-70.680923",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "05/06/2026 22:46:50",
+  "correo": "bicicletatkm@outlook.com",
+  "direccion": "Las Rosas 4256, Puente Alto",
+  "lat": "-33.590127",
+  "lon": "-70.557391",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "06/06/2026 03:09:18",
+  "correo": "ignacio.contreras@hotmail.com",
+  "direccion": "Pasaje Los Copihues 2219, Maipú",
+  "lat": "-33.505821",
+  "lon": "-70.733465",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "06/06/2026 04:35:57",
+  "correo": "ososs_motexd@icloud.com",
+  "direccion": "Las Acacias 2416, Puente Alto",
+  "lat": "-33.585689",
+  "lon": "-70.563551",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "06/06/2026 11:16:12",
+  "correo": "lector96@hotmail.com",
+  "direccion": "Los Alerces 4982, Macul",
+  "lat": "-33.495421",
+  "lon": "-70.588650",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "06/06/2026 12:55:51",
+  "correo": "dguerrero@hotmail.com",
+  "direccion": "Las Camelias 3580, Peñalolén",
+  "lat": "-33.474710",
+  "lon": "-70.524520",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "06/06/2026 14:42:55",
+  "correo": "eckotkm@hotmail.com",
+  "direccion": "Las Acacias 2883, Las Condes",
+  "lat": "-33.414603",
+  "lon": "-70.564920",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "06/06/2026 17:59:25",
+  "correo": "diego.vergara@gmail.com",
+  "direccion": "Avenida Macul 1476, Ñuñoa",
+  "lat": "-33.450383",
+  "lon": "-70.603370",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "06/06/2026 19:44:51",
+  "correo": "nachoito@usach.cl",
+  "direccion": "San Martín 2482, Maipú",
+  "lat": "-33.519767",
+  "lon": "-70.732421",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "06/06/2026 20:18:08",
+  "correo": "kata.cl@hotmail.com",
+  "direccion": "Pasaje Los Copihues 1074, Providencia",
+  "lat": "-33.425595",
+  "lon": "-70.592970",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "06/06/2026 23:00:11",
+  "correo": "mica_male_ok@gmail.com",
+  "direccion": "Los Alerces 3648, Maipú",
+  "lat": "-33.505107",
+  "lon": "-70.797644",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "06/06/2026 23:38:42",
+  "correo": "constanza.torres@usach.cl",
+  "direccion": "Las Acacias 3413, Valparaíso",
+  "lat": "-33.040749",
+  "lon": "-71.585814",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "07/06/2026 07:34:39",
+  "correo": "verdecitoseba96@gmail.com",
+  "direccion": "Avenida Grecia 3092, Santiago",
+  "lat": "-33.468602",
+  "lon": "-70.665934",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "07/06/2026 13:30:58",
+  "correo": "tallarin_ximi.cl@usach.cl",
+  "direccion": "Las Rosas 2810, Puente Alto",
+  "lat": "-33.639172",
+  "lon": "-70.565523",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "08/06/2026 07:44:23",
+  "correo": "zeta2001@hotmail.com",
+  "direccion": "Avenida Grecia 3138, Las Condes",
+  "lat": "-33.398390",
+  "lon": "-70.559102",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "08/06/2026 14:01:04",
+  "correo": "verdecitoito@gmail.com",
+  "direccion": "Los Nogales 2564, Viña del Mar",
+  "lat": "-33.024745",
+  "lon": "-71.572457",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "08/06/2026 18:09:26",
+  "correo": "pollitochirimoya@outlook.com",
+  "direccion": "Arturo Prat 2631, Las Condes",
+  "lat": "-33.393337",
+  "lon": "-70.595281",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "09/06/2026 02:15:06",
+  "correo": "antoniacastro93@gmail.com",
+  "direccion": "Pasaje Los Copihues 1735, Quilicura",
+  "lat": "-33.350781",
+  "lon": "-70.746941",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "09/06/2026 17:49:09",
+  "correo": "peke.nortino21@icloud.com",
+  "direccion": "Las Acacias 204, Ñuñoa",
+  "lat": "-33.446523",
+  "lon": "-70.580388",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "09/06/2026 19:27:40",
+  "correo": "vguerrero@gmail.com",
+  "direccion": "Avenida Providencia 3743, Las Condes",
+  "lat": "-33.393904",
+  "lon": "-70.580166",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "09/06/2026 20:43:24",
+  "correo": "chinito_kiwiito@icloud.com",
+  "direccion": "Avenida Colón 2423, Ñuñoa",
+  "lat": "-33.464833",
+  "lon": "-70.581541",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "10/06/2026 06:47:21",
+  "correo": "fgutierrez@gmail.com",
+  "direccion": "Avenida Matta 2198, Ñuñoa",
+  "lat": "-33.452569",
+  "lon": "-70.600179",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "10/06/2026 08:20:15",
+  "correo": "ignacio.torres@gmail.com",
+  "direccion": "Los Nogales 3493, La Florida",
+  "lat": "-33.546963",
+  "lon": "-70.572206",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "11/06/2026 00:11:59",
+  "correo": "ecastillo70@icloud.com",
+  "direccion": "Avenida Matta 4249, San Miguel",
+  "lat": "-33.500602",
+  "lon": "-70.638194",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "11/06/2026 01:06:57",
+  "correo": "flaco_23@outlook.com",
+  "direccion": "Manuel Rodríguez 4760, Las Condes",
+  "lat": "-33.386776",
+  "lon": "-70.582005",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "11/06/2026 09:38:17",
+  "correo": "mote_23@icloud.com",
+  "direccion": "San Martín 3114, Estación Central",
+  "lat": "-33.454224",
+  "lon": "-70.676630",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "11/06/2026 19:23:46",
+  "correo": "paula.castillo@hotmail.com",
+  "direccion": "Los Nogales 698, Macul",
+  "lat": "-33.496452",
+  "lon": "-70.584143",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "12/06/2026 02:26:06",
+  "correo": "andresramirez14@usach.cl",
+  "direccion": "Avenida Matta 2331, Puente Alto",
+  "lat": "-33.611497",
+  "lon": "-70.557842",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "12/06/2026 03:35:00",
+  "correo": "francisca.diaz@icloud.com",
+  "direccion": "Avenida Ossa 355, Estación Central",
+  "lat": "-33.466427",
+  "lon": "-70.671863",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "12/06/2026 05:05:45",
+  "correo": "constanza.martinez@outlook.com",
+  "direccion": "Manuel Rodríguez 2970, Santiago",
+  "lat": "-33.448150",
+  "lon": "-70.653714",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "12/06/2026 08:46:16",
+  "correo": "asilva@usach.cl",
+  "direccion": "El Bosque 3857, Maipú",
+  "lat": "-33.531910",
+  "lon": "-70.775481",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "12/06/2026 16:34:13",
+  "correo": "katatkm@usach.cl",
+  "direccion": "Avenida Grecia 4696, Peñalolén",
+  "lat": "-33.468700",
+  "lon": "-70.530457",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "12/06/2026 17:38:04",
+  "correo": "javi@icloud.com",
+  "direccion": "San Martín 1649, Recoleta",
+  "lat": "-33.407967",
+  "lon": "-70.624590",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "12/06/2026 18:30:01",
+  "correo": "peke@icloud.com",
+  "direccion": "Los Maitenes 2155, Recoleta",
+  "lat": "-33.411759",
+  "lon": "-70.627425",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "13/06/2026 10:00:43",
+  "correo": "zeta.pancho@hotmail.com",
+  "direccion": "Avenida Matta 4172, Providencia",
+  "lat": "-33.427245",
+  "lon": "-70.594530",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "13/06/2026 15:35:12",
+  "correo": "dreyes77@gmail.com",
+  "direccion": "Los Nogales 776, Las Condes",
+  "lat": "-33.405579",
+  "lon": "-70.585240",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "13/06/2026 18:06:24",
+  "correo": "jgonzalez@outlook.com",
+  "direccion": "Los Robles 2072, Puente Alto",
+  "lat": "-33.597239",
+  "lon": "-70.588407",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "14/06/2026 12:02:15",
+  "correo": "glopez82@gmail.com",
+  "direccion": "Los Robles 591, Santiago",
+  "lat": "-33.451487",
+  "lon": "-70.678433",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "15/06/2026 04:39:17",
+  "correo": "maleterremoto2001@hotmail.com",
+  "direccion": "Avenida Ossa 1761, Estación Central",
+  "lat": "-33.460609",
+  "lon": "-70.691361",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "15/06/2026 07:35:32",
+  "correo": "peke007@gmail.com",
+  "direccion": "Los Nogales 1654, Maipú",
+  "lat": "-33.530384",
+  "lon": "-70.773128",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "15/06/2026 12:20:04",
+  "correo": "martina.rojas@icloud.com",
+  "direccion": "Los Cerezos 3168, Providencia",
+  "lat": "-33.440596",
+  "lon": "-70.603120",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "15/06/2026 14:08:54",
+  "correo": "paula.morales@hotmail.com",
+  "direccion": "San Martín 4043, Macul",
+  "lat": "-33.491198",
+  "lon": "-70.585329",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "16/06/2026 03:13:14",
+  "correo": "rulo_360@usach.cl",
+  "direccion": "Los Aromos 136, San Miguel",
+  "lat": "-33.494746",
+  "lon": "-70.663542",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "16/06/2026 07:28:22",
+  "correo": "reciclo_real@icloud.com",
+  "direccion": "Los Cerezos 2424, La Florida",
+  "lat": "-33.536656",
+  "lon": "-70.585481",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "16/06/2026 22:00:10",
+  "correo": "kata_flaco_360@gmail.com",
+  "direccion": "Avenida Providencia 3493, Santiago",
+  "lat": "-33.453608",
+  "lon": "-70.671950",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "17/06/2026 01:24:42",
+  "correo": "motexd@icloud.com",
+  "direccion": "Arturo Prat 238, Maipú",
+  "lat": "-33.523431",
+  "lon": "-70.751367",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "17/06/2026 06:55:26",
+  "correo": "composteraxd@gmail.com",
+  "direccion": "Avenida Grecia 4285, Ñuñoa",
+  "lat": "-33.452301",
+  "lon": "-70.585274",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "17/06/2026 07:13:39",
+  "correo": "tomi007@icloud.com",
+  "direccion": "Avenida Colón 540, Puente Alto",
+  "lat": "-33.600194",
+  "lon": "-70.592386",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "17/06/2026 08:14:25",
+  "correo": "lolo@hotmail.com",
+  "direccion": "Las Camelias 3937, Providencia",
+  "lat": "-33.439220",
+  "lon": "-70.594274",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "17/06/2026 10:10:47",
+  "correo": "barbarasoto5@hotmail.com",
+  "direccion": "Los Nogales 1525, Providencia",
+  "lat": "-33.424903",
+  "lon": "-70.618033",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "17/06/2026 23:43:54",
+  "correo": "nramirez@gmail.com",
+  "direccion": "Los Robles 1041, La Florida",
+  "lat": "-33.550695",
+  "lon": "-70.574263",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "19/06/2026 04:26:45",
+  "correo": "pcastro@gmail.com",
+  "direccion": "Los Alerces 3613, Peñalolén",
+  "lat": "-33.496721",
+  "lon": "-70.536048",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "19/06/2026 10:43:53",
+  "correo": "verdecito@outlook.com",
+  "direccion": "San Martín 4051, Concepción",
+  "lat": "-36.834382",
+  "lon": "-73.064839",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "19/06/2026 15:04:59",
+  "correo": "manu.flaco007@hotmail.com",
+  "direccion": "Avenida Providencia 4454, Peñalolén",
+  "lat": "-33.469633",
+  "lon": "-70.538907",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "19/06/2026 21:50:15",
+  "correo": "vlopez86@hotmail.com",
+  "direccion": "El Bosque 2691, Estación Central",
+  "lat": "-33.450724",
+  "lon": "-70.676334",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "19/06/2026 22:29:13",
+  "correo": "matias.guerrero@outlook.com",
+  "direccion": "Los Nogales 391, Santiago",
+  "lat": "-33.453106",
+  "lon": "-70.647832",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "20/06/2026 03:42:18",
+  "correo": "male_rulo@gmail.com",
+  "direccion": "Los Cerezos 2126, Las Condes",
+  "lat": "-33.400797",
+  "lon": "-70.599454",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "20/06/2026 12:38:47",
+  "correo": "betoito@hotmail.com",
+  "direccion": "Manuel Rodríguez 3685, Puente Alto",
+  "lat": "-33.628686",
+  "lon": "-70.547398",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "20/06/2026 19:21:39",
+  "correo": "valentinagutierrez46@outlook.com",
+  "direccion": "Las Acacias 4244, Estación Central",
+  "lat": "-33.471417",
+  "lon": "-70.675397",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "21/06/2026 04:52:23",
+  "correo": "compostera.lolouwu@hotmail.com",
+  "direccion": "Las Acacias 198, La Florida",
+  "lat": "-33.550408",
+  "lon": "-70.606637",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "21/06/2026 21:25:25",
+  "correo": "nachokata.cl@outlook.com",
+  "direccion": "Avenida Macul 3117, Maipú",
+  "lat": "-33.519571",
+  "lon": "-70.728651",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "21/06/2026 23:28:12",
+  "correo": "vale.peke88@icloud.com",
+  "direccion": "Los Alerces 987, San Miguel",
+  "lat": "-33.497783",
+  "lon": "-70.646389",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "22/06/2026 13:50:08",
+  "correo": "javier.vergara@hotmail.com",
+  "direccion": "Avenida Grecia 4348, Peñalolén",
+  "lat": "-33.499252",
+  "lon": "-70.555798",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "23/06/2026 13:59:49",
+  "correo": "gonzalo.sepulveda@outlook.com",
+  "direccion": "Manuel Rodríguez 4766, Recoleta",
+  "lat": "-33.423930",
+  "lon": "-70.651703",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "24/06/2026 00:35:43",
+  "correo": "matias.diaz@gmail.com",
+  "direccion": "Avenida Providencia 258, La Florida",
+  "lat": "-33.541534",
+  "lon": "-70.583137",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "24/06/2026 08:54:12",
+  "correo": "vperez91@usach.cl",
+  "direccion": "Las Camelias 2287, Valparaíso",
+  "lat": "-33.043128",
+  "lon": "-71.596067",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "24/06/2026 13:18:07",
+  "correo": "dani_recicla@gmail.com",
+  "direccion": "Avenida Macul 3620, Las Condes",
+  "lat": "-33.397045",
+  "lon": "-70.573005",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "24/06/2026 16:08:35",
+  "correo": "compostera.dev@usach.cl",
+  "direccion": "Pasaje Los Copihues 2337, Estación Central",
+  "lat": "-33.456015",
+  "lon": "-70.690547",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "26/06/2026 04:03:54",
+  "correo": "camitkm@usach.cl",
+  "direccion": "Los Maitenes 1339, Puente Alto",
+  "lat": "-33.594104",
+  "lon": "-70.597085",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "26/06/2026 19:55:46",
+  "correo": "fernandahernandez36@usach.cl",
+  "direccion": "Avenida Colón 2598, San Miguel",
+  "lat": "-33.502963",
+  "lon": "-70.647262",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "26/06/2026 22:05:48",
+  "correo": "camixd@gmail.com",
+  "direccion": "Los Alerces 3521, Ñuñoa",
+  "lat": "-33.457986",
+  "lon": "-70.615057",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "27/06/2026 01:28:07",
+  "correo": "catalina.soto@hotmail.com",
+  "direccion": "El Bosque 706, Ñuñoa",
+  "lat": "-33.440213",
+  "lon": "-70.590319",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "27/06/2026 09:35:50",
+  "correo": "nortino_recicla@icloud.com",
+  "direccion": "Avenida Macul 3296, Providencia",
+  "lat": "-33.431581",
+  "lon": "-70.608120",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "27/06/2026 10:08:46",
+  "correo": "panchoxd@hotmail.com",
+  "direccion": "San Martín 1960, Ñuñoa",
+  "lat": "-33.465876",
+  "lon": "-70.607423",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "27/06/2026 11:03:47",
+  "correo": "rrojas@usach.cl",
+  "direccion": "Arturo Prat 2511, Santiago",
+  "lat": "-33.437945",
+  "lon": "-70.680833",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "27/06/2026 18:10:23",
+  "correo": "huevodurouwu@usach.cl",
+  "direccion": "Los Cerezos 3808, Providencia",
+  "lat": "-33.429661",
+  "lon": "-70.592260",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "28/06/2026 05:49:07",
+  "correo": "bicicleta@icloud.com",
+  "direccion": "Avenida Colón 722, Viña del Mar",
+  "lat": "-33.023193",
+  "lon": "-71.573464",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "28/06/2026 09:31:37",
+  "correo": "composteraniko.dev@icloud.com",
+  "direccion": "Arturo Prat 2178, Las Condes",
+  "lat": "-33.410517",
+  "lon": "-70.596513",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "28/06/2026 10:07:26",
+  "correo": "constanza.sandoval@gmail.com",
+  "direccion": "Manuel Rodríguez 1058, Providencia",
+  "lat": "-33.443818",
+  "lon": "-70.610216",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "28/06/2026 16:30:24",
+  "correo": "lolo_nortino88@gmail.com",
+  "direccion": "Avenida Ossa 107, Valparaíso",
+  "lat": "-33.032344",
+  "lon": "-71.597441",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "28/06/2026 16:50:35",
+  "correo": "atun@icloud.com",
+  "direccion": "Las Camelias 4152, Santiago",
+  "lat": "-33.431234",
+  "lon": "-70.683417",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "28/06/2026 20:44:36",
+  "correo": "fernandacastillo53@hotmail.com",
+  "direccion": "Los Cerezos 3930, Ñuñoa",
+  "lat": "-33.473922",
+  "lon": "-70.590897",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "29/06/2026 09:13:18",
+  "correo": "felipe.fuentes@hotmail.com",
+  "direccion": "Avenida Macul 2843, Peñalolén",
+  "lat": "-33.468099",
+  "lon": "-70.545203",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "29/06/2026 13:37:38",
+  "correo": "catalinaespinoza88@gmail.com",
+  "direccion": "Pasaje Los Copihues 1340, Santiago",
+  "lat": "-33.458834",
+  "lon": "-70.676815",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "30/06/2026 06:49:08",
+  "correo": "verdecito@usach.cl",
+  "direccion": "Los Aromos 3512, Puente Alto",
+  "lat": "-33.585132",
+  "lon": "-70.586238",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "30/06/2026 12:05:58",
+  "correo": "diegoflores71@gmail.com",
+  "direccion": "El Bosque 4271, Las Condes",
+  "lat": "-33.405933",
+  "lon": "-70.597606",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "30/06/2026 12:20:40",
+  "correo": "ximiatuntkm@hotmail.com",
+  "direccion": "Los Aromos 1605, Puente Alto",
+  "lat": "-33.606373",
+  "lon": "-70.582988",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "30/06/2026 12:51:03",
+  "correo": "reciclo_zeta@hotmail.com",
+  "direccion": "Las Camelias 4782, Valparaíso",
+  "lat": "-33.029206",
+  "lon": "-71.620408",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "01/07/2026 03:06:04",
+  "correo": "tuti_stgo@icloud.com",
+  "direccion": "Pasaje Los Copihues 2740, Maipú",
+  "lat": "-33.532570",
+  "lon": "-70.744574",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "01/07/2026 14:02:42",
+  "correo": "fvalenzuela@icloud.com",
+  "direccion": "Avenida Grecia 589, Providencia",
+  "lat": "-33.436209",
+  "lon": "-70.623940",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "01/07/2026 18:48:49",
+  "correo": "valentinatorres83@icloud.com",
+  "direccion": "Los Cerezos 2945, Puente Alto",
+  "lat": "-33.626957",
+  "lon": "-70.582748",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "01/07/2026 22:42:14",
+  "correo": "benjamin.valenzuela@icloud.com",
+  "direccion": "Las Acacias 3435, Maipú",
+  "lat": "-33.529433",
+  "lon": "-70.774218",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "02/07/2026 03:36:49",
+  "correo": "nachoxd@hotmail.com",
+  "direccion": "Los Cerezos 4004, Peñalolén",
+  "lat": "-33.490979",
+  "lon": "-70.538788",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "02/07/2026 03:55:19",
+  "correo": "tomas.sandoval@hotmail.com",
+  "direccion": "Pasaje Los Copihues 1551, Las Condes",
+  "lat": "-33.394588",
+  "lon": "-70.554061",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "02/07/2026 05:06:37",
+  "correo": "franxd@hotmail.com",
+  "direccion": "El Bosque 841, Valparaíso",
+  "lat": "-33.035250",
+  "lon": "-71.631654",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "02/07/2026 08:53:02",
+  "correo": "terremotouwu@icloud.com",
+  "direccion": "Las Rosas 353, Ñuñoa",
+  "lat": "-33.452221",
+  "lon": "-70.603326",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "02/07/2026 09:29:12",
+  "correo": "fsandoval@usach.cl",
+  "direccion": "Avenida Macul 2791, Valparaíso",
+  "lat": "-33.045001",
+  "lon": "-71.637701",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "02/07/2026 19:58:24",
+  "correo": "niko88@icloud.com",
+  "direccion": "Avenida Providencia 4561, Santiago",
+  "lat": "-33.458764",
+  "lon": "-70.650639",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "02/07/2026 21:44:48",
+  "correo": "matiasvalenzuela74@gmail.com",
+  "direccion": "Avenida Macul 2877, Providencia",
+  "lat": "-33.431674",
+  "lon": "-70.603631",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "03/07/2026 07:01:24",
+  "correo": "antoniasepulveda68@icloud.com",
+  "direccion": "Los Alerces 3061, Providencia",
+  "lat": "-33.426470",
+  "lon": "-70.610839",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "03/07/2026 14:30:43",
+  "correo": "daniela.soto@usach.cl",
+  "direccion": "Los Alerces 1109, Estación Central",
+  "lat": "-33.464132",
+  "lon": "-70.703054",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "03/07/2026 19:44:04",
+  "correo": "javier.castro@icloud.com",
+  "direccion": "Avenida Ossa 2202, Providencia",
+  "lat": "-33.441278",
+  "lon": "-70.611677",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "04/07/2026 00:20:21",
+  "correo": "javipeke_9@icloud.com",
+  "direccion": "Pasaje Los Copihues 467, Valparaíso",
+  "lat": "-33.039804",
+  "lon": "-71.596084",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "04/07/2026 07:37:19",
+  "correo": "valentinaperez70@hotmail.com",
+  "direccion": "El Bosque 2449, Ñuñoa",
+  "lat": "-33.445063",
+  "lon": "-70.594349",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "04/07/2026 13:13:56",
+  "correo": "kariuwu@hotmail.com",
+  "direccion": "Arturo Prat 3879, Ñuñoa",
+  "lat": "-33.451620",
+  "lon": "-70.615596",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "05/07/2026 01:19:10",
+  "correo": "peke007@icloud.com",
+  "direccion": "Avenida Providencia 1223, Concepción",
+  "lat": "-36.810311",
+  "lon": "-73.030167",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "05/07/2026 09:52:16",
+  "correo": "joaquin.torres@usach.cl",
+  "direccion": "Arturo Prat 1707, Puente Alto",
+  "lat": "-33.598106",
+  "lon": "-70.606609",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "05/07/2026 11:42:40",
+  "correo": "tomasalvarez22@hotmail.com",
+  "direccion": "Los Cerezos 1869, Ñuñoa",
+  "lat": "-33.442536",
+  "lon": "-70.584715",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "05/07/2026 17:45:23",
+  "correo": "moni_manu_23@outlook.com",
+  "direccion": "Arturo Prat 3566, Santiago",
+  "lat": "-33.457222",
+  "lon": "-70.651087",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "05/07/2026 20:20:35",
+  "correo": "kari_9@usach.cl",
+  "direccion": "Avenida Colón 2597, Puente Alto",
+  "lat": "-33.598029",
+  "lon": "-70.563907",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "05/07/2026 23:16:08",
+  "correo": "sespinoza@icloud.com",
+  "direccion": "Los Cerezos 1292, San Miguel",
+  "lat": "-33.502126",
+  "lon": "-70.643177",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "05/07/2026 23:17:41",
+  "correo": "rulo_9@icloud.com",
+  "direccion": "Los Alerces 987, Providencia",
+  "lat": "-33.419290",
+  "lon": "-70.608357",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "05/07/2026 23:20:38",
+  "correo": "ximi_pancho.dev@icloud.com",
+  "direccion": "Avenida Providencia 2160, Puente Alto",
+  "lat": "-33.612904",
+  "lon": "-70.606638",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "06/07/2026 01:02:12",
+  "correo": "ignacio.lopez@hotmail.com",
+  "direccion": "Los Maitenes 3097, Providencia",
+  "lat": "-33.425436",
+  "lon": "-70.597865",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "06/07/2026 01:19:56",
+  "correo": "paula.hernandez@icloud.com",
+  "direccion": "Los Nogales 3826, Maipú",
+  "lat": "-33.536851",
+  "lon": "-70.776606",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "06/07/2026 03:15:24",
+  "correo": "felipe.diaz@hotmail.com",
+  "direccion": "Avenida Matta 2363, Providencia",
+  "lat": "-33.425199",
+  "lon": "-70.608595",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "06/07/2026 18:16:49",
+  "correo": "rousterremotoito@outlook.com",
+  "direccion": "Las Acacias 872, Valparaíso",
+  "lat": "-33.028067",
+  "lon": "-71.611266",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "06/07/2026 19:34:21",
+  "correo": "danielarodriguez16@icloud.com",
+  "direccion": "Avenida Colón 1018, Peñalolén",
+  "lat": "-33.476083",
+  "lon": "-70.549195",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "06/07/2026 19:57:44",
+  "correo": "ignaciocontreras82@hotmail.com",
+  "direccion": "Arturo Prat 2867, Ñuñoa",
+  "lat": "-33.454511",
+  "lon": "-70.579197",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "06/07/2026 21:23:31",
+  "correo": "composterareciclo_stgo@hotmail.com",
+  "direccion": "San Martín 2301, Puente Alto",
+  "lat": "-33.613891",
+  "lon": "-70.566932",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "06/07/2026 22:16:13",
+  "correo": "pollito@icloud.com",
+  "direccion": "Avenida Providencia 2127, Peñalolén",
+  "lat": "-33.474719",
+  "lon": "-70.522079",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "07/07/2026 01:01:42",
+  "correo": "rodrigo.guerrero@hotmail.com",
+  "direccion": "Las Acacias 1443, Quilicura",
+  "lat": "-33.362598",
+  "lon": "-70.732119",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "07/07/2026 11:05:24",
+  "correo": "atun_ximi88@outlook.com",
+  "direccion": "Los Alerces 4362, Ñuñoa",
+  "lat": "-33.463010",
+  "lon": "-70.596973",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "07/07/2026 17:23:17",
+  "correo": "javierperez69@hotmail.com",
+  "direccion": "Avenida Macul 1485, Valparaíso",
+  "lat": "-33.053936",
+  "lon": "-71.634357",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "07/07/2026 23:39:11",
+  "correo": "rulo_stgo@usach.cl",
+  "direccion": "Los Nogales 4065, San Miguel",
+  "lat": "-33.484855",
+  "lon": "-70.643967",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "08/07/2026 00:52:20",
+  "correo": "ttorres@hotmail.com",
+  "direccion": "Arturo Prat 3897, Valparaíso",
+  "lat": "-33.062626",
+  "lon": "-71.602129",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "08/07/2026 06:16:39",
+  "correo": "pvergara78@icloud.com",
+  "direccion": "Las Rosas 458, Peñalolén",
+  "lat": "-33.489440",
+  "lon": "-70.547057",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "08/07/2026 21:03:36",
+  "correo": "niko.dev@hotmail.com",
+  "direccion": "Manuel Rodríguez 2723, Puente Alto",
+  "lat": "-33.625632",
+  "lon": "-70.591974",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "08/07/2026 21:20:41",
+  "correo": "antoniamartinez58@hotmail.com",
+  "direccion": "Las Rosas 943, San Miguel",
+  "lat": "-33.484965",
+  "lon": "-70.653332",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "09/07/2026 10:23:52",
+  "correo": "joaquin.contreras@outlook.com",
+  "direccion": "Avenida Grecia 2523, Puente Alto",
+  "lat": "-33.604299",
+  "lon": "-70.580522",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "09/07/2026 18:03:35",
+  "correo": "antonia.morales@usach.cl",
+  "direccion": "Avenida Macul 2339, La Florida",
+  "lat": "-33.517839",
+  "lon": "-70.597111",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "09/07/2026 19:20:57",
+  "correo": "joaquin.hernandez@gmail.com",
+  "direccion": "Los Robles 298, Ñuñoa",
+  "lat": "-33.445400",
+  "lon": "-70.606302",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "10/07/2026 09:45:53",
+  "correo": "cami_niko96@hotmail.com",
+  "direccion": "Los Aromos 3300, Recoleta",
+  "lat": "-33.413451",
+  "lon": "-70.621774",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "10/07/2026 09:48:46",
+  "correo": "mote@gmail.com",
+  "direccion": "Avenida Grecia 2216, Maipú",
+  "lat": "-33.527135",
+  "lon": "-70.773297",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "10/07/2026 15:15:45",
+  "correo": "tramirez@gmail.com",
+  "direccion": "Los Cerezos 2196, San Miguel",
+  "lat": "-33.486307",
+  "lon": "-70.648198",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "10/07/2026 16:49:58",
+  "correo": "chirimoya.zetatkm@icloud.com",
+  "direccion": "Los Cerezos 2551, Peñalolén",
+  "lat": "-33.494236",
+  "lon": "-70.521673",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "10/07/2026 21:30:48",
+  "correo": "bsilva89@gmail.com",
+  "direccion": "Las Acacias 1278, Puente Alto",
+  "lat": "-33.620189",
+  "lon": "-70.569576",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "10/07/2026 21:36:23",
+  "correo": "rodrigomorales72@usach.cl",
+  "direccion": "Avenida Macul 2220, Recoleta",
+  "lat": "-33.398323",
+  "lon": "-70.644197",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "11/07/2026 05:10:47",
+  "correo": "kata_23@hotmail.com",
+  "direccion": "Avenida Colón 1305, La Florida",
+  "lat": "-33.558801",
+  "lon": "-70.603072",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "11/07/2026 11:10:32",
+  "correo": "mica_lector88@icloud.com",
+  "direccion": "Los Aromos 4617, Santiago",
+  "lat": "-33.430959",
+  "lon": "-70.671096",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "11/07/2026 13:14:54",
+  "correo": "beto@gmail.com",
+  "direccion": "Avenida Grecia 3871, Santiago",
+  "lat": "-33.444193",
+  "lon": "-70.668443",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "11/07/2026 21:27:35",
+  "correo": "tomas.diaz@hotmail.com",
+  "direccion": "Los Nogales 2677, Puente Alto",
+  "lat": "-33.640541",
+  "lon": "-70.583094",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "12/07/2026 00:41:16",
+  "correo": "asepulveda@gmail.com",
+  "direccion": "Pasaje Los Copihues 179, Puente Alto",
+  "lat": "-33.615726",
+  "lon": "-70.590781",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "12/07/2026 09:43:17",
+  "correo": "compostera@gmail.com",
+  "direccion": "Pasaje Los Copihues 3148, Ñuñoa",
+  "lat": "-33.454508",
+  "lon": "-70.599901",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "12/07/2026 10:21:10",
+  "correo": "sopaipillatallarin_23@outlook.com",
+  "direccion": "Avenida Ossa 2675, Peñalolén",
+  "lat": "-33.488032",
+  "lon": "-70.527804",
+  "comuna": "Peñalolén"
+ },
+ {
+  "fecha": "12/07/2026 10:54:08",
+  "correo": "javi88@gmail.com",
+  "direccion": "Avenida Grecia 2515, Puente Alto",
+  "lat": "-33.626990",
+  "lon": "-70.554863",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "12/07/2026 17:50:56",
+  "correo": "benjamin.hernandez@icloud.com",
+  "direccion": "Arturo Prat 2734, La Florida",
+  "lat": "-33.540121",
+  "lon": "-70.579375",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "12/07/2026 18:28:04",
+  "correo": "nortino@icloud.com",
+  "direccion": "Las Acacias 3575, Puente Alto",
+  "lat": "-33.607803",
+  "lon": "-70.585146",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "12/07/2026 23:32:06",
+  "correo": "vicente.rojas@outlook.com",
+  "direccion": "Los Robles 139, Santiago",
+  "lat": "-33.454136",
+  "lon": "-70.652887",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "13/07/2026 00:34:45",
+  "correo": "rodrigo.espinoza@gmail.com",
+  "direccion": "Las Camelias 4015, Santiago",
+  "lat": "-33.448331",
+  "lon": "-70.645117",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "13/07/2026 02:48:50",
+  "correo": "kiwijavi96@usach.cl",
+  "direccion": "Los Nogales 2321, Ñuñoa",
+  "lat": "-33.444856",
+  "lon": "-70.610642",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "13/07/2026 06:07:49",
+  "correo": "rodrigo.castro2@hotmail.com",
+  "direccion": "Avenida Grecia 3045, Ñuñoa",
+  "lat": "-33.462079",
+  "lon": "-70.590477",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "13/07/2026 10:14:54",
+  "correo": "motetkm@hotmail.com",
+  "direccion": "Avenida Colón 3727, Quilicura",
+  "lat": "-33.372414",
+  "lon": "-70.705452",
+  "comuna": "Quilicura"
+ },
+ {
+  "fecha": "14/07/2026 09:28:51",
+  "correo": "cami_360@hotmail.com",
+  "direccion": "Los Robles 436, Maipú",
+  "lat": "-33.517128",
+  "lon": "-70.746304",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "15/07/2026 03:02:41",
+  "correo": "catalina.morales@usach.cl",
+  "direccion": "Avenida Matta 4496, Providencia",
+  "lat": "-33.431565",
+  "lon": "-70.616576",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "15/07/2026 05:30:40",
+  "correo": "kari_chinito_stgo@gmail.com",
+  "direccion": "Arturo Prat 2468, Macul",
+  "lat": "-33.479741",
+  "lon": "-70.598033",
+  "comuna": "Macul"
+ },
+ {
+  "fecha": "15/07/2026 06:17:24",
+  "correo": "eespinoza@hotmail.com",
+  "direccion": "Las Acacias 2551, Santiago",
+  "lat": "-33.458206",
+  "lon": "-70.682255",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "15/07/2026 08:47:35",
+  "correo": "ariquelme@icloud.com",
+  "direccion": "Los Aromos 1328, Recoleta",
+  "lat": "-33.394929",
+  "lon": "-70.631468",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "15/07/2026 11:20:45",
+  "correo": "barbara.fuentes@hotmail.com",
+  "direccion": "Los Maitenes 2221, Providencia",
+  "lat": "-33.422497",
+  "lon": "-70.596035",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "15/07/2026 18:49:23",
+  "correo": "felipe.martinez@gmail.com",
+  "direccion": "Las Camelias 3831, Providencia",
+  "lat": "-33.439102",
+  "lon": "-70.611793",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "16/07/2026 06:32:49",
+  "correo": "cristobalgonzalez55@icloud.com",
+  "direccion": "Avenida Grecia 1751, San Miguel",
+  "lat": "-33.490145",
+  "lon": "-70.666944",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "16/07/2026 09:32:58",
+  "correo": "verdecitomote_recicla@icloud.com",
+  "direccion": "Los Aromos 4781, San Miguel",
+  "lat": "-33.495678",
+  "lon": "-70.650582",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "16/07/2026 22:08:43",
+  "correo": "bicicleta.lunitaito@hotmail.com",
+  "direccion": "Los Alerces 2275, Santiago",
+  "lat": "-33.431407",
+  "lon": "-70.676341",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "17/07/2026 03:48:34",
+  "correo": "flaco21@gmail.com",
+  "direccion": "El Bosque 1587, San Miguel",
+  "lat": "-33.503660",
+  "lon": "-70.641701",
+  "comuna": "San Miguel"
+ },
+ {
+  "fecha": "17/07/2026 16:43:22",
+  "correo": "coni.sopaipilla21@gmail.com",
+  "direccion": "Pasaje Los Copihues 2069, Viña del Mar",
+  "lat": "-33.035868",
+  "lon": "-71.559279",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "18/07/2026 02:09:02",
+  "correo": "terremoto.bicicleta_ok@gmail.com",
+  "direccion": "Las Camelias 3200, Recoleta",
+  "lat": "-33.405083",
+  "lon": "-70.651142",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "18/07/2026 21:12:59",
+  "correo": "jperez87@icloud.com",
+  "direccion": "Las Camelias 3579, Viña del Mar",
+  "lat": "-33.041689",
+  "lon": "-71.564947",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "18/07/2026 23:26:27",
+  "correo": "pandita_ok@usach.cl",
+  "direccion": "Las Camelias 4492, Concepción",
+  "lat": "-36.825617",
+  "lon": "-73.037574",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "18/07/2026 23:38:28",
+  "correo": "gonzalo.sepulveda@icloud.com",
+  "direccion": "Las Rosas 4692, Las Condes",
+  "lat": "-33.417639",
+  "lon": "-70.583792",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "19/07/2026 03:47:21",
+  "correo": "beto@usach.cl",
+  "direccion": "Avenida Matta 1648, La Florida",
+  "lat": "-33.538063",
+  "lon": "-70.602763",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "19/07/2026 05:31:58",
+  "correo": "catalinariquelme21@hotmail.com",
+  "direccion": "Pasaje Los Copihues 4515, La Florida",
+  "lat": "-33.513525",
+  "lon": "-70.602715",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "19/07/2026 08:58:19",
+  "correo": "barbarasandoval27@outlook.com",
+  "direccion": "Avenida Matta 1297, Puente Alto",
+  "lat": "-33.609504",
+  "lon": "-70.558382",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "19/07/2026 09:38:33",
+  "correo": "josefaflores96@outlook.com",
+  "direccion": "Los Nogales 4193, Maipú",
+  "lat": "-33.503966",
+  "lon": "-70.735859",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "19/07/2026 14:37:37",
+  "correo": "javier.sandoval@hotmail.com",
+  "direccion": "Las Acacias 1234, Estación Central",
+  "lat": "-33.452172",
+  "lon": "-70.704652",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "19/07/2026 18:39:37",
+  "correo": "lolo.flacoxd@icloud.com",
+  "direccion": "Avenida Matta 202, Santiago",
+  "lat": "-33.451220",
+  "lon": "-70.656490",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "19/07/2026 19:21:45",
+  "correo": "pollito_stgo@hotmail.com",
+  "direccion": "Los Cerezos 1563, Valparaíso",
+  "lat": "-33.049039",
+  "lon": "-71.627224",
+  "comuna": "Valparaíso"
+ },
+ {
+  "fecha": "19/07/2026 20:01:16",
+  "correo": "coni_real@icloud.com",
+  "direccion": "Los Maitenes 4213, La Florida",
+  "lat": "-33.552894",
+  "lon": "-70.617465",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "20/07/2026 15:50:25",
+  "correo": "vicente.diaz@outlook.com",
+  "direccion": "Las Rosas 2053, Maipú",
+  "lat": "-33.496295",
+  "lon": "-70.725267",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "20/07/2026 18:58:05",
+  "correo": "chirimoya_9@hotmail.com",
+  "direccion": "Avenida Providencia 1325, Ñuñoa",
+  "lat": "-33.459023",
+  "lon": "-70.594860",
+  "comuna": "Ñuñoa"
+ },
+ {
+  "fecha": "20/07/2026 23:45:21",
+  "correo": "josefa.morales@hotmail.com",
+  "direccion": "San Martín 4784, Puente Alto",
+  "lat": "-33.636071",
+  "lon": "-70.572834",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "21/07/2026 03:19:24",
+  "correo": "manu.peketkm@hotmail.com",
+  "direccion": "Los Cerezos 1984, Estación Central",
+  "lat": "-33.450849",
+  "lon": "-70.689402",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "21/07/2026 03:20:16",
+  "correo": "catalina.diaz@icloud.com",
+  "direccion": "Pasaje Los Copihues 1552, Concepción",
+  "lat": "-36.841816",
+  "lon": "-73.069651",
+  "comuna": "Concepción"
+ },
+ {
+  "fecha": "21/07/2026 08:28:57",
+  "correo": "emiliacastillo48@usach.cl",
+  "direccion": "Las Rosas 4329, Santiago",
+  "lat": "-33.442945",
+  "lon": "-70.646558",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "21/07/2026 14:04:57",
+  "correo": "daniela.rojas@gmail.com",
+  "direccion": "El Bosque 2917, Maipú",
+  "lat": "-33.525302",
+  "lon": "-70.736290",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "21/07/2026 14:46:53",
+  "correo": "paula.fuentes@usach.cl",
+  "direccion": "Los Robles 602, Maipú",
+  "lat": "-33.521260",
+  "lon": "-70.789571",
+  "comuna": "Maipú"
+ },
+ {
+  "fecha": "22/07/2026 05:34:44",
+  "correo": "peke_recicla@gmail.com",
+  "direccion": "Las Camelias 4236, Recoleta",
+  "lat": "-33.424487",
+  "lon": "-70.628477",
+  "comuna": "Recoleta"
+ },
+ {
+  "fecha": "22/07/2026 14:30:55",
+  "correo": "valentina.munoz@gmail.com",
+  "direccion": "Los Robles 635, Estación Central",
+  "lat": "-33.470939",
+  "lon": "-70.674301",
+  "comuna": "Estación Central"
+ },
+ {
+  "fecha": "22/07/2026 17:36:00",
+  "correo": "lector96@usach.cl",
+  "direccion": "Avenida Colón 4675, Las Condes",
+  "lat": "-33.422726",
+  "lon": "-70.567923",
+  "comuna": "Las Condes"
+ },
+ {
+  "fecha": "23/07/2026 05:40:25",
+  "correo": "fernanda.guerrero@outlook.com",
+  "direccion": "Los Maitenes 4520, Viña del Mar",
+  "lat": "-33.034516",
+  "lon": "-71.530360",
+  "comuna": "Viña del Mar"
+ },
+ {
+  "fecha": "23/07/2026 12:01:39",
+  "correo": "fran_360@icloud.com",
+  "direccion": "Los Nogales 203, La Florida",
+  "lat": "-33.548917",
+  "lon": "-70.620936",
+  "comuna": "La Florida"
+ },
+ {
+  "fecha": "24/07/2026 02:58:55",
+  "correo": "constanza.perez@icloud.com",
+  "direccion": "Avenida Colón 4076, Puente Alto",
+  "lat": "-33.608476",
+  "lon": "-70.579465",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "24/07/2026 05:22:08",
+  "correo": "lunita_stgo@icloud.com",
+  "direccion": "Los Aromos 1808, Santiago",
+  "lat": "-33.437072",
+  "lon": "-70.656973",
+  "comuna": "Santiago"
+ },
+ {
+  "fecha": "24/07/2026 05:32:58",
+  "correo": "papo@gmail.com",
+  "direccion": "Manuel Rodríguez 3480, Puente Alto",
+  "lat": "-33.594171",
+  "lon": "-70.572861",
+  "comuna": "Puente Alto"
+ },
+ {
+  "fecha": "24/07/2026 16:27:39",
+  "correo": "antoniamunoz23@hotmail.com",
+  "direccion": "Las Camelias 4892, Providencia",
+  "lat": "-33.431562",
+  "lon": "-70.593065",
+  "comuna": "Providencia"
+ },
+ {
+  "fecha": "24/07/2026 20:38:55",
+  "correo": "peke_9@hotmail.com",
+  "direccion": "Los Nogales 1469, Concepción",
+  "lat": "-36.833772",
+  "lon": "-73.077766",
+  "comuna": "Concepción"
+ }
+]
