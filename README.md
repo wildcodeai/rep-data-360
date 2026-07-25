@@ -93,9 +93,11 @@ Los `entry.XXXX` son los IDs internos de cada pregunta. Si agregás, borrás o r
 
 Al guardarse un pre-registro se abre un **modal** que dice, con todas las letras, que la persona **no va a recibir ninguna bolsa**, que REP DATA 360 es un trabajo para el ramo de Innovación de la Usach, y le agradece haber participado.
 
-No es un detalle de copy: la página le pide **correo y dirección real** a gente que no conocemos. Si alguien se registra creyendo que le llega un despacho, le sacamos un dato personal a cambio de algo que no existe. Por eso el resto de la sección de registro promete lo mismo que el modal (un punto en el mapa de demanda, no una bolsa) y el contador aclara que incluye la base sintética.
+No es un detalle de copy: la página le pide **correo y dirección real** a gente que no conocemos. Si alguien se registra creyendo que le llega un despacho, le sacamos un dato personal a cambio de algo que no existe. Por eso el resto de la sección de registro promete lo mismo que el modal: un punto en el mapa de demanda, no una bolsa.
 
-Si en algún momento el proyecto sí entrega bolsas, hay que tocar **las tres cosas juntas**: el modal, los tres puntos de la lista de la sección `#registro` y la nota del contador.
+Si en algún momento el proyecto sí entrega bolsas, hay que tocar **las dos cosas juntas**: el modal y los tres puntos de la lista de la sección `#registro`.
+
+El contador **no** aclara que su base es sintética: el número se muestra pelado, por decisión del equipo. Dónde sí queda dicho es en el banner del mapa de ejemplo, que detalla cuántos de esos pre-registros son reales.
 
 ## Contador de pre-registrados
 
