@@ -112,22 +112,49 @@ SYNC_CONTADOR = """
     if (!r.ok) throw new Error('contador.json: ' + r.status);
     return r.json();
   }).then(function (c) {
-    var total = +c.total || 0;
-    if (!total) return;
+    var base = +c.total || 0;
+    if (!base) return;
 
-    // El +1 de quien acaba de registrarse. La portada lo suma en el acto, sin
-    // esperar a que alguien regenere contador.json; si el mapa no hace lo mismo,
-    // las dos paginas muestran numeros distintos justo para la persona que las
-    // esta mirando. Misma clave y misma regla que index.html.
+    // Conteo en vivo, la misma cuenta que hace index.html: de la celda publicada
+    // no se usa el valor sino cuanto crecio desde 'planilla_al_corte'. Si las dos
+    // paginas no hicieran lo mismo, volverian a decir numeros distintos del mismo
+    // dato, que es de donde se salio.
+    if (!c.planilla_csv || !isFinite(+c.planilla_al_corte)) {
+      return mostrar(base, c);
+    }
+    // El parametro de mas saltea la cache del CDN de Google, igual que en
+    // index.html: sin el, la celda publicada llega con el valor de hace un rato.
+    fetch(c.planilla_csv + '&_=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) throw new Error('csv: ' + r.status);
+      return r.text();
+    }).then(function (txt) {
+      var lineas = txt.split(/\\r?\\n/).filter(function (l) { return l.trim() !== ''; });
+      var ultima = (lineas[lineas.length - 1] || '').replace(/"/g, '').trim();
+      if (lineas.length <= 2 && /^\\d+$/.test(ultima)) {
+        base = Math.max(+c.generados || 0, base + (+ultima - +c.planilla_al_corte));
+      }
+      mostrar(base, c);
+    }).catch(function () {
+      mostrar(base, c);   // Google caido o sin red: queda el numero del archivo.
+    });
+  }).catch(function () {
+    // Sin contador.json queda el numero horneado, que es exactamente el que
+    // dibuja el mapa. Nunca se ve vacio ni en cero.
+  });
+
+  function mostrar(total, c) {
+    // El +1 de quien acaba de registrarse. La portada lo suma en el acto; si el
+    // mapa no hace lo mismo, las dos paginas muestran numeros distintos justo
+    // para la persona que las esta mirando. Misma clave y misma regla.
     //
     // Se compara contra 'generado', el instante del corte, y no contra la fecha:
     // con la fecha sola, quien se pre-registro ese mismo dia ANTES de regenerar
-    // se sumaba de nuevo aunque ya estuviera adentro del total, y quedaba contado
-    // dos veces.
+    // se sumaba de nuevo aunque ya estuviera adentro del total. Y no se suma si
+    // el conteo en vivo ya crecio: ahi la fila propia ya esta contada.
     try {
       var marca = localStorage.getItem('repdata360:registrado') || '';
       var corte = c.generado || c.actualizado || '';
-      if (corte && marca > corte) total += 1;
+      if (total <= (+c.total || 0) && corte && marca > corte) total += 1;
     } catch (e) {
       // localStorage bloqueado (modo privado, cookies de terceros): sin el +1
       // el mapa muestra el numero del archivo, que es el que ve todo el mundo.
@@ -145,10 +172,7 @@ SYNC_CONTADOR = """
         : faltan + ' pre-registros más recientes todavía no están dibujados en el mapa: entran al regenerarlo.';
       nota.style.display = 'block';
     }
-  }).catch(function () {
-    // Sin contador.json queda el numero horneado, que es exactamente el que
-    // dibuja el mapa. Nunca se ve vacio ni en cero.
-  });
+  }
 })();
 </script>"""
 

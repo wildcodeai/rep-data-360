@@ -481,11 +481,15 @@
   // navegador NO puede contar las respuestas reales por su cuenta: lee el JSON
   // que deja tools/actualizar_contador.py cada vez que se baja el CSV.
   //
-  // Para que el número se actualice solo: agregá a la planilla una hoja «Conteo»
-  // de una sola celda (=CONTARA(Respuestas!B2:B)), publicá ESA hoja como CSV
-  // (Archivo > Compartir > Publicar en la web) y pegá la URL en csvPublicado.
-  // Nunca la hoja de respuestas: publicar en la web es público de verdad y esa
-  // hoja lleva correos y direcciones. Ver el README.
+  // Desde el 25 jul 2026 el número **sí** se actualiza solo: la planilla tiene
+  // una hoja «Conteo» de una sola celda publicada como CSV, y su URL viaja en el
+  // propio JSON (`planilla_csv`). No hace falta regenerar nada para que suba.
+  // La URL vive del lado de Python, en tools/actualizar_contador.py, que es
+  // quien la escribe acá: un solo lugar donde cambiarla. `csvPublicado` queda
+  // como override manual, para probar sin tocar el JSON.
+  //
+  // Nunca se publica la hoja de respuestas: publicar en la web es público de
+  // verdad y esa hoja lleva correos y direcciones. Ver el README.
   const CONTADOR = {
     json: './datos/contador.json',
     csvPublicado: ''
@@ -630,24 +634,40 @@
     const generados = +base.generados || 0;
     let total = +base.total || (generados + (+base.reales || 0));
 
-    if(CONTADOR.csvPublicado){
+    // Conteo en vivo. La celda publicada NO es el número de pre-registros: esa
+    // fórmula cuenta también el encabezado, y contaba las filas de prueba
+    // `.demo@` mientras existieron. Por eso no se usa su valor, sino **cuánto
+    // creció** desde el corte: `planilla_al_corte` es lo que marcaba cuando se
+    // generó este JSON, y de ahí en más cada fila nueva vale 1.
+    //
+    // Así funciona con cualquier fórmula que suba de a uno por fila, sin tener
+    // que tocar la planilla, y si se borran filas el número también baja.
+    const csv = CONTADOR.csvPublicado || base.planilla_csv;
+    const alCorte = +base.planilla_al_corte;
+    if(csv && Number.isFinite(alCorte)){
       try{
-        const res = await fetch(CONTADOR.csvPublicado, { cache: 'no-store' });
+        // El parámetro de más saltea la caché del CDN de Google, que sirve esa
+        // URL con el valor de hace un rato. `cache: 'no-store'` acá no alcanza:
+        // manda al navegador a pedirla de nuevo, pero del otro lado le contestan
+        // lo mismo. Sin esto el contador tarda minutos en enterarse.
+        const res = await fetch(csv + '&_=' + Date.now(), { cache: 'no-store' });
         if(res.ok){
           const lineas = (await res.text()).split(/\r?\n/)
             .filter(function(l){ return l.trim() !== ''; });
           const ultima = (lineas[lineas.length - 1] || '').replace(/"/g, '').trim();
-          // Dos formas de publicar la planilla. Lo recomendado es una hoja de una
-          // sola celda con el conteo (=CONTARA(...)): así el contador queda en vivo
-          // sin exponer correos ni direcciones. Si igual se publicó la hoja de
-          // respuestas entera, se cuentan las filas menos el encabezado.
-          const reales = (lineas.length <= 2 && /^\d+$/.test(ultima))
-            ? +ultima
-            : Math.max(0, lineas.length - 1);
-          total = generados + reales;
+          // Más de dos líneas no es la celda del conteo. Se ignora: si alguien
+          // publicó la hoja de respuestas entera, el problema es otro y bastante
+          // más grave que un contador desactualizado.
+          if(lineas.length <= 2 && /^\d+$/.test(ultima)){
+            const nuevos = +ultima - alCorte;
+            // Solo hacia arriba desde el total del archivo cuando entra gente, y
+            // hacia abajo si borraron filas. El piso es no mostrar menos que los
+            // sintéticos: un descuadre raro no puede dejar el contador en cero.
+            total = Math.max(generados, total + nuevos);
+          }
         }
       }catch(e){
-        // Google caído o URL mal pegada: seguimos con el número del JSON.
+        // Google caído, URL mal pegada o sin red: queda el número del JSON.
       }
     }
 
@@ -655,8 +675,18 @@
     // contado en el JSON. Se compara contra 'generado', que trae la hora exacta;
     // con la fecha sola, quien se registraba el mismo día en que se regeneró el
     // corte no veía su +1 nunca. Ambos son ISO, así que alcanza comparar texto.
+    //
+    // Con el conteo en vivo andando esto casi nunca suma, y no debe: la fila
+    // propia ya viene contada en la celda publicada, y sumarla nunca dejaría de
+    // sumarla (antes esto se apagaba solo cuando alguien regeneraba el JSON, que
+    // es justo lo que ya no hace falta). Si el número creció respecto del
+    // archivo, la planilla ya reflejó filas nuevas: no se suma nada.
+    //
+    // Queda para los pocos minutos en que Google todavía no publicó la fila
+    // nueva —su CSV se cachea— y para cuando el fetch falla.
+    const yaReflejado = total > (+base.total || 0);
     const corte = base.generado || base.actualizado;
-    if(corte && yaRegistrado() > corte) total += 1;
+    if(!yaReflejado && corte && yaRegistrado() > corte) total += 1;
 
     mostrarTotal(total);
   }

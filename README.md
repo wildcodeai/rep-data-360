@@ -111,7 +111,9 @@ El recuadro de la sección `#registro` muestra cuánta gente se pre-registró:
 total = registros sintéticos (500) + pre-registros reales de la planilla
 ```
 
-El sitio es **estático** y la planilla es **privada**, así que el navegador no puede contar las respuestas reales por su cuenta: lee `datos/contador.json`, que es un archivo de tres números que se regenera a mano.
+Desde el 25 jul 2026 ese número **se actualiza solo**: no hay que regenerar nada para que suba cuando alguien se pre-registra. Ver [Conteo en vivo](#conteo-en-vivo).
+
+El sitio es **estático** y la hoja de respuestas es **privada**, así que el navegador no puede leerla. Lo que sí puede leer es `datos/contador.json`, el corte que deja el script, y una hoja aparte de la planilla con un solo número publicado.
 
 **Para actualizarlo**, no hace falta nada aparte: `publicar_mapa.py` lo regenera y lo sube junto con el mapa. Se hacían por separado y el contador quedaba atrás del mapa, mostrando un número viejo en la portada. Si querés correrlo suelto (mismo CSV que usa el mapa):
 
@@ -121,9 +123,9 @@ python3 tools/actualizar_contador.py respuestas.csv
 
 ### El +1 de quien se acaba de pre-registrar
 
-Entre que alguien envía el formulario y que se regenera `contador.json` pasan horas o días. En el medio, esa persona vería su propio pre-registro sin ningún efecto y pensaría que no llegó. Por eso el navegador guarda el instante de su envío en `localStorage` (`repdata360:registrado`) y le suma **1** al número, tanto en la portada como en el KPI del mapa.
+Entre que alguien envía el formulario y que Google publica la fila pasan unos segundos. En el medio, esa persona vería su propio pre-registro sin ningún efecto y pensaría que no llegó. Por eso el navegador guarda el instante de su envío en `localStorage` (`repdata360:registrado`) y le suma **1** al número, tanto en la portada como en el KPI del mapa. Suma en **cada envío**, no solo en el primero: antes cortaba si ya había una marca guardada, y el segundo pre-registro desde el mismo navegador no movía nada.
 
-Ese +1 se aplica solo si el envío es **posterior a `generado`**, el instante exacto del corte que deja el script. Si ya está adentro del archivo, no se cuenta dos veces. Va en UTC terminado en `Z` a propósito: es el mismo formato que `toISOString()` del navegador, y así los dos se comparan como texto. Antes se comparaba solo la fecha, y quien se pre-registraba **el mismo día** en que se había regenerado el corte no veía su +1 nunca.
+Ese +1 se aplica solo si el envío es **posterior a `generado`**, el instante exacto del corte que deja el script, y solo si el conteo en vivo **todavía no creció**. Lo segundo importa más que antes: con el conteo en vivo andando ya no hay regeneraciones frecuentes que apaguen el +1, así que sin esa condición la persona se quedaría viendo uno de más para siempre. Va en UTC terminado en `Z` a propósito: es el mismo formato que `toISOString()` del navegador, y así los dos se comparan como texto. Antes se comparaba solo la fecha, y quien se pre-registraba **el mismo día** en que se había regenerado el corte no veía su +1 nunca.
 
 El mapa suma ese +1 al KPI pero **no dibuja el punto**: el desglose por comuna se hornea al generar el archivo. Cuando eso pasa, aparece la nota de abajo del KPI explicándolo. Y aunque se regenere, una comuna con menos de 3 pre-registros sigue sin círculo propio: se suma en «Otras comunas».
 
@@ -136,17 +138,28 @@ Lo que no cambió es cómo se protegen los datos: los domicilios nunca aparecen,
 > [!NOTE]
 > Hubo una opción `--mezcla` que dejaba los dos sets juntos en un archivo con correos y direcciones reales, para alimentar un segundo mapa. Ya no existe: hay un solo mapa y `publicar_mapa.py` mezcla **en memoria**, contando por comuna, sin escribir nada con datos personales.
 
-**Para que el número se actualice solo** (opcional, un solo paso manual):
+### Conteo en vivo
 
-1. En la planilla, creá una hoja nueva —llamala `Conteo`— con una sola celda: `=CONTARA(Respuestas!B2:B)`.
-2. *Archivo > Compartir > Publicar en la web*, elegí **esa hoja** (no la de respuestas) y formato **CSV**.
-3. Pegá la URL en `CONTADOR.csvPublicado`, en el `<script>` de `index.html`.
+La planilla tiene una hoja **`Conteo`** con una sola celda (`=CONTARA(...)`), publicada en la web como CSV. Esa URL es lo único público de una planilla que por lo demás es privada, y por eso puede leerla el navegador de cualquiera que entre al sitio.
 
-Los reales pasan a leerse en vivo en cada visita y `contador.json` queda como base sintética y como red de seguridad si Google no responde. **Publicá la hoja de conteo, no la de respuestas**: publicar en la web es público de verdad, y la de respuestas lleva correos y direcciones. El lector acepta las dos formas (una celda con el número, o filas menos encabezado), pero solo una es segura.
+> [!WARNING]
+> Se publica **la hoja de conteo, nunca la de respuestas**. Publicar en la web es público de verdad, y la de respuestas lleva correos y direcciones. Si algún día hay que rehacerla, que sea otra vez **una celda sola**. El lector del sitio ignora cualquier CSV de más de dos líneas, justamente para no quedarse contando filas de una hoja que no debería estar publicada.
+
+Lo que devuelve esa celda **no es el número de pre-registros**: la fórmula cuenta también el encabezado, y contaba las filas `.demo@` mientras existieron. Por eso el sitio no usa su valor, sino **cuánto creció**:
+
+```
+reales_ahora = reales_al_corte + (celda_ahora − planilla_al_corte)
+```
+
+`planilla_al_corte` es lo que marcaba la celda cuando se generó el JSON; lo anota `actualizar_contador.py` en la misma corrida. Así funciona con cualquier fórmula que suba de a uno por fila nueva, sin tener que tocar la planilla, y si se borran filas el número también baja. La URL vive en un solo lugar del código, `CSV_PUBLICADO` en `tools/actualizar_contador.py`, que la escribe dentro del JSON para que la lean la portada y el mapa.
+
+**El detalle que hace que esto ande**: a la URL hay que agregarle un parámetro cualquiera (`&_=<timestamp>`) para saltear la caché del CDN de Google. Sin eso devuelve el valor de hace un rato, incluso con `cache: 'no-store'`, que solo le habla a la caché del navegador. Recién probado: la URL pelada devolvía `19` y con el parámetro `17`. Calibrar contra un número viejo deja al contador arrastrando esa diferencia para siempre.
+
+Si Google no responde, o la URL deja de servir, queda el número de `contador.json`. Nunca se ve vacío ni en cero.
 
 **Detalles de comportamiento**, para que nadie los tome por bugs:
 
-- Quien se registra ve el número subir **en el acto**, aunque nadie haya regenerado el JSON. Queda anotada la fecha en `localStorage` para no contarse dos veces cuando el JSON ya lo incluya, y para no contarse de nuevo si se registra otra vez desde el mismo navegador. **Ese +1 solo lo ve esa persona**: el resto de las visitas ve el número del JSON hasta la próxima actualización.
+- Quien se registra ve el número subir **en el acto**, en cada envío, sin esperar a que Google publique la fila. Queda anotado el instante en `localStorage`. **Ese +1 solo lo ve esa persona**; el resto lo ve en cuanto la celda publicada lo refleje, que son segundos. Y se apaga en cuanto el conteo en vivo ya creció, o la persona se quedaría viendo uno de más para siempre.
 - El número **anima al entrar en pantalla**, no al cargar la página (el contador está bajo el pliegue). Con `prefers-reduced-motion` aparece directo.
 - Si `contador.json` no carga, queda el número escrito en el HTML (500). Nunca se ve vacío ni en cero.
 - **El mapa muestra el mismo número.** `mapa.html` lee ese mismo `datos/contador.json`, así que su KPI «Pre-registros» dice siempre lo mismo que la portada, con la misma regla para el +1 propio. Si el contador ya suma registros que todavía no se dibujaron —porque nadie regeneró el mapa—, lo aclara debajo del KPI, en vez de dejar arriba un total que no cuadra con el ranking de comunas. Ese `<script>` lo inyecta `tools/generar_mapa_publico.py`.
