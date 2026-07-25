@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REP DATA 360 · Demanda por comuna</title>
-<meta name="description" content="Dónde se concentra la demanda de bolsas REP DATA 360, agregada por comuna.">
+<title>REP DATA 360 · Demanda por comuna (base de ejemplo)</title>
+<meta name="description" content="Cómo se ve la demanda de bolsas REP DATA 360 por comuna: base sintética de ejemplo más los pre-registros reales.">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
@@ -65,11 +65,19 @@
   <h1>Demanda de bolsas por comuna</h1>
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
 
+  <div style="background:#FDF6E3;border:1px solid #F6C544;border-radius:12px;
+       padding:14px 18px;font-size:13.5px;line-height:1.55;margin-bottom:20px">
+    <b>Base de ejemplo — la mayor parte de estas cifras es sintética.</b>
+    Se generó para mostrar cómo se ve el mapa cuando haya demanda real, y no
+    corresponde a personas ni a domicilios. <span id="bannerMezcla">A esa base se le suman 10 pre-registros reales, agregados por comuna.</span>
+    Los pre-registros reales sí son personas, y se muestran agregados por comuna:
+    sin correos, sin direcciones y sin un círculo propio por debajo de 3.
+  </div>
 
   <div class="kpis">
-    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">10</p></div>
+    <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">510</p></div>
     <div class="kpi"><p class="et">Comuna con más demanda</p><p class="txt">Santiago</p></div>
-    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">4</p></div>
+    <div class="kpi"><p class="et">Comunas alcanzadas</p><p class="num">18</p></div>
   </div>
   <p class="desfase" id="kpiDesfase" style="display:none"></p>
 
@@ -88,23 +96,93 @@
         <div class="fila">
           <div class="nombre">Santiago</div>
           <div class="pista"><div class="barra" style="width:100.0%;background:#1E3A2E"></div></div>
-          <div class="valor">4</div>
+          <div class="valor">64</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Puente Alto</div>
+          <div class="pista"><div class="barra" style="width:93.8%;background:#1E3A2E"></div></div>
+          <div class="valor">60</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Ñuñoa</div>
+          <div class="pista"><div class="barra" style="width:71.9%;background:#1F8A5C"></div></div>
+          <div class="valor">46</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Maipú</div>
+          <div class="pista"><div class="barra" style="width:70.3%;background:#1F8A5C"></div></div>
+          <div class="valor">45</div>
         </div>
         <div class="fila">
           <div class="nombre">Providencia</div>
-          <div class="pista"><div class="barra" style="width:75.0%;background:#1F8A5C"></div></div>
-          <div class="valor">3</div>
+          <div class="pista"><div class="barra" style="width:67.2%;background:#1F8A5C"></div></div>
+          <div class="valor">43</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">La Florida</div>
+          <div class="pista"><div class="barra" style="width:65.6%;background:#1F8A5C"></div></div>
+          <div class="valor">42</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Las Condes</div>
+          <div class="pista"><div class="barra" style="width:59.4%;background:#2FB179"></div></div>
+          <div class="valor">38</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Peñalolén</div>
+          <div class="pista"><div class="barra" style="width:46.9%;background:#2FB179"></div></div>
+          <div class="valor">30</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Valparaíso</div>
+          <div class="pista"><div class="barra" style="width:43.8%;background:#2FB179"></div></div>
+          <div class="valor">28</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Recoleta</div>
+          <div class="pista"><div class="barra" style="width:32.8%;background:#8BD4A8"></div></div>
+          <div class="valor">21</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Estación Central</div>
+          <div class="pista"><div class="barra" style="width:32.8%;background:#8BD4A8"></div></div>
+          <div class="valor">21</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">San Miguel</div>
+          <div class="pista"><div class="barra" style="width:29.7%;background:#8BD4A8"></div></div>
+          <div class="valor">19</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Viña del Mar</div>
+          <div class="pista"><div class="barra" style="width:28.1%;background:#8BD4A8"></div></div>
+          <div class="valor">18</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Concepción</div>
+          <div class="pista"><div class="barra" style="width:23.4%;background:#8BD4A8"></div></div>
+          <div class="valor">15</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Quilicura</div>
+          <div class="pista"><div class="barra" style="width:14.1%;background:#8BD4A8"></div></div>
+          <div class="valor">9</div>
+        </div>
+        <div class="fila">
+          <div class="nombre">Macul</div>
+          <div class="pista"><div class="barra" style="width:12.5%;background:#8BD4A8"></div></div>
+          <div class="valor">8</div>
         </div>
         <div class="fila">
           <div class="nombre otras">Otras comunas</div>
-          <div class="pista"><div class="barra otras-barra" style="width:75.0%"></div></div>
+          <div class="pista"><div class="barra otras-barra" style="width:4.7%"></div></div>
           <div class="valor">3</div>
         </div>
     <details>
       <summary>Ver como tabla</summary>
       <table>
         <thead><tr><th>Comuna</th><th>Pre-reg.</th><th>Share</th></tr></thead>
-        <tbody><tr><td>Santiago</td><td>4</td><td>40%</td></tr><tr><td>Providencia</td><td>3</td><td>30%</td></tr><tr><td>Otras comunas (2)</td><td>3</td><td>30%</td></tr></tbody>
+        <tbody><tr><td>Santiago</td><td>64</td><td>13%</td></tr><tr><td>Puente Alto</td><td>60</td><td>12%</td></tr><tr><td>Ñuñoa</td><td>46</td><td>9%</td></tr><tr><td>Maipú</td><td>45</td><td>9%</td></tr><tr><td>Providencia</td><td>43</td><td>8%</td></tr><tr><td>La Florida</td><td>42</td><td>8%</td></tr><tr><td>Las Condes</td><td>38</td><td>7%</td></tr><tr><td>Peñalolén</td><td>30</td><td>6%</td></tr><tr><td>Valparaíso</td><td>28</td><td>5%</td></tr><tr><td>Recoleta</td><td>21</td><td>4%</td></tr><tr><td>Estación Central</td><td>21</td><td>4%</td></tr><tr><td>San Miguel</td><td>19</td><td>4%</td></tr><tr><td>Viña del Mar</td><td>18</td><td>4%</td></tr><tr><td>Concepción</td><td>15</td><td>3%</td></tr><tr><td>Quilicura</td><td>9</td><td>2%</td></tr><tr><td>Macul</td><td>8</td><td>2%</td></tr><tr><td>Otras comunas (2)</td><td>3</td><td>1%</td></tr></tbody>
       </table>
     </details>
     <p class="umbral">Las comunas con menos de 3 pre-registros no se muestran por separado: se suman en «Otras comunas». Con números chicos, un punto sobre el mapa señalaría un domicilio.</p>
@@ -118,7 +196,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var COMUNAS = [{"comuna": "Santiago", "n": 4, "lat": -33.4377, "lon": -70.65107, "color": "#1E3A2E"}, {"comuna": "Providencia", "n": 3, "lat": -33.42884, "lon": -70.61134, "color": "#1F8A5C"}];
+var COMUNAS = [{"comuna": "Santiago", "n": 64, "lat": -33.4377, "lon": -70.65107, "color": "#1E3A2E"}, {"comuna": "Puente Alto", "n": 60, "lat": -33.60953, "lon": -70.57547, "color": "#1E3A2E"}, {"comuna": "Ñuñoa", "n": 46, "lat": -33.45432, "lon": -70.59364, "color": "#1F8A5C"}, {"comuna": "Maipú", "n": 45, "lat": -33.50944, "lon": -70.75618, "color": "#1F8A5C"}, {"comuna": "Providencia", "n": 43, "lat": -33.42884, "lon": -70.61134, "color": "#1F8A5C"}, {"comuna": "La Florida", "n": 42, "lat": -33.52042, "lon": -70.60062, "color": "#1F8A5C"}, {"comuna": "Las Condes", "n": 38, "lat": -33.40845, "lon": -70.56715, "color": "#2FB179"}, {"comuna": "Peñalolén", "n": 30, "lat": -33.47659, "lon": -70.54183, "color": "#2FB179"}, {"comuna": "Valparaíso", "n": 28, "lat": -33.04585, "lon": -71.61967, "color": "#2FB179"}, {"comuna": "Recoleta", "n": 21, "lat": -33.40207, "lon": -70.64289, "color": "#8BD4A8"}, {"comuna": "Estación Central", "n": 21, "lat": -33.45364, "lon": -70.68987, "color": "#8BD4A8"}, {"comuna": "San Miguel", "n": 19, "lat": -33.48597, "lon": -70.64955, "color": "#8BD4A8"}, {"comuna": "Viña del Mar", "n": 18, "lat": -33.02445, "lon": -71.55176, "color": "#8BD4A8"}, {"comuna": "Concepción", "n": 15, "lat": -36.82707, "lon": -73.05021, "color": "#8BD4A8"}, {"comuna": "Quilicura", "n": 9, "lat": -33.36004, "lon": -70.71186, "color": "#8BD4A8"}, {"comuna": "Macul", "n": 8, "lat": -33.48216, "lon": -70.59919, "color": "#8BD4A8"}];
 
 var mapa = L.map('mapa', { scrollWheelZoom: false }).setView([-33.45, -70.66], 10);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -175,41 +253,62 @@ if (COMUNAS.length) {
 
 <script>
 (function () {
-  var dibujados = 10;
+  var dibujados = 510;
   var kpi = document.getElementById('kpiPreregistros');
   var nota = document.getElementById('kpiDesfase');
+  var mezcla = document.getElementById('bannerMezcla');
   if (!kpi) return;
-
-  var marca = '';
-  try {
-    marca = localStorage.getItem('repdata360:registrado') || '';
-  } catch (e) {
-    return;   // localStorage bloqueado: queda el numero horneado, el de todos.
-  }
-  if (!marca) return;
 
   fetch('./datos/contador.json', { cache: 'no-store' }).then(function (r) {
     if (!r.ok) throw new Error('contador.json: ' + r.status);
     return r.json();
   }).then(function (c) {
-    // Misma regla y misma clave que index.html: solo suma si el pre-registro es
-    // posterior al corte. Si ya entro al archivo, esta contado en 'dibujados'.
-    var corte = c.generado || c.actualizado || '';
-    if (!corte || marca <= corte) return;
+    var total = +c.total || 0;
+    if (!total) return;
 
-    kpi.textContent = (dibujados + 1).toLocaleString('es-CL');
+    // El +1 de quien acaba de registrarse. La portada lo suma en el acto, sin
+    // esperar a que alguien regenere contador.json; si el mapa no hace lo mismo,
+    // las dos paginas muestran numeros distintos justo para la persona que las
+    // esta mirando. Misma clave y misma regla que index.html.
+    //
+    // Se compara contra 'generado', el instante del corte, y no contra la fecha:
+    // con la fecha sola, quien se pre-registro ese mismo dia ANTES de regenerar
+    // se sumaba de nuevo aunque ya estuviera adentro del total, y quedaba contado
+    // dos veces.
+    try {
+      var marca = localStorage.getItem('repdata360:registrado') || '';
+      var corte = c.generado || c.actualizado || '';
+      if (corte && marca > corte) total += 1;
+    } catch (e) {
+      // localStorage bloqueado (modo privado, cookies de terceros): sin el +1
+      // el mapa muestra el numero del archivo, que es el que ve todo el mundo.
+    }
 
-    // El desglose por comuna se hornea al generar el mapa, asi que el punto de
-    // esta persona todavia no esta. Decirlo evita la lectura de que el envio se
-    // perdio, y de paso explica por que el total no cuadra con el ranking.
-    if (nota) {
-      nota.textContent = 'Tu pre-registro ya está guardado, pero todavía no está '
-        + 'dibujado en el mapa: entra en la próxima actualización. Las comunas con '
-        + 'menos de ' + 3 + ' pre-registros tampoco se muestran por separado.';
+    kpi.textContent = total.toLocaleString('es-CL');
+
+    // El banner dice que la base es sintetica. Cuando el mapa ya lleva mezclados
+    // pre-registros de verdad, hay que decirlo ahi mismo: si no, el aviso pasa a
+    // ser falso justo en la pagina donde esa gente esta contada.
+    var reales = +c.reales || 0;
+    if (reales > 0 && mezcla) {
+      mezcla.textContent = reales === 1
+        ? 'A esa base se le suma 1 pre-registro real, agregado por comuna.'
+        : 'A esa base se le suman ' + reales + ' pre-registros reales, agregados por comuna.';
+    }
+
+    // El desglose por comuna se hornea al generar el mapa. Si el contador ya
+    // suma pre-registros que todavia no se dibujaron, hay que decirlo: si no,
+    // el total de arriba no cuadra con la suma del ranking de abajo.
+    var faltan = total - dibujados;
+    if (faltan > 0 && nota) {
+      nota.textContent = faltan === 1
+        ? '1 pre-registro más reciente todavía no está dibujado en el mapa: entra al regenerarlo.'
+        : faltan + ' pre-registros más recientes todavía no están dibujados en el mapa: entran al regenerarlo.';
       nota.style.display = 'block';
     }
   }).catch(function () {
-    // Sin contador.json queda el numero horneado, que es el que dibuja el mapa.
+    // Sin contador.json queda el numero horneado, que es exactamente el que
+    // dibuja el mapa. Nunca se ve vacio ni en cero.
   });
 })();
 </script>

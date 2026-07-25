@@ -16,12 +16,12 @@ Sitio publicado: **https://wildcodeai.github.io/rep-data-360/**
 ├── index.html                          Todo el sitio: HTML, CSS y JS inline en un solo archivo.
 ├── apps-script.gs                      Backend anterior (Apps Script). Ya no se usa, se conserva como referencia.
 ├── datos/
-│   ├── registros-genericos.json        500 pre-registros sintéticos: la base del contador y del mapa demo.
+│   ├── registros-genericos.json        500 pre-registros sintéticos: la base del contador y del mapa.
 │   └── contador.json                   Solo números. Es lo único que lee el contador del sitio.
 ├── tools/                              Scripts. Ninguno guarda datos personales acá adentro.
 │   ├── generar_registros_genericos.py  Regenera los 500 sintéticos (semilla fija).
 │   ├── actualizar_contador.py          Mezcla los reales de la planilla con los sintéticos.
-│   ├── publicar_mapa.py                Cadena completa: CSV → los dos mapas → commit y push.
+│   ├── publicar_mapa.py                Cadena completa: CSV → mapa + contador → commit y push.
 │   ├── generar_mapa.py                 Mapa detallado, un marcador por domicilio. Escribe FUERA del repo.
 │   ├── generar_mapa_publico.py         Mapa agregado por comuna. Este sí se publica.
 │   └── comunas_centroides.json         Centro oficial de cada comuna, cacheado.
@@ -101,7 +101,7 @@ No es un detalle de copy: la página le pide **correo y dirección real** a gent
 
 Si en algún momento el proyecto sí entrega bolsas, hay que tocar **las dos cosas juntas**: el modal y los tres puntos de la lista de la sección `#registro`.
 
-El contador **no** aclara que su base es sintética: el número se muestra pelado, por decisión del equipo. Dónde sí queda dicho es en el banner del mapa de ejemplo, que detalla cuántos de esos pre-registros son reales.
+El contador **no** aclara que su base es sintética: el número se muestra pelado, por decisión del equipo. Dónde sí queda dicho es en el banner del mapa, que detalla cuántos de esos pre-registros son reales.
 
 ## Contador de pre-registrados
 
@@ -127,19 +127,12 @@ Ese +1 se aplica solo si el envío es **posterior a `generado`**, el instante ex
 
 El mapa suma ese +1 al KPI pero **no dibuja el punto**: el desglose por comuna se hornea al generar el archivo. Cuando eso pasa, aparece la nota de abajo del KPI explicándolo. Y aunque se regenere, una comuna con menos de 3 pre-registros sigue sin círculo propio: se suma en «Otras comunas».
 
-Y para regenerar de paso el mapa demo con los dos sets mezclados:
-
-```bash
-python3 tools/actualizar_contador.py respuestas.csv --mezcla ../../mezcla.json
-python3 tools/generar_mapa_publico.py ../../mezcla.json mapa-demo.html
-```
-
-> [!WARNING]
-> El archivo de `--mezcla` lleva **correos y direcciones reales** y este repo es **público**. Por eso no tiene ruta por defecto y el script se niega a escribirlo adentro del repo. Guardalo afuera.
-
 El script **descarta las filas `.demo@`**: son los envíos que deja el botón «Enviar al formulario real» del generador al probar el circuito, no personas. Es la misma marca que usa `COMO-ACTUALIZAR-EL-MAPA.md` para poder borrarlas a mano de la planilla, y avisa cuántas descartó.
 
-Cuando el mapa de ejemplo ya lleva pre-registros reales mezclados, su banner lo dice (*«A esa base se le suman N pre-registros reales, agregados por comuna»*). No es cosmético: sin eso, el aviso de «datos de demostración» sería falso justo en la página donde esa gente está contada. Los domicilios nunca aparecen, y las comunas con menos de 3 pre-registros se agrupan en «Otras comunas», así que nadie queda señalado por un círculo propio.
+El banner del mapa dice cuántos de esos pre-registros son reales (*«A esa base se le suman N pre-registros reales, agregados por comuna»*). No es cosmético: sin eso, el aviso de «base de ejemplo» sería falso justo en la página donde esa gente está contada. La frase se **hornea** al generar el archivo y además la reescribe el `<script>`: el aviso no puede depender de que un `fetch` salga bien. Los domicilios nunca aparecen, y las comunas con menos de 3 pre-registros se agrupan en «Otras comunas», así que nadie queda señalado por un círculo propio.
+
+> [!NOTE]
+> Hubo una opción `--mezcla` que dejaba los dos sets juntos en un archivo con correos y direcciones reales, para alimentar un segundo mapa. Ya no existe: hay un solo mapa y `publicar_mapa.py` mezcla **en memoria**, contando por comuna, sin escribir nada con datos personales.
 
 **Para que el número se actualice solo** (opcional, un solo paso manual):
 
@@ -154,7 +147,7 @@ Los reales pasan a leerse en vivo en cada visita y `contador.json` queda como ba
 - Quien se registra ve el número subir **en el acto**, aunque nadie haya regenerado el JSON. Queda anotada la fecha en `localStorage` para no contarse dos veces cuando el JSON ya lo incluya, y para no contarse de nuevo si se registra otra vez desde el mismo navegador. **Ese +1 solo lo ve esa persona**: el resto de las visitas ve el número del JSON hasta la próxima actualización.
 - El número **anima al entrar en pantalla**, no al cargar la página (el contador está bajo el pliegue). Con `prefers-reduced-motion` aparece directo.
 - Si `contador.json` no carga, queda el número escrito en el HTML (500). Nunca se ve vacío ni en cero.
-- **El mapa de ejemplo muestra el mismo número.** `mapa-demo.html` lee ese mismo `datos/contador.json`, así que su KPI «Pre-registros» dice siempre lo mismo que la portada. Antes quedaba congelado en el total que tenía al generarse y las dos páginas se contradecían apenas entraba un pre-registro. Si el contador ya suma registros que todavía no se dibujaron —porque nadie regeneró el mapa—, lo aclara debajo del KPI, en vez de dejar arriba un total que no cuadra con el ranking de comunas. El **mapa real** (`mapa.html`) **no** hace esto a propósito: `contador.json` incluye los 500 sintéticos y sumárselos al mapa de datos reales sería inflarlo. Ese `<script>` lo inyecta `tools/generar_mapa_publico.py`.
+- **El mapa muestra el mismo número.** `mapa.html` lee ese mismo `datos/contador.json`, así que su KPI «Pre-registros» dice siempre lo mismo que la portada, con la misma regla para el +1 propio. Si el contador ya suma registros que todavía no se dibujaron —porque nadie regeneró el mapa—, lo aclara debajo del KPI, en vez de dejar arriba un total que no cuadra con el ranking de comunas. Ese `<script>` lo inyecta `tools/generar_mapa_publico.py`.
 
 **Los 500 sintéticos** salen de `tools/generar_registros_genericos.py`, con semilla fija: correrlo dos veces da exactamente el mismo set, así que el mapa no se reacomoda solo. Usan el mismo esquema que exporta la planilla (`fecha, correo, direccion, lat, lon, comuna`) y los correos se reparten entre `icloud.com`, `hotmail.com`, `gmail.com`, `outlook.com` y `usach.cl`, con nicks inventados además de los `nombre.apellido`. **No son personas.**
 
@@ -162,7 +155,11 @@ Los reales pasan a leerse en vivo en cada visita y `contador.json` queda como ba
 
 Las columnas `Lat`, `Lon` y `Comuna` de la planilla existen para responder **dónde se concentra la demanda**: qué comunas piden más bolsas, que es el dato que le sirve a un sistema de gestión para priorizar rutas.
 
-Hay **dos mapas distintos**, y la diferencia importa:
+**Hay un solo mapa publicado**, `mapa.html`, y cuenta exactamente lo mismo que `datos/contador.json`: los 500 sintéticos más los pre-registros reales. Los dos salen de la misma corrida de `publicar_mapa.py`.
+
+Hasta el 25 jul 2026 había dos, `mapa.html` con los reales solos y `mapa-demo.html` con la base de ejemplo, y la portada enlazaba el segundo. Se generaban por caminos distintos, así que se desincronizaban entre ellos y con el contador, y no quedaba claro cuál mirar. `mapa-demo.html` quedó como redirección: la URL vieja anda en el deck y en el PDF de la demo.
+
+Aparte del publicado está el mapa **detallado**, que no es una alternativa sino otra cosa: es la herramienta local para ver quién se registró.
 
 | | Detalle | Dónde vive | Contenido |
 |---|---|---|---|

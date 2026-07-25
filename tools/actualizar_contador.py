@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
-"""Mezcla los pre-registros reales con la base sintetica y actualiza el contador.
+"""Cuenta los pre-registros reales mas la base sintetica y actualiza el contador.
 
     python3 tools/actualizar_contador.py                       # solo la base
     python3 tools/actualizar_contador.py respuestas.csv         # base + reales
-    python3 tools/actualizar_contador.py respuestas.csv --mezcla ../mezcla.json
 
 El CSV es el que baja de la planilla de respuestas del Google Formulario
 (Archivo > Descargar > Valores separados por comas).
 
-Que escribe:
+Escribe datos/contador.json, que son solo numeros y es lo unico que lee el sitio.
 
-  datos/contador.json        solo numeros. Es lo unico que lee el sitio.
-  --mezcla RUTA              los dos sets juntos, para regenerar el mapa.
+Normalmente no hace falta correrlo a mano: publicar_mapa.py lo llama, para que el
+mapa y el contador salgan siempre del mismo corte.
 
-OJO con --mezcla: ese archivo lleva correos y direcciones de personas reales, y
-este repo es publico. Guardalo FUERA del repo (por eso no tiene default) y
-pasaselo a generar_mapa_publico.py, que agrega por comuna y no publica domicilios.
+Hubo una opcion --mezcla que dejaba los dos sets juntos en un archivo, para
+alimentar el segundo mapa. Ya no hay segundo mapa, y ese archivo llevaba correos
+y direcciones reales con la obligacion de acordarse de guardarlo fuera de este
+repo, que es publico. Se saco: publicar_mapa.py mezcla en memoria, contando por
+comuna, sin escribir nada con datos personales.
 """
 
 import argparse
@@ -75,8 +76,6 @@ def main():
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("csv", nargs="?", type=Path,
                     help="respuestas.csv bajado de la planilla")
-    ap.add_argument("--mezcla", type=Path,
-                    help="donde escribir genericos + reales juntos (fuera del repo)")
     args = ap.parse_args()
 
     if not GENERICOS.exists():
@@ -116,18 +115,6 @@ def main():
         print(f"   {len(pruebas)} fila(s) .demo@ descartada(s): son envios de prueba "
               "del generador, no personas")
     print(f"   {CONTADOR.relative_to(RAIZ)}")
-
-    if args.mezcla:
-        if RAIZ in args.mezcla.resolve().parents:
-            ap.error("--mezcla apunta adentro del repo, que es publico, y el archivo "
-                     "lleva correos y direcciones reales. Elegi una ruta de afuera.")
-        args.mezcla.parent.mkdir(parents=True, exist_ok=True)
-        args.mezcla.write_text(
-            json.dumps(genericos + reales, ensure_ascii=False, indent=1) + "\n",
-            encoding="utf-8")
-        print(f"   {args.mezcla}  ({len(genericos) + len(reales)} registros)")
-        print("   para el mapa: python3 generar_mapa_publico.py "
-              f"{args.mezcla} sitio/mapa-demo.html")
 
     if not args.csv:
         print("   (sin CSV: reales quedo en 0. Baja la planilla y pasala como "

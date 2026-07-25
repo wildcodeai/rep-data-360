@@ -67,7 +67,7 @@ def main():
     print(f"   {detallado.name} (local, con domicilios)")
 
     # 2. Mapa publico, agregado por comuna.
-    publicar_publico(puntos)
+    publicar_publico(puntos, descartadas)
 
     # 3. Contador de la portada. Va en la misma corrida a proposito: son dos
     # archivos que cuentan lo mismo, y cuando se actualizaban por separado el
@@ -137,19 +137,43 @@ def contador_cambio():
     return numeros(publicado.stdout) != numeros(nuevo)
 
 
-def publicar_publico(puntos):
-    """Genera mapa.html con datos reales (sin banner de demostracion)."""
+def publicar_publico(puntos, descartadas=()):
+    """Genera mapa.html: la base sintetica mas los pre-registros reales.
+
+    Hasta el 25 jul 2026 habia dos mapas publicados, uno con la base de ejemplo y
+    otro con los reales solos, y el sitio enlazaba el de ejemplo. Se generaban por
+    caminos distintos, asi que se desincronizaban entre ellos y con el contador.
+    Ahora es uno solo y cuenta exactamente lo mismo que datos/contador.json:
+    los 500 sinteticos + los reales. El banner dice cual es cual.
+
+    Los sinteticos salen de datos/registros-genericos.json, que ya vive en el
+    repo. No se escribe ningun archivo con los dos sets juntos: ese archivo
+    llevaria correos y direcciones reales y era el que habia que acordarse de
+    guardar afuera.
+    """
     from collections import Counter
     g = generar_mapa_publico
-    conteo = Counter(p["comuna"] or "Sin comuna" for p in puntos)
+
+    genericos, _ = generar_mapa.cargar(SITIO / "datos" / "registros-genericos.json")
+    conteo = Counter(p["comuna"] or "Sin comuna" for p in genericos + puntos)
+
+    # Un pre-registro sin coordenadas no se puede dibujar, pero si trae comuna
+    # igual cuenta en el ranking: el contador lo suma, y si aca no estuviera, el
+    # total de arriba no cuadraria con la suma de abajo.
+    for fila, _motivo in descartadas:
+        conteo[(fila.get("comuna") or "").strip() or "Sin comuna"] += 1
+
+    total = len(genericos) + len(puntos) + len(descartadas)
     grandes = [(c, n) for c, n in conteo.most_common() if n >= g.MINIMO]
     ocultas = [(c, n) for c, n in conteo.most_common() if n < g.MINIMO]
     centros = g.centroides([c for c, _ in grandes]) if grandes else {}
     publicas = [(c, n, centros.get(c)) for c, n in grandes]
     (SITIO / "mapa.html").write_text(
-        g.construir(publicas, ocultas, len(puntos), demo=False), encoding="utf-8")
-    print(f"   mapa.html ({len(publicas)} comuna(s) en el mapa, "
-          f"{len(ocultas)} en «Otras»)")
+        g.construir(publicas, ocultas, total, demo=True,
+                    reales=len(puntos) + len(descartadas)), encoding="utf-8")
+    print(f"   mapa.html ({total} pre-registros: {len(genericos)} de la base de "
+          f"ejemplo + {len(puntos) + len(descartadas)} reales · "
+          f"{len(publicas)} comuna(s) en el mapa, {len(ocultas)} en «Otras»)")
 
 
 if __name__ == "__main__":

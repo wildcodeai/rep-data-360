@@ -15,7 +15,12 @@ Dos decisiones de privacidad, deliberadas:
    "Otras comunas". Un circulo solo sobre una comuna con 1 registro apunta,
    en la practica, a ese domicilio.
 
-    python3 generar_mapa_publico.py
+Hay UN SOLO mapa publicado, mapa.html, y lo arma publicar_mapa.py mezclando la
+base sintetica con los pre-registros reales, en la misma corrida en que actualiza
+el contador. Este script es la maquinaria (plantilla, centroides, umbral) y sirve
+para mirar un dataset suelto:
+
+    python3 generar_mapa_publico.py datos.json /tmp/mapa.html
 """
 
 import json
@@ -80,24 +85,29 @@ def color_de(n, maximo):
     return RAMPA[max(1, idx)]
 
 
+# El texto de la mezcla se hornea al generar y ademas lo reescribe el <script>
+# desde contador.json. Horneado, porque el aviso de que la base es sintetica no
+# puede depender de que un fetch salga bien: sin el, el mapa se leeria como si
+# los 510 fueran personas.
 BANNER_DEMO = """
   <div style="background:#FDF6E3;border:1px solid #F6C544;border-radius:12px;
        padding:14px 18px;font-size:13.5px;line-height:1.55;margin-bottom:20px">
-    <b>Datos de demostración — la base de estas cifras es sintética.</b>
+    <b>Base de ejemplo — la mayor parte de estas cifras es sintética.</b>
     Se generó para mostrar cómo se ve el mapa cuando haya demanda real, y no
-    corresponde a personas ni a domicilios. <span id="bannerMezcla"></span>
-    El mapa hecho solo con pre-registros reales está en
-    <a href="./mapa.html">mapa.html</a>.
+    corresponde a personas ni a domicilios. <span id="bannerMezcla">__MEZCLA__</span>
+    Los pre-registros reales sí son personas, y se muestran agregados por comuna:
+    sin correos, sin direcciones y sin un círculo propio por debajo de __MINIMO__.
   </div>"""
 
-# Solo para el mapa de demostracion. El "Pre-registros" de arriba se hornea al
-# generar el HTML, asi que se queda congelado mientras el contador de la portada
-# sigue subiendo: las dos paginas terminan diciendo numeros distintos del mismo
-# dato. Esto lo lee de datos/contador.json, que es la misma fuente que usa la
-# portada.
+# Va en el mapa publicado, el que mezcla la base sintetica con los reales. El
+# "Pre-registros" de arriba se hornea al generar el HTML, asi que se quedaria
+# congelado mientras el contador de la portada sigue subiendo: las dos paginas
+# terminarian diciendo numeros distintos del mismo dato. Esto lo lee de
+# datos/contador.json, la misma fuente que usa la portada.
 #
-# El mapa REAL (mapa.html) no lleva esto a proposito: contador.json incluye la
-# base sintetica, y sumarsela al mapa de datos reales seria inflarlo.
+# En un mapa de reales solos (demo=False) esto no aplica: el total de
+# contador.json incluye la base sintetica y sumarsela lo inflaria. Ese caso usa
+# SYNC_PROPIO, que solo mira el +1 de quien esta mirando.
 SYNC_CONTADOR = """
 <script>
 (function () {
@@ -117,10 +127,16 @@ SYNC_CONTADOR = """
     // El +1 de quien acaba de registrarse. La portada lo suma en el acto, sin
     // esperar a que alguien regenere contador.json; si el mapa no hace lo mismo,
     // las dos paginas muestran numeros distintos justo para la persona que las
-    // esta mirando. Misma clave y misma regla de fechas que index.html.
+    // esta mirando. Misma clave y misma regla que index.html.
+    //
+    // Se compara contra 'generado', el instante del corte, y no contra la fecha:
+    // con la fecha sola, quien se pre-registro ese mismo dia ANTES de regenerar
+    // se sumaba de nuevo aunque ya estuviera adentro del total, y quedaba contado
+    // dos veces.
     try {
       var marca = localStorage.getItem('repdata360:registrado') || '';
-      if (c.actualizado && marca > c.actualizado) total += 1;
+      var corte = c.generado || c.actualizado || '';
+      if (corte && marca > corte) total += 1;
     } catch (e) {
       // localStorage bloqueado (modo privado, cookies de terceros): sin el +1
       // el mapa muestra el numero del archivo, que es el que ve todo el mundo.
@@ -203,7 +219,7 @@ SYNC_PROPIO = """
 </script>"""
 
 
-def construir(publicas, ocultas, total, demo=False):
+def construir(publicas, ocultas, total, demo=False, reales=0):
     maximo = publicas[0][1] if publicas else 0
     lider = publicas[0][0] if publicas else "—"
     n_comunas = len(publicas) + len(ocultas)
@@ -244,6 +260,18 @@ def construir(publicas, ocultas, total, demo=False):
                   f"<td>{suma / total * 100:.0f}%</td></tr>")
     tabla = tabla or '<tr><td colspan="3">Sin datos todavía</td></tr>'
 
+    # Misma frase que escribe el <script> desde contador.json, para que el banner
+    # no cambie de texto al cargar y para que diga la verdad aunque el fetch falle.
+    mezcla = ""
+    if reales == 1:
+        mezcla = "A esa base se le suma 1 pre-registro real, agregado por comuna."
+    elif reales > 1:
+        mezcla = (f"A esa base se le suman {reales} pre-registros reales, "
+                  "agregados por comuna.")
+
+    banner = (BANNER_DEMO.replace("__MEZCLA__", mezcla)
+              .replace("__MINIMO__", str(MINIMO))) if demo else ""
+
     nota_umbral = (
         f"<p class=\"umbral\">Las comunas con menos de {MINIMO} pre-registros no se "
         f"muestran por separado: se suman en «Otras comunas». Con números chicos, "
@@ -255,8 +283,8 @@ def construir(publicas, ocultas, total, demo=False):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REP DATA 360 · Demanda por comuna{" (datos de demostración)" if demo else ""}</title>
-<meta name="description" content="{"Ejemplo con datos sintéticos de cómo se ve la demanda de bolsas REP DATA 360 por comuna." if demo else "Dónde se concentra la demanda de bolsas REP DATA 360, agregada por comuna."}">
+<title>REP DATA 360 · Demanda por comuna{" (base de ejemplo)" if demo else ""}</title>
+<meta name="description" content="{"Cómo se ve la demanda de bolsas REP DATA 360 por comuna: base sintética de ejemplo más los pre-registros reales." if demo else "Dónde se concentra la demanda de bolsas REP DATA 360, agregada por comuna."}">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
@@ -316,7 +344,7 @@ def construir(publicas, ocultas, total, demo=False):
 
   <h1>Demanda de bolsas por comuna</h1>
   <p class="sub">REP DATA 360 · Proyecto de Innovación Ley REP N°20.920</p>
-{BANNER_DEMO if demo else ""}
+{banner}
 
   <div class="kpis">
     <div class="kpi"><p class="et">Pre-registros</p><p class="num" id="kpiPreregistros">{total}</p></div>
@@ -416,13 +444,23 @@ if (COMUNAS.length) {{
 
 
 def main():
-    # Sin argumentos: datos reales -> sitio/mapa.html (el que se publica).
-    # Con argumentos: cualquier otro par entrada/salida, p.ej. los datos de
-    # demostracion, que llevan un banner y NO se publican.
+    # Este script genera un mapa suelto a partir de un dataset, para mirarlo.
+    # El mapa que se publica lo arma publicar_mapa.py, que mezcla la base
+    # sintetica con los pre-registros reales y actualiza el contador en la misma
+    # corrida. Escribir mapa.html desde aca lo dejaria contando otra cosa que
+    # datos/contador.json, que es justo la desincronizacion que se saco de encima.
     import sys
     entrada = sys.argv[1] if len(sys.argv) > 1 else None
     salida = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else SALIDA
     demo = bool(entrada)
+
+    if salida == SALIDA:
+        print("mapa.html es el mapa publicado y lo arma publicar_mapa.py, que lo "
+              "deja igualado con el contador:\n"
+              "   python3 tools/publicar_mapa.py respuestas.csv [--sin-publicar]\n"
+              "Para mirar un dataset suelto, pasale una salida propia:\n"
+              "   python3 tools/generar_mapa_publico.py datos.json /tmp/mapa.html")
+        return 1
 
     puntos, _ = cargar(entrada)
     total = len(puntos)
@@ -444,7 +482,9 @@ def main():
     print(f"{nombre} generado · {total} pre-registro(s) · "
           f"{len(publicas)} comuna(s) en el mapa, {len(ocultas)} agrupada(s) en «Otras»"
           + ("  [DEMOSTRACIÓN]" if demo else ""))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    sys.exit(main())
