@@ -59,6 +59,17 @@ def leer_csv(ruta):
     return [f for f in filas if f.get("correo") or f.get("direccion")]
 
 
+def es_prueba(fila):
+    """Envio de prueba, no una persona.
+
+    El generador de datos demo tiene un boton "Enviar al formulario real" para
+    probar el circuito completo, y lo que manda queda mezclado con los registros
+    de verdad en la planilla. Por eso marca esos correos con .demo@: es la misma
+    marca que usa COMO-ACTUALIZAR-EL-MAPA.md para borrarlos a mano.
+    """
+    return ".demo@" in (fila.get("correo") or "").lower()
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -73,7 +84,9 @@ def main():
                  "Corre primero: python3 tools/generar_registros_genericos.py")
 
     genericos = json.loads(GENERICOS.read_text(encoding="utf-8"))
-    reales = leer_csv(args.csv) if args.csv else []
+    filas = leer_csv(args.csv) if args.csv else []
+    pruebas = [f for f in filas if es_prueba(f)]
+    reales = [f for f in filas if not es_prueba(f)]
 
     contador = {
         "_comentario": ("Lo lee el contador de index.html. 'generados' es la base "
@@ -90,6 +103,9 @@ def main():
 
     print(f"contador: {contador['total']} "
           f"({contador['generados']} genericos + {contador['reales']} reales)")
+    if pruebas:
+        print(f"   {len(pruebas)} fila(s) .demo@ descartada(s): son envios de prueba "
+              "del generador, no personas")
     print(f"   {CONTADOR.relative_to(RAIZ)}")
 
     if args.mezcla:

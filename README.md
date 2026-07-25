@@ -123,6 +123,10 @@ python3 generar_mapa_publico.py ../../mezcla.json sitio/mapa-demo.html
 > [!WARNING]
 > El archivo de `--mezcla` lleva **correos y direcciones reales** y este repo es **público**. Por eso no tiene ruta por defecto y el script se niega a escribirlo adentro del repo. Guardalo afuera.
 
+El script **descarta las filas `.demo@`**: son los envíos que deja el botón «Enviar al formulario real» del generador al probar el circuito, no personas. Es la misma marca que usa `COMO-ACTUALIZAR-EL-MAPA.md` para poder borrarlas a mano de la planilla, y avisa cuántas descartó.
+
+Cuando el mapa de ejemplo ya lleva pre-registros reales mezclados, su banner lo dice (*«A esa base se le suman N pre-registros reales, agregados por comuna»*). No es cosmético: sin eso, el aviso de «datos de demostración» sería falso justo en la página donde esa gente está contada. Los domicilios nunca aparecen, y las comunas con menos de 3 pre-registros se agrupan en «Otras comunas», así que nadie queda señalado por un círculo propio.
+
 **Para que el número se actualice solo** (opcional, un solo paso manual):
 
 1. En la planilla, creá una hoja nueva —llamala `Conteo`— con una sola celda: `=CONTARA(Respuestas!B2:B)`.
